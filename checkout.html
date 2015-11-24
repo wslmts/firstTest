@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="/lib/jquery/jquery.js"></script>
+</head>
+<body>
+<script>
+    $(function(){
+        var frg=document.createDocumentFragment();
+        for(var i=0;i<20;i++){
+            var input=document.createElement("input");
+            input.type="checkbox";
+            input.value=i+1;
+            frg.appendChild(input)
+        }
+        document.body.appendChild(frg);
+        $(":checkbox").bind("click",function(){
+            var arry=[];
+            $(":checkbox").each(function(){
+                if($(this).is(":checked")){
+                    arry.push($(this).val());
+
+                }
+            });
+            console.log(arry)
+        });
+    })
+</script>
+</body>
+</html>
