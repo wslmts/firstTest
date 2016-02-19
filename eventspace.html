@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+<button id="test">事件空间</button>
+<button id="test1">被触发事件</button>
+<script>
+    $(function(){
+       $("#test").bind("click",function(){
+	        $("#test1").trigger("click.test")
+	   });
+	   $("#test1").bind("click",function(){
+	        console.log("click with no space")
+	   });
+	   $("#test1").bind("click.test",function(){
+	        console.log("click with  space")
+	   });
+    })
+</script>
+</body>
+</html>
