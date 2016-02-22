@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .container{
+            background: #0aa;
+            display: -webkit-flex;
+            display: inline-flex;
+          /*  flex-direction:row;
+            flex-wrap: nowrap;
+             width:130px;*/
+            flex-flow: row nowrap;
+            width:530px;
+            justify-content: center/*space-between*/;
+            align-items: baseline;
+            height: 120px;
+            font-size: 10px;
+        }
+       .item{
+           background: #00aa00;
+           border: 1px solid #aa0000;
+       }
+        .it1{
+            font-size:16px;
+            order: 1;
+            flex-shrink:2;
+            align-self: flex-end;
+        }
+        .it2{
+            order: 3;
+            flex-grow: 1;
+            align-self: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="item it1">item1---item1---item1</div>
+    <div class="item it2">item2---item2</div>
+    <div class="item it3">item3---item3</div>
+</div>
+</body>
+</html>
