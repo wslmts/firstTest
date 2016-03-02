@@ -1,0 +1,7 @@
+.ie_place{
+    position:absolute;
+    color: #0f0;
+    display:inline;
+    overflow: hidden;
+    font-size: 0.8em;
+}
