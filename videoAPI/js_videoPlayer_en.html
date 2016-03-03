@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" media="all" href="js_videoPlayer.css">
+    <title>HTMLMediaElement Interface example - Video Player</title>
+    <!-- $Id: js_videoPlayer_en.html 1163 2011-01-05 09:17:03Z klaus $ -->
+    <script src="js_videoPlayer.js"></script>
+  </head>
+  <body>
+
+<h1>A basic JavaScript video player using the HTMLMediaElement interface. Now playing: "Big Buck Bunny"</h1>
+
+<section>
+<video preload=metadata
+       poster=videos/bbb_poster.jpg
+       width=854 height=480
+       oncanplay="initControls()"
+       ontimeupdate="updateProgress()">
+  <source src='videos/bbb_240p_stereo.ogv'
+          type='video/ogg;codecs="theora, vorbis"'>
+  Sorry, your browser is unable to play this video.
+</video>
+<footer>
+Video <span id="currentSrc"> </span> (c) copyright 2008, <a href="http://www.blender.org/">Blender Foundation</a> / <a href="http://www.bigbuckbunny.org">www.bigbuckbunny.org</a>
+</footer>
+</section>
+
+<section>
+<fieldset>
+  <legend>Scenes</legend>
+  <select name="scenes" onchange="selectScene(this)" size=19>
+    <option value="0:00" selected>0:00 Opening scene</option>
+    <option value="0:23">0:23 Title sequence</option>
+    <option value="0:40">0:40 Big Buck Bunny wakes up</option>
+    <option value="0:56">0:56 Idyllic morning</option>
+    <option value="1:20">1:20 The first butterfly bites the dust</option>
+    <option value="1:56">1:56 Frank, Rinky and Gimera turn up; trouble is brewing</option>
+    <option value="3:06">3:06 The second butterfly bites the dust</option>
+    <option value="3:54">3:54 This calls for revenge</option>
+    <option value="4:11">4:11 Setting traps</option>
+    <option value="5:00">5:00 Time for revenge</option>
+    <option value="5:25">5:25 Squirrel Rinky is hit by a tree</option>
+    <option value="5:42">5:42 Chinchilla Gamera is next</option>
+    <option value="6:21">6:21 Innocent bird gets knocked out</option>
+    <option value="6:34">6:34 Flying squirrel Frank attacks</option>
+    <option value="7:00">7:00 The trap is sprung</option>
+    <option value="7:20">7:20 Last-second rescue</option>
+    <option value="7:43">7:43 Peace and quiet. Time to fly a kite</option>
+    <option value="8:10">8:10 Closing credits</option>
+    <option value="9:40">9:40 The innocent bird's revenge</option>
+  </select>
+</fieldset>
+
+<fieldset>
+  <legend>Player</legend>
+  <input type=button value="&#x25B6;" onclick="playPause(this);" id="playButton">
+  <input type="range" min=0 max=1 value=0 step=1 onchange="updateProgress(this)" id="currentPosition">
+  <span id="timePlayed"> </span>
+  <input type="button" value="&#x00AB;" onmousedown="fastFwdBwd(-1)" onmouseup="fastFwdBwd()">
+  <input type="button" value="&#x00BB;" onmousedown="fastFwdBwd(1)" onmouseup="fastFwdBwd()">
+</fieldset>
+
+<fieldset>
+  <legend>Volume</legend>
+  <input type="button" value="&#x266B;" onclick="mute(this)">
+  <input type="range" min=0.0 max=1.0 step=0.1 value=1.0 onchange="adjustVolume(this)"/>
+  Volume: <span id="currentVolume"> </span>
+</fieldset>
+
+</section>
+
+ </body>
+</html>

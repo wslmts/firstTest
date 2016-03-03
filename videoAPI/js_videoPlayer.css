@@ -1,0 +1,32 @@
+/*****
+*
+* $Id: js_videoPlayer.css 583 2010-07-27 09:24:30Z klaus $
+* stylesheet for the HTML5 video player
+*
+*****/
+
+body {
+  font: 130% sans-serif;
+  width: 90%;
+  margin: auto;
+
+}
+video {
+  margin-top: 10px;
+}
+section {
+  display: block;
+  float: left;
+  padding: 10px;
+}
+footer {
+  display: block;
+  font-size: 80%;
+}
+footer span {
+  font-style: italic;
+}
+input[type="button"] {
+  font-size: 150%;
+  width: 1.8em;
+}
