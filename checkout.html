@@ -28,5 +28,11 @@
         });
     })
 </script>
+<input id="ab" data-key="1"/>
+<script>
+    console.log(typeof $("#ab").attr("data-key"));
+    console.log($("#ab").prop("data-key"))
+    console.log(typeof $("#ab").data("key"));
+</script>
 </body>
 </html>
