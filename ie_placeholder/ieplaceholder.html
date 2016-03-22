@@ -10,16 +10,36 @@
   <link rel="stylesheet" href="iepl.css"/>
 <script src="jquery.js"></script>
 <script src="iepl.js"></script>
+  <style>
+   .error_txt{
+    display: none;
+    color: #f00;
+   }
+  </style>
  </head>
  <body>
   <div style="position: absolute;">
    <p>this is for ie lower version</p>
-   <input type="text" placeholder="this is placeholder">
-   <input type="text" placeholder="this is placeholder too">
+  <form>
+   <input type="text" placeholder="this is placeholder" class="required"><span class="error_txt"></span>
+   <input type="text" placeholder="this is placeholder too"  class="required"><span class="error_txt"></span>
+   <button type="button">提交</button>
+  </form>
   </div>
  <script>
   $(function(){
-   IEPlaceholder.init();
+   IEPlaceholder2.init();
+   $("button").click(function(){
+      $("input:text").each(function(){
+       var txt=$(this).attr('placeholder');
+        if($(this).val()==""||$(this).val()==txt){
+          $(this).next('.error_txt').text(txt).show();
+        }
+      })
+   });
+   $("input:text").bind("focus",function(){
+     $(this).next('.error_txt').text('').hide();
+   })
   });
  </script>
  </body>

@@ -28,3 +28,32 @@ var IEPlaceholder={
         });
     }
 }
+var IEPlaceholder2={
+    init:function(){
+        // if(!'placeholder' in document.createElement('input')){
+        $('input:text[placeholder]').each(function(i,v){
+            var txt=$(this).attr('placeholder');
+            if($(this).val()==""){
+              $(this).val(txt);
+            }
+        });
+        this._bindEvent();
+        // }
+    },
+    _bindEvent:function(){
+        var self=this;
+        var input=$('input:text[placeholder]');
+        input.bind("click",function(){
+            var txt=$(this).attr('placeholder');
+            if($(this).val()==txt){
+                $(this).val("");
+            }
+        });
+        input.bind("blur",function(){
+            var txt=$(this).attr('placeholder');
+            if($.trim($(this).val())==""){
+                $(this).val(txt);
+            }
+        });
+    }
+}

@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script src="jquery17.js"></script>
+  <!--<script src="jquery15.js"></script>-->
+  <style>
+   .abc{
+   /* display:none*/
+   }
+      /*div[dir=rtl]:after{
+          content:"&lrm;"
+      }*/
+  </style>
+ </head>
+ <body>
+ <div  class="bb" data-name="wrapper"><span class="abc">abc</span><span class="abc">123</span></div>
+ <ul></ul>
+ <!--<div dir="rtl">
+    看市场前景，企业文化，合作伙伴，公司政策与战略和经营方式。现在创业是很困难的。如果你感到茫然，我建议你去学习，只有学习才会改变命运，世界上有三种力量可以改变自己的命运，第一是剑，第二是权力，第三是思想。我在彷徨不决的时候，就会选择学习，在学习中提升自己，拓宽视野，当你的眼睛足够雪亮的时候，便能看清前方的路是坑，还是阳光大道。&lrm;
+ </div>-->
+  <script>
+      $(function(){
+          var r="",cn=0;
+          for(var n in $.support){
+              r+='<li>'+n+" : "+ $.support[n]+'</li>';
+          }
+          $("ul").html(r)
+      });
+      var c=document.getElementsByTagName("div");
+
+      document.body.appendChild(c[0].cloneNode(true));
+      document.getElementsByTagName("div").onclick=function(){
+          alert('a');
+      }
+    /*  $({}).queue('confirm',function(next){
+        if(confirm("queren?")) next();
+          else alert("cancel");
+      }).queue('confirm',function(next){
+          if(confirm("queren again?")) next();
+          else alert("cancel again");
+      }).queue('confirm',function(next){
+          alert("finish");
+      }).dequeue('confirm');*/
+   /* $("#top").data("wrapper");
+    $("#top").data("name",'abc');
+    console.log($("#top").data("name"))*/
+  /* var j=$.noConflict(true);
+  $('.abc').on("click",function(){
+     console.log('a');
+    // console.log($.browser.webkit)
+   });
+   j(".abc").live("click",function(){
+    console.log('b');
+   });*/
+
+  // $("<div>")
+   //$("body")
+  //$("<div>abc</div>")
+  // $("<div>",{title:"hello",html:"welcome"})
+//  $(".abc",'div')
+   //$(function(){})
+  /* $("body").click(function(){
+    console.log('a')
+   })*/
+ //var a= $.extend({a:1});
+ /* $.fn.extend({'age':'120'});
+console.log($(".abc").age)*/
+   /*var o={};
+   o.n1=o;
+   console.log($.extend(true,o,{n2:o}));*/
+/*   $(".abc").each(function(i,v){
+     console.log(i,v);
+     console.log(this)
+   })*/
+/*  var a=[1,2,3];
+  var b=$.each(a,function(i,v){
+   if(v<2) v++
+  })
+var c=$(a).map(function(i,v){
+ if(v<2) return v++
+  })
+  console.log(a)
+  console.log(b==a);
+  console.log(c==a)*/
+  /*$(".abc").map(function(i,v){
+   console.log(i,v);
+   console.log(this)
+  })*/
+ /* var a={'a1':1,'a2':2}
+  $.each(a,function(i,v){
+   console.log(i,v);
+   console.log(this)
+  })*/
+  // $(".abc").eq(0)
+/*  $.isPlainObject({})*/
+  /*var a=function(){};a.prototype=[];$.isArray(new a())*/
+  /* var p=new DOMParser();
+   var xml= p.parseFromString('<book>123</book>','text/xml');
+   console.log(xml);*/
+ /* var a=$.parseXML('<book>123</book>')
+   console.log(a)*/
+ /* var a=[7,8,9];
+  var c=$.map(a,function(v,i){
+  if(v>8) return v
+
+  })
+   console.log(c)*/
+/* JSON.stringify({a:1,b:2},function(key,value){
+ if(key=='a') return value*10
+  if(key=="b") return value-5;
+  return value
+ })*/
+ /* var v=$.grep([1,2,3],function(v){if (v>2) return v});*/
+/*  $("div").find(".abc")*/
+   /*   var cb= $.Callbacks(),
+      sth=true;
+      function f1(args){
+          console.log('f1',args);
+          if(sth){
+              cb.fire("test: 2times invoked");
+              cb.fire("test: 3times invoked");
+              sth=false;
+          }
+      }
+      cb.add(f1);
+      cb.fire("test: 1times invoked");*/
+/*  var cb= $.Callbacks('once memory');
+  function f1(args){
+      console.log('f1',args);
+  //    return false;
+  }
+  function f2(args){
+      console.log('f2',args);
+  }
+  cb.add(f1);
+  cb.fire("test: 1times invoked");
+  cb.add(f2);*/
+/*  var cb= $.Callbacks();
+  function f1(args){
+      console.log('f1',args);
+      console.log('f1 before call f2');
+      cb.add(f2);
+      console.log('f1 after call f2');
+  }
+  function f2(args){
+      console.log('f2',args);
+  }
+  cb.add(f1);
+  cb.fire("test: 1times invoked");*/
+ /* $.uuid=2;
+var body=document.body;
+      var $body=$(body);
+      $body.removeData();
+      $body.data("pub",1);
+      $.data(body,'pub-1',2);
+      $.data(body,'priv-1',3,true);
+      console.log('关联id ',$("body")[0][$.expando]);
+      console.log('$.cache',JSON.stringify($.cache,null,4));*/
+    /*  var obj={foo:"no inherit"},$obj=$(obj);
+      $obj.data("pub",1);
+  $.data(obj,'pub-1',2);
+  $.data(obj,'priv-1',3,true);
+  console.log('obj ',obj);
+  console.log('obj json ',JSON.stringify(obj,null,4));*/
+
+  </script>
+ </body>
+</html>
