@@ -1,6 +1,6 @@
 var IEPlaceholder={
     init:function(){
-     // if(!'placeholder' in document.createElement('input')){
+      if(!'placeholder' in document.createElement('input')){
          $('input:text[placeholder]').each(function(i,v){
             var txt=$(this).attr('placeholder');
             var pos = $(this).position();
@@ -10,7 +10,7 @@ var IEPlaceholder={
             }).insertAfter($(this));
          });
         this._bindEvent();
-     // }
+     }
     },
     _bindEvent:function(){
         $(".ie_place").bind("click",function(){
