@@ -13,31 +13,105 @@
    .abc{
    /* display:none*/
    }
+  /* html{
+       padding:100px;
+   }*/
+   body{
+    /*   border:100px solid ;
+       padding:100px;*/
+       /*height:900px;*/
+       border:10px solid #ff0;
+   }
       /*div[dir=rtl]:after{
           content:"&lrm;"
       }*/
   </style>
  </head>
  <body>
- <div  class="bb" data-name="wrapper"><span class="abc">abc</span><span class="abc">123</span></div>
+ <div id="a1" style="border:2px solid red;padding:2px">abc</div>
+ <input type="button" id="abc" value="event" data-action="click"/>
+ <input type="button" id="ab" value="event1" data-action="dblclick"/>
+ <div  id="bb" data-name="wrapper" name="true" class="cb r-k m-k"><span class="abc">abc</span><span class="abc">123</span></div>
  <ul></ul>
  <!--<div dir="rtl">
     看市场前景，企业文化，合作伙伴，公司政策与战略和经营方式。现在创业是很困难的。如果你感到茫然，我建议你去学习，只有学习才会改变命运，世界上有三种力量可以改变自己的命运，第一是剑，第二是权力，第三是思想。我在彷徨不决的时候，就会选择学习，在学习中提升自己，拓宽视野，当你的眼睛足够雪亮的时候，便能看清前方的路是坑，还是阳光大道。&lrm;
  </div>-->
   <script>
-      $(function(){
+    /*  $("#abc")[0].addEventListener("click",function(){
+          console.log('a')
+      });*/
+     /* $("#ab")[0].addEventListener("click",function(){
+          $('#abc').trigger('click')
+      });*/
+   /* var i=0;
+      $("#ab").on("click",function(e){
+       //   e.stopPropagation();
+          $(document).trigger('cus_click')
+      });
+    /!* document.addEventListener("click",function(){
+     console.log('nt')
+     })*!/
+    $(document).on("cus_click",function(){
+        i++
+      //  console.log('jq'+i);
+        var ev=document.createEvent("MouseEvents");
+          //ev.initMouseEvent( 'click', true, true );
+        ev.initEvent( 'click1', true, true );
+        $("#abc")[0].dispatchEvent(ev);
+
+    });
+    $("#abc")[0].addEventListener("click1",function(e){
+        console.log('nt',e)
+    })*/
+    /*$("#abc").on("click1",function(){
+        alert('111')
+    });*/
+     /* $(function(){
           var r="",cn=0;
           for(var n in $.support){
               r+='<li>'+n+" : "+ $.support[n]+'</li>';
           }
           $("ul").html(r)
+      });*/
+    /*  $("ul").on("click",'li',function(){
+         console.log($(this).text());
       });
+      $("#abc").data("name","first");
+      $("#abc").on("click!",function(){
+        console.log('a')
+      });
+      $("#abc").on("dblclick",function(){
+          console.log('a1')
+      });
+      $("#abc").on("dblclick",function(){
+          console.log('a')
+      });
+      $("#abc").on("ownevent",function(){
+          console.log('a')
+      });
+      $("#abc").on("click",function(){
+          console.log('a1')
+      });
+      $("#ab").on("click",function(){
+          console.log('b')
+      });*/
+    //  $("#abc").val();
+    /*
       var c=document.getElementsByTagName("div");
 
       document.body.appendChild(c[0].cloneNode(true));
       document.getElementsByTagName("div").onclick=function(){
           alert('a');
-      }
+      }*/
+    //document.getElementById("bb").getAttribute("class");//ie7读取不到
+
+  /*  var cls= document.getElementById("bb").getAttributeNode("class");
+    var ret= document.createAttribute( "class" );
+    ret.nodeValue='aahh'
+    document.getElementById("bb").setAttributeNode( ret );*/
+
+
+
     /*  $({}).queue('confirm',function(next){
         if(confirm("queren?")) next();
           else alert("cancel");
@@ -168,7 +242,7 @@ var body=document.body;
   $.data(obj,'priv-1',3,true);
   console.log('obj ',obj);
   console.log('obj json ',JSON.stringify(obj,null,4));*/
-
+//$("#bb").hasClass("cb")
   </script>
  </body>
 </html>
