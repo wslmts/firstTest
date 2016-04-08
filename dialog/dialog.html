@@ -8,10 +8,47 @@
   <meta name="Description" content="">
   <title>Document</title>
   <script src="jquery.js"></script>
+  <link href="dialog.css" rel="stylesheet" type="text/css"/>
+  <script src="template.js"></script>
   <script src="dialog.js"></script>
 
  </head>
  <body>
-  <button id="show dialog"></button>
+ <!--<form>
+     <input type="number">
+     <input type="submit" value="tj">
+ </form>-->
+<!--  <button id="show dialog"></button>-->
+<!--<div class="dialog_wrap">
+  <div class="dialog_header"></div>
+  <div class="dialog_body"></div>
+  <div class="dialog_footer">
+    <a class="sure_btn">确定</a>
+    <a class="cancle_btn">取消</a>
+  </div>
+</div>-->
+<script>
+ var str="welcome to use dialog";
+ $(function(){
+  new Dialog(str,{
+      sure_btn_txt:"确定1",
+      cancle_btn_txt:"取消1"
+  });
+     new Dialog(str,{
+         sure_btn_txt:"确定2",
+         cancle_btn_txt:"取消2"
+     });
+     Dialog1.init(str,{
+         sure_btn_txt:"确定3",
+         cancle_btn_txt:"取消3"
+     });
+    Dialog1.init(str,{
+         sure_btn_txt:"确定4",
+         cancle_btn_txt:"取消4"
+     });
+
+ });
+
+</script>
  </body>
 </html>

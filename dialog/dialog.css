@@ -1,0 +1,30 @@
+.dialog_wrap{
+ /* position: absolute;*/
+}
+.dialog_wrap .dialog_header{
+    padding:10px;
+    background:#1E2732;
+    color: #fff;
+    border-radius: 5px 5px 0 0;
+}
+.dialog_wrap .dialog_body{
+    padding:5px;
+    background:#ff0;
+    min-height:100px;
+}
+.dialog_wrap .dialog_footer{
+    background:#F6F6F6;
+    border-radius: 0 0 5px 5px;
+    border-top: 1px solid #E5E5E5;
+}
+.dialog_footer.none,.dialog_footer .sure_btn.none,.dialog_footer .cancle_btn.none{
+    display:none
+}
+.dialog_footer .sure_btn,.dialog_footer  .cancle_btn{
+    background: #FEE67A;
+    padding:5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #E5E5E5;
+    outline: none;
+}
