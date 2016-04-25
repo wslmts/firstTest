@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+  <details>
+      <summary>tab1</summary>
+      <!--<div>tab1内容</div>-->
+      <details>
+          <summary>tab2</summary>
+           <p>tab2 content</p>
+      </details>
+  </details>
+  <input list="list">
+  <progress max="10"   value="9"  ></progress>
+  <meter max="10" min="3" value="9" high="5" low="1"></meter>
+  <datalist id="list">
+      <option>aaa</option>
+      <option>bbb</option>
+      <option>abc</option>
+  </datalist>
+<form>
+    <input type="range" name="age" min="1" max="150" step="2">
+    <output id="result" onforminput="this.value=age.value">100</output>
+  <!--  <keygen name="key" challenge="123"></keygen>-->
+    <input type="text" pattern="^\d{1,3}$" name="number" required>
+    <input type="file" id="file" multiple>
+    <input type="submit" value="submit">
+</form>
+  <img id="img"/>
+  <div id="text"></div>
+<script>
+   /* var d=document.createElement('file');
+    for (var i in d ){
+        console.log(i+"  : "+d[i])
+    }*/
+    var f=document.getElementById("file").addEventListener("change",function(){
+        console.dir("file "+this.files);
+        var fs=this.files;
+        for(var i in fs){
+            console.log(fs[i])
+        }
+        var fr=new FileReader();
+        if(this.files[0].type.indexOf('html')!=-1){
+            fr.onloadend=function(e){
+                document.getElementById("text").textContent= e.target.result;
+            }
+            fr.readAsText(this.files[0])
+        }else if(this.files[0].type.indexOf('image/')!=-1){
+            fr.onloadend=function(e){
+                 document.getElementById("img").src= e.target.result;
+            }
+            fr.readAsDataURL(this.files[0])
+       }
+
+    });
+   //FileSystem使用
+   window.requestFileSystem=window.requestFileSystem||window.webkitRequestFileSystem;
+   window.requestFileSystem(window.TEMPORARY,5*1024*1024,function(fs){
+     console.log(fs);
+       //获取创建的文件
+       fs.root.getFile('text.txt',{create:false,exclusive:true},function(file){
+         console.log("create file sucess "+file.name);
+           //创建写入对象
+           file.createWriter(function(fileWriter){
+               //在指定位置写入
+               fileWriter.seek(fileWriter.length);
+               //初始化文本数据对象
+               var blob=new Blob(['hello world']);
+               //写入数据
+               fileWriter.write(blob);
+           });
+           /*file.remove(function(){
+               console.log("delete  file sucess ");
+           })*/
+       })
+   },errorcallback);
+    function errorcallback(e){
+         var msg="";
+         switch (e.code){
+
+         }
+    }
+
+</script>
+</body>
+</html>

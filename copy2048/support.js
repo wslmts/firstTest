@@ -41,13 +41,11 @@ function canmoveleft(board){
         for(var j=1;j<4;j++){
          if(board[i][j]!==0) {
              if (board[i][j - 1] == 0 || board[i][j] == board[i][j - 1]) {
-                 console.log('can moveleft',board[i][j])
                  return true;
              }
          }
         }
     }
-    console.log('can not moveleft',board[i][j])
    return false;
 }
 function canmoveright(board){
@@ -55,13 +53,11 @@ function canmoveright(board){
         for(var j=2;j>=0;j--){
             if(board[i][j]!==0) {
                 if (board[i][j + 1] == 0 || board[i][j] == board[i][j + 1]) {
-                    console.log('can moveright',board[i][j])
                     return true;
                 }
             }
         }
     }
-    console.log('can not moveright',board[i][j])
     return false;
 }
 function canmoveup(board){
@@ -69,13 +65,11 @@ function canmoveup(board){
       for(var i=1;i<4;i++){
             if(board[i][j]!==0) {
                 if (board[i-1][j] == 0 || board[i][j] == board[i-1][j]) {
-                    console.log('can  moveup',board[i][j])
                     return true;
                 }
             }
         }
     }
-    console.log('can not moveup',board[i][j])
     return false;
 }
 function canmovedown(board){
@@ -83,13 +77,11 @@ function canmovedown(board){
       for(var i=2;i>=0;i--){
             if(board[i][j]!==0) {
                 if (board[i+1][j] == 0 || board[i][j] == board[i+1][j]) {
-                    console.log('can movedown',board[i][j])
                     return true;
                 }
             }
         }
     }
-    console.log('can not movedown',board[i][j])
     return false;
 }
 function  noHorizontalBlock(row,col1,col2,board){
