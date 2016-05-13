@@ -1,15 +1,15 @@
 
 <!DOCTYPE HTML>
 <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
-<title>Shared workersµÄÀı×Ó</title>
-<pre id="Messagelog">¼ÇÂ¼:</pre>
+<title>Shared workersçš„ä¾‹å­</title>
+<pre id="Messagelog">è®°å½•:</pre>
 <script>
-var worker = new SharedWorker('test.js');
-varMessagelog = document.getElementById('Messagelog');
-worker.port.addEventListener('message', function(event) {
-Messagelog.textContent +="\n" + event.data;
-  }, false);
-worker.port.start();//Æô¶¯¶Ë¿Ú
-worker.port.postMessage('ÎÒÊÇÏò×Ó½ø³Ì·¢³öµÄĞÅÏ¢');//·¢³öĞÅÏ¢
+    var worker = new SharedWorker('test.js');
+    varMessagelog = document.getElementById('Messagelog');
+    worker.port.addEventListener('message', function(event) {
+        Messagelog.textContent +="\n" + event.data;
+    }, false);
+    worker.port.start();//å¯åŠ¨ç«¯å£
+    worker.port.postMessage('æˆ‘æ˜¯å‘å­è¿›ç¨‹å‘å‡ºçš„ä¿¡æ¯');//å‘å‡ºä¿¡æ¯
 </script>
-<iframesrc="other.html"></iframe>
+<iframe src="other.html"></iframe>

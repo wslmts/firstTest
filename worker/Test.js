@@ -1,10 +1,11 @@
 
 var count = 0;
 onconnect = function(event) {
-count += 1;
-var port = event.ports[0];
-port.postMessage('ÄãÊÇµÚ' + count+"ºÅÁ¬½Ó-");
-port.onmessage = function(event) {
-port.postMessage('ÎÒÊÇ×Ó½ø³Ì·¢»ØµÄĞÅÏ¢');
-  }
+    count += 1;
+    var port = event.ports[0];
+    port.postMessage('ä½ æ˜¯ç¬¬' + count+"å·è¿æ¥-");
+    port.onmessage = function(event) {
+        port.postMessage('æˆ‘æ˜¯å­è¿›ç¨‹å‘å›çš„ä¿¡æ¯');
+        console.log("in js file ",event.data)
+    }
 }

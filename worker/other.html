@@ -1,12 +1,14 @@
-
 <!DOCTYPE HTML>
 <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
-<title>��һ��ҳ��</title>
-<pre id="Messagelog">��¼:</pre>
+<title>另一个页面</title>
+<pre id="Messagelog">记录:</pre>
 <script>
-var worker = new SharedWorker('test.js');
-varMessagelog = document.getElementById('Messagelog');
-worker.port.onmessage = function(event) {
-Messagelog.textContent += '\n' + event.data;
-  }
+    var worker = new SharedWorker('test.js');
+    var Messagelog = document.getElementById('Messagelog');
+    worker.port.onmessage = function(event) {
+        Messagelog.textContent += '\n' + event.data;
+    }
+    worker.port.postMessage('从iframe中发给子进程的信息');
+
+
 </script>
