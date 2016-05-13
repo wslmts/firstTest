@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+ <div id="click-item">click me</div>
+ <div id="result-item"></div>
+<script>
+    var citem=document.getElementById("click-item");
+    var ritem=document.getElementById("result-item");
+    citem.onclick=function(){
+        ritem.innerHTML="clicked";
+        history.pushState({note:"set result"},'msg','result.html');
+    }
+    window.onpopstate=function(e){
+        console.log(e)
+    }
+</script>
+</body>
+</html>

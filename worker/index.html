@@ -1,0 +1,21 @@
+
+<html>
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<div id=process></div>
+	<script type="text/javascript">
+	<!--
+for(var i=0;i<5000;i++){
+//准备同时开出5条Worker进程
+			var worker1 = new Worker("1.js");//实例化Worker
+worker1.postMessage(i); //worker1对象向1.js文件传递一个i的变量值
+document.getElementById('process').innerHTML+="<font color=red>第"+i+"条进程运算中...</font><br>";
+			worker1.onmessage = function(event) {
+				//这里onmessage事件用来接收回传的数据
+				document.getElementById('process').innerHTML+="<font color=blue>"+event.data+"</font><br>";
+                }
+           }
+		 console.log("完成计算");
+	//-->
+	</script>
+</html>
+

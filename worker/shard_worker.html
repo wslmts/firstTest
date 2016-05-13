@@ -1,0 +1,15 @@
+
+<!DOCTYPE HTML>
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<title>Shared workers的例子</title>
+<pre id="Messagelog">记录:</pre>
+<script>
+var worker = new SharedWorker('test.js');
+varMessagelog = document.getElementById('Messagelog');
+worker.port.addEventListener('message', function(event) {
+Messagelog.textContent +="\n" + event.data;
+  }, false);
+worker.port.start();//启动端口
+worker.port.postMessage('我是向子进程发出的信息');//发出信息
+</script>
+<iframesrc="other.html"></iframe>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+     <title>产生音频</title>
+   <script type="text/javascript">
+     function playTone() {
+       var output = new Audio();
+      output.mozSetup(1, 44100);
+       var samples = new Float32Array(20010);
+       var len = samples.length;
+       for (var i = 0; i < samples.length ; i++) {
+         samples[i] = Math.sin( i / 30 );
+       }
+              output.mozWriteAudio(samples);
+     }
+   </script>
+ </head>
+ <body>
+   <p>当你按下以下的按钮之后，这个demo会拨一秒钟的音调。</p>
+   <button onclick="playTone();">播放</button>
+ </body>
+ </html>

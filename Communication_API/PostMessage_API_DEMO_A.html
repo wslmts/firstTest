@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <title>发送出表求的网站页面</title>
+	<script type="text/javascript">
+		window.onload = function() {
+			document.getElementById("postBtn").onclick = function() {
+				var target = document.getElementById("tatget_frame").contentWindow;
+				if (window.postMessage) {
+					  target.postMessage("你好，我是PostMessage_API_DEMO_A.html发出来的信息", "http://127.0.0.1:63342/");
+				}
+			}
+			if (window.attachEvent) {
+				window.attachEvent("onmessage", Get_Msg);
+			}
+			else {
+				window.addEventListener("message", Get_Msg, true);
+			}
+		};
+		var Get_Msg = function(e) {
+			console.log(e);
+			console.log(e.origin);//获取跨域传的源地址
+			console.log(e.data);  //获取传递过来的数据
+		}
+	</script>
+</head>
+<body>
+<fieldset>
+	<legend>说明<legend>
+	<li>利用window.postMessage()跨域传递消息
+	<li>本域是http://127.0.0.1向 http://127.0.0.1/ 传递数据
+	<li>为确保读者一定可以成功，本例用的是本机模拟的环境。
+	<li>在调试本例时，请在本机架设web服务器环境。例如：IIS6，IIS7，APACHE，Nginx等
+</fieldset>
+<button id="postBtn">发送跨域传递消息</button>
+<br>
+此处是利用Iframe加载另一个域http://127.0.0.1/下的/Communication_API/PostMessage_API_DEMO_B.html文件
+ <iframe src="http://127.0.0.1:63342/firstTest/Communication_API/PostMessage_API_DEMO_B.html" id="tatget_frame" width="800" height="200"></iframe>
+</body>
+</html>

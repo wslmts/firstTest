@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang=zh-cn manifest=index.manifest>
+<head>
+    <title>重力感应球</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no, target-densityDpi=device-dpi">
+    <script type="text/javascript" charset="utf-8" src="foropera.js"></script>
+</head>
+<body style="margin-top:0px;margin-left:0px;">
+<div id="helpme" style="opacity: 0.9;position:absolute;z-index:1000;top:100px;left:20px;display:none;background-color:#333;-webkit-border-radius:15px;right:20px;">
+    <center style="margin-left:10px;margin-right:10px;border-bottom:1px #777 solid;"><span style=color:#fff;height:30px;line-height:60px;font-size:26px;margin-top:25px;margin-bottom:35px;">重力感应球</span></center>
+    <div style="color:#ccc;font-size:18px;margin-left:20px;margin-right:20px;margin-top:16px;">HTML5 的 Device API 集成了调取重力感应和重力加速的功能。基于此功能，欧朋浏览器 HTML5 体验版可以实现重力感应，并在网页上的呈现效果。此 demo 就是利用了这个特性，晃动手机，便可实现小球在网页上滚动的特效。</div>
+    <br>
+    <center><button onclick="hiddeDiv('helpme')" style="opacity: 1;background-color:#777;border:0px;height:35px;line-height:25px;color:#eee;width:140px;font-size:18px;-webkit-border-radius:5px;">关闭提示</button></center>
+    <br>
+</div>
+
+<div id="help" style="z-index:1000;position:absolute;left:0px;top:30px;"><img src="help.png" onclick="showhelp('')"></div>
+<script>
+    function hiddeDiv(id){
+        document.getElementById('helpme').style.display='none';
+    }
+    function showhelp(){
+        document.getElementById('helpme').style.display='';
+    }
+</script>
+
+
+<canvas id="ball" style="margin-top:0px;margin-left:0px;z-index:10;"></canvas>
+<img id="gunball" style="display:none" src="opera_ball.png"></img>
+<script type="text/javascript">
+
+    var cur_x = 0;
+    var cur_y = 0;
+
+    var ball_radius = 50;
+    var initialized = false;
+
+    var ww;
+    var wh;
+
+    var speed_x = 0;
+    var speed_y = 0;
+
+    var accel_x;
+    var accel_y;
+
+    var friction_accel = 0.02;
+
+    var interval = 33; //ms, 30 fps
+    var bg_color = "#EEEEEE";
+    var fg_color = "#333";
+
+    var absorbing_rate = 0.5;
+
+    var gunball=new Image();
+    gunball.src="opera_ball.png";
+    var opera_pix_bg=new Image();
+    opera_pix_bg.src="opera_pix_bg2.png";
+
+    function inSameDirection(a, b)
+    {
+        return a > 0 && b > 0 || a <= 0 && b <= 0;
+    }
+
+    function getCurpos(cur_pos, speed, accel, boundary)
+    {
+        if (speed == 0 && Math.abs(accel) <= friction_accel)
+            return [cur_pos, speed];
+
+        start_speed = speed;
+        f_accel = (speed > 0 ? -friction_accel:friction_accel);
+        speed += accel + f_accel;
+
+        if (!inSameDirection(f_accel, accel) &&       //friction and gravitional acceleration is not pointing to the same direction.
+                !inSameDirection(f_accel, start_speed) && //friction slows it down.
+                !inSameDirection(start_speed, speed))     //the direction of the speed changed.
+        {
+            //in this case friction should have stopped the ball.
+            speed = 0;
+        }
+
+        cur_pos += (start_speed + speed)/2;
+
+        //Clamp to the boundary of the window.
+        //Also , reverse the speed when it hits the border.
+        if (cur_pos > boundary - ball_radius)
+        {
+            cur_pos= boundary - ball_radius;
+            speed = -speed * absorbing_rate;
+        }
+        else if (cur_pos < 0)
+        {
+            cur_pos = 0;
+            speed = -speed * absorbing_rate;
+        }
+
+        return [cur_pos, speed];
+    }
+
+
+    function physics()
+    {
+        var x = getCurpos(cur_x, speed_x, accel_x, ww);
+        cur_x = x[0]; speed_x = x[1];
+        var y = getCurpos(cur_y, speed_y, accel_y, wh);
+        cur_y = y[0]; speed_y = y[1];
+    }
+
+    function paint()
+    {
+        var ball_canvas = document.getElementById('ball');
+        var ctx = ball_canvas.getContext('2d');
+
+        //Erase th ball at last position.
+        //ctx.fillStyle = bg_color;
+        //ctx.fillRect(cur_x-ball_radius-1, cur_y-ball_radius-1, (ball_radius+1)*2, (ball_radius+1)*2);
+
+        physics(); //Should have moved to another event.
+
+        //Draw the ball at new position.
+        //ctx.fillStyle = fg_color;
+        //ctx.beginPath();
+
+        ctx.drawImage(opera_pix_bg, 0,0, ww, wh );
+        ctx.drawImage(gunball, cur_x,cur_y, 50, 50 );
+        //ctx.arc(cur_x, cur_y,ball_radius,0,Math.PI*2,true);
+        //ctx.closePath();
+        //ctx.fill();
+
+        setTimeout("paint()", interval);
+    }
+
+    function clearCanvas()
+    {
+        var ball_canvas = document.getElementById('ball');
+        var ctx = ball_canvas.getContext('2d');
+        //ctx.fillStyle = bg_color;
+        //ctx.fillRect(0,0, ww, wh);
+    }
+
+    function update(evt)
+    {
+        var ball_canvas = document.getElementById('ball');
+        if (ball_canvas.width != window.outerWidth ||
+                ball_canvas.height != window.outerHeight)
+        {
+            ball_canvas.width = window.outerWidth;
+            ball_canvas.height = window.outerHeight;
+            clearCanvas();
+        }
+
+        ww = ball_canvas.width;
+        wh = ball_canvas.height;
+
+        //calculate the acceleration from gravity.
+        accel_x =  Math.sin(evt.gamma / 180 * Math.PI);
+        accel_y =  Math.sin(evt.beta  / 180 * Math.PI);
+
+        if (!initialized)
+        {
+            cur_x = ww /2 + ball_radius;
+            cur_y = wh /2 + ball_radius;
+            initialized = true;
+            clearCanvas();
+            paint();
+        }
+    }
+
+    function preload(){
+        var ball_canvas = document.getElementById('ball');
+        if (ball_canvas.width != window.outerWidth ||
+                ball_canvas.height != window.outerHeight)
+        {
+            ball_canvas.width = window.outerWidth;
+            ball_canvas.height = window.outerHeight;
+
+        }
+
+        ww = ball_canvas.width;
+        wh = ball_canvas.height;
+        paint();
+
+    }
+    preload();
+    window.addEventListener('deviceorientation', update, true);
+</script>
+</body>
+

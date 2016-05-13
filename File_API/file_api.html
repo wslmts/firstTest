@@ -1,0 +1,78 @@
+<style type="text/css">
+    #box { /* 容器基本样式 */
+        border: 2px gray dotted;
+        width: 300px;
+        height: 300px;
+        mask-image: url(Lighthouse.jpg);
+        -webkit-mask-image:url(Lighthouse.jpg) ;
+        mask-clip: content;
+        -webkit-mask-clip: content;
+    }
+    
+    #box.hover { /* 鼠标拖拽到容器上时的样式 */
+        border:10px olive solid;
+    }
+    
+    #box.filled { /* 图片放置后的容器样式 */
+        border:10px blue dashed;
+    }
+</style>
+<div id="box">
+</div>
+<script type="text/javascript">
+    <!--
+    var box = document.getElementById('box');
+    
+    if (typeof window.FileReader === 'undefined') { // 检测是否支持File API
+        alert('not support file api');
+    }
+    
+    box.ondragover = function(){ // 拖拽到容器上时
+        this.className = 'hover';
+        return false;
+    };
+    
+    box.ondragend = function(){ // 拖拽结束时
+        this.className = '';
+        return false;
+    };
+    
+    box.ondrop = function(e){ // 拖拽中时
+        this.className = 'filled';
+		console.log(e);
+		e.preventDefault();
+        
+        var file = e.dataTransfer.files[0]; // 获取文件对象
+        console.log(file);
+     reader = new FileReader();
+	 
+        reader.onload = function(event){ // 读取成功后
+            box.style.background = 'url(' + event.target.result + ') no-repeat center'; // 将读取到的图像内容设置为容器的背景 
+        };
+        
+		reader.onerror = function(event){ // 读取失败的操作
+           console.log(reader);
+            //alert(event.target.error.code);
+        }
+        reader.readAsDataURL(file); // 用DataURL的方式读取文件
+        return false;
+    };
+    function writeFile(writer){
+        function done(e){
+            alert("writing done");
+            console.log('done',e);
+        }
+        function error(e){
+            alert("writing error");
+            console.log('error',e);
+        }
+        var bb=new Blob(['hello world']);
+        bb.append('new content');
+        writer.onwrite=done;
+        writer.onerror=error;
+        writer.write(bb.getBlob());
+    }
+    
+    //-->
+</script>
+<input type="file" accept="image/*" capture="camera" id="capture">

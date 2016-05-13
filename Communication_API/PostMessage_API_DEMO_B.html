@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+    <title>接收到消息并作出反馈的网站</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			//绑定本机的消息监听事件
+			window.addEventListener("message", GetMsg, true);
+		}
+		//定义一个在message事件触发时的处理程序
+		var GetMsg = function(e) {
+			//判断是否来自指定的域名，通过switch函数，可以对不同的网站作出不同的反馈。
+			switch (e.origin){
+                case "http://localhost:63342":
+				case "http://127.0.0.1" :
+					alert(e.data);
+					document.getElementById('recive_display').innerHTML="来自：127.0.0.1的信息："+e.data;
+					//向源端回传
+					window.top.postMessage("因为你是本机程序试验的，所以我向你回馈这个信息", "http://localhost:63342/firstTest/Communication_API/PostMessage_API_DEMO_A.html");
+					break;
+				case "http://www.mhtml5.com" :
+					document.getElementById('recive_display').innerHTML="来自：127.0.0.1的信息："+e.data;
+					window.top.postMessage("你是【HTML5研究小组】，所以我向你回馈【HTML5研究小组你好！】", "http://127.0.0.1:63342/firstTest/Communication_API/PostMessage_API_DEMO_A.html");
+					break;
+				default:
+					break;
+			
+			}
+		};
+	</script>
+</head>
+<body>
+	<div id="recive_display" style="width:500px;height:100px;border:1px #ff0000 solid;"></div>
+</body>
+</html>
