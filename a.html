@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var head = document.head;
+        var s = document.createElement( "script" );
+      //  s.async = "async";
+        s.src='a.js';
+        head.insertBefore( s, head.firstChild );
+        s.onload=function(){
+            alert(3)
+        }
+        //js会先执行文件中的内容，再执行onload;即js边加载边执行
+    </script>
+    <script>
+      alert(1)
+    </script>
+</head>
+<body>
+
+</body>
+</html>

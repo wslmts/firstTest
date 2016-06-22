@@ -16,3 +16,19 @@ new Foo.getName();
 new Foo().getName();
 new new Foo().getName();
 //2,4,1,1,2,3,3
+/*
+var o=(function(){
+    var n=0;
+    return function(){
+        console.log(n+=1);
+    }
+}());
+var a1=new o();
+var a2=new o();
+var a3=new o();*/
+function vb(){
+    var n=0
+    console.log(n+=1);
+    console.log(this)
+}
+var a1=new vb();

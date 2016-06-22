@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery.js"></script>
+    <script src="share.js"></script>
+</head>
+<body>
+<button type="button" id="share">share</button>
+<div id="icons" style="position: fixed;bottom: 0;height: 200px">
+    <div class="bdsharebuttonbox" data-tag="share_1">
+        <a class="bds_qzone" data-cmd="qzone" href="#"></a>
+        <a class="bds_tsina" data-cmd="tsina"></a>
+        <a class="bds_renren" data-cmd="renren"></a>
+        <a class="bds_tqq" data-cmd="tqq"></a>
+        <a class="bds_tqf" data-cmd="tqf"></a>
+        <a class="bds_sqq" data-cmd="sqq"></a>
+        <a class="bds_weixin" data-cmd="weixin"></a>
+    </div>
+    <input type="hidden" id="txt" value="分享内容"/>
+</div>
+
+ <script>//window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<script>
+    $(function(){
+        $("#share").click(function(){
+            $("#icons").show();
+            console.log(window._bd_share_config.common.bdText)
+        });
+    });
+   with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+</body>
+</html>
