@@ -1,6 +1,7 @@
-//将地址参数转换为对象
-url2Object:function(str){
-  var param={};
+var util={
+    //将地址参数转换为对象
+    url2Object:function(str){
+        var param={};
         var s=location.search.substring(1);
         if(s.indexOf("&")!=-1){
             var ay=s.split("&");
@@ -11,15 +12,16 @@ url2Object:function(str){
                 }
             }
         }
-   return param;
-}
+        return param;
+    },
 
 //给定一组数中随机取其中几个
- getRandom:function(array,num){
-    var aay=array.sort(function(){
-       return  0.5-Math.random();
-    });
-    if(num<=ary.length){
-        return ary.splice(0,num)
+    getRandom:function(array,num){
+        var aay=array.sort(function(){
+            return  0.5-Math.random();
+        });
+        if(num<=ary.length){
+            return ary.splice(0,num)
+        }
     }
 }

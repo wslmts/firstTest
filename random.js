@@ -3,8 +3,8 @@ function getRandom(array,num){
     var aay=array.sort(function(){
        return  0.5-Math.random();
     });
-    if(num<=ary.length){
-        return ary.splice(0,num)
+    if(num<=aay.length){
+        return aay.splice(0,num)
     }
 }
 //АэИз
