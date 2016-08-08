@@ -23,5 +23,25 @@ var util={
         if(num<=ary.length){
             return ary.splice(0,num)
         }
+    },
+    //给定字符串，重复n次
+    repeat:function(target,n){
+       // return new Array(n+1).join(target);
+        return Array.prototype.join.call({length:n+1},target);
+    },
+    //文字字节长度
+    byteLength:function(target){
+        var l=target.length;
+        for(var i=0;i<target.length;i++){
+            if(target.charCodeAt(i)>255){l++;}
+        }
+        return l;
+    },
+    //计算距离今天n天以后星期几
+    dateOfDays:function(n){
+        var today=new Date().getDate();
+        var d1=n%7;
+        var date=(today+d1)%7===0?7:(today+d1)%7;
+        return date;
     }
 }
