@@ -23,7 +23,19 @@
     </style>
 </head>
 <body>
-  <div id="abc"><p>aaaffffffffffffffffff fffffffffffffffffff ssssssssssssssssssss aaaaaaaaaaaaaaaaaa</p></div>
+  <!--<div id="abc"><p>aaaffffffffffffffffff fffffffffffffffffff ssssssssssssssssssss aaaaaaaaaaaaaaaaaa</p></div>
+  <span>1</span>
+  <span>2</span>
+  <script>
+      var s=document.getElementsByTagName('span');
+      console.log(s.length);//2
+      //alert(s.length)
+      var s1=document.createElement('span');
+      s1.innerHTML='3';
+      document.body.appendChild(s1);
+      console.log(s.length)//3
+   //   alert(s.length)
+  </script>
 <script>
     var div=document.getElementById("abc");
     console.log('clientwidth',div.clientWidth);
@@ -33,5 +45,64 @@
     console.log('scrollwidth',div.scrollWidth);
     console.log('scrollheight',div.scrollHeight);
 </script>
+<input type="button" onclick="f()" value="click">
+  <input type="button" id="click1" onclick="f()" value="click1">
+<script>
+    function f(){
+        console.log(1)
+    }
+    function f1(){
+        console.log(2)
+    }
+    var c1=document.getElementById('click1');
+    c1.onclick=f1;
+    /*setTimeout('f()',1000)//等价于下面的，引号内必须加（）
+    setTimeout(f,1000)*/
+</script>
+<div id="div">
+    aaa
+    <input type="button" id="txt"  value="click">
+</div>
+  <script>
+
+      var c1=document.getElementById('txt');
+      var div=document.getElementById('div');
+      var s1=document.createElement('span');
+      s1.innerHTML='3';
+       c1.onclick=function(){
+          div.appendChild(s1)
+      };
+      div.addEventListener('DOMSubtreeModified',function(){
+          alert(2)
+      },false);
+      div.classList.add('abc')
+      /*setTimeout('f()',1000)//等价于下面的，引号内必须加（）
+       setTimeout(f,1000)*/
+  </script>-->
+<div id="foo" style="width: 2000px;height:2000px;position:relative">
+  <div id="msg" style="position: absolute;background: lightgray;width: 100px">hello</div>
+</div>
+
+<script>
+    var foo=document.getElementById('foo');
+    function getposition(event){
+        console.dir(event);
+        var x=event.clientX;
+        var y=event.clientY;
+        var r=event.target.getBoundingClientRect();
+        console.dir(r)
+        x-= r.left;
+        y-= r.top;
+        return {x:x,y:y}
+    }
+    foo.addEventListener('click',function(event){
+        var msg=document.getElementById('msg');
+        if(event.target===msg){return}
+       var pos=getposition(event);
+        msg.style.left=pos.x+"px";
+        msg.style.top=pos.y+"px";
+    },false);
+</script>
+
 </body>
 </html>

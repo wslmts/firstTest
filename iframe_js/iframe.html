@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery.js"></script>
+    <style>
+        div{
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<div id="p">this is parent iframe</div>
+<iframe src="subiframe.html" width="300px" id="sb"></iframe>
+<script>
+    var name='top parent'
+    $(document).bind('change',function(){
+        alert('topiframe')
+    });
+    var p=document.getElementById('p');
+    var s1=document.createElement('h1');
+    s1.innerHTML='sub add';
+    var ifwin=document.getElementById('sb').contentWindow.document;
+    s1.onclick=function(){
+        alert('parent');
+        $(ifwin).trigger('changesub');
+    };
+    $(ifwin).bind('changesub',function(){
+        alert('in topiframe change sub')
+    });
+    p.onclick=function(){
+        document.getElementById('sb').contentWindow.document.body.appendChild(s1);
+    }
+    $(function(){
+
+    });
+   var obj={
+       toString:function(){
+           return '123'
+       },
+       valueOf:function(){
+           return 123
+       }
+   }
+    var obj1='123';
+    var obj2=123
+    obj==obj1;//true
+    obj==obj2//true
+    obj1==obj2//true
+    function sortzh(a,b){
+        return  a-b;
+    }
+    ['c','a','b'].sort(sortzh);
+    var ep=/^[\w-]+(?:\.[\w-]+)*@[\w-]+\.(?:[\w-])+$/i;
+    ep.test('abc.12@126.com')
+
+    function foo(){
+        var d=$.Deferred();
+        setTimeout(function(){
+            d.resolve();
+        },2000);
+        return d.promise();
+    }
+
+   var a=foo();
+    a.then(function(){
+        alert('bar');
+    })
+</script>
+</body>
+</html>

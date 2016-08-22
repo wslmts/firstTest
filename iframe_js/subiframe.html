@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+  <!--  <script src="../jquery.js"></script>-->
+</head>
+<body>
+ <div id="sub">this is sub iframe</div>
+ <script>
+     var $=top.$;
+     /*var a='1';
+     console.dir(this.top.name)
+     this.top.name='change'
+     console.dir(this.top.name)
+     console.log('this.parent===this.top',this.parent===this.top)*/
+
+     var s1=document.createElement('p');
+     s1.innerHTML='sub add';
+     s1.onclick=function(){
+        alert(123);
+         $(top.document).trigger('change');
+
+     };
+     $(top.document).bind('change',function(){
+        alert('in subiframe change top')
+     });
+     $('body').on('click','h1',function(){
+         alert('sub')
+     });
+     $(document).bind('changesub',function(){
+         alert('in sub response top event')
+     });
+    top.document.getElementById('p').appendChild(s1);
+     $(function(){
+
+     });
+ </script>
+</body>
+</html>

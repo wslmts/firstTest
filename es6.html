@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="a.js"></script>
+    <script src="constant.js"></script>
+</head>
+<body>
+<script>
+    {
+        let a=1;
+       console.log(a);
+   }
+</script>
+<script>
+    var a=[];
+    for(let i=0;i<10;i++){
+        a[i]=function(){
+            console.log(i);
+        }
+    }
+    a[6]();
+function bar(){
+  // console.log('outside');
+}
+    'use strict'
+    const foo=Object.freeze({});
+    foo.a=1;
+    console.log(foo);
+    let x=1;
+    console.log('win.x',window.x)
+   //解构
+    let [x,y,z]=[1,[2],[[3]]];
+    console.log(x,y,z);
+   let [a,...b]=[1,{m:'1',n:'2'}];
+   console.log(b,Array.isArray(b));
+    function f(){
+        console.log('lazy execute');
+    }
+   //解构表达式是懒执行的；
+    let[x1=f()]=[1];
+    console.log(x1);
+    //对象解构
+    var {bar,foo}={foo:'1',bar:'2'};
+    console.log(bar,foo);
+    //如果名称不对应，要按下列方式实现
+   var {bar:f}={bar:'2'};
+   console.log(f);
+ //这说明对象解构是按下列形式实现的;即先找到同名属性，再赋给对应的变量，真正被赋值的是后者，不是前者。
+   var {bar:bar,foo:foo}={foo:'1',bar:'2'};
+   //对象解构时，如果右侧是布尔值或数字，会先转为对象
+    let {toString:s}=123;
+    console.log(s===Number.prototype.toString);
+    //字符串解构：字符串被转换为字符数组
+    var [a1,b1,c1]='wel'; let {length:len}='hello';console.log(len);
+    //模板字符串，用``引用
+    var name='tomcat';
+    console.log(`${name}`);
+    //用给定的值填充数组，可以指定填充的起止值
+    [1,2,3,4,5,6].fill('a',2,5);//[1, 2, "a", "a", "a", 6]
+   //返回第一个符合条件的元素
+   [1,2,-1,-3].find((n)=>n<0)//-1
+ //返回第一个符合条件的元素位置
+   [1,2,-1,-3].findIndex((n)=>n<0)//2
+    //在当前数组内部，将指定位置的元素复制到其他位置，可能会覆盖，返回当前数组-copyWithin(被替换位置,开始位置,结束位置)
+   ['a','b','c','d','e','f'].copyWithin(0,2,5);//["c", "d", "e", "d", "e", "f"]
+    //将一组值转为数组，统一构造函数参数不同造成的差异
+    Array.of(1)//[1]
+   //将类数组转化为数组,第2个参数作用类似map,如果map中用到this关键字，可传第3个参数绑定this
+    Array.from('hello');//["h", "e", "l", "l", "o"]
+    Array.from([1,2,3],(x)=>x*x);//[1, 4, 9]
+   //keys().entries(),values()，返回遍历器对象，可以用for...of遍历
+   for(let i of  ['a','b','c'].keys()){
+       console.log(i)
+   }//0,1,2
+   for(let i of  ['a','b','c'].values()){
+       console.log(i)
+   }//a,b,c
+   for(let [i,v] of  ['a','b','c'].entries()){
+       console.log(i,v)
+   }//0 "a"   1 "b"   2 "c"
+    //如果不用for of循环，可以手动调用遍历器对象的next();
+    var ls=['a','b','c'].entries();
+    console.log(ls.next().value)//[0, "a"]
+   console.log(ls.next().value)//[1, "b"]
+    //是否包含给定值
+    [1,2,NaN].includes(NaN)//true
+    let foo="outer";
+    function bar1(func=x=>foo){
+       let foo='inner';
+       console.log(func());
+   }
+    bar1();
+   //...扩展运算符，将数组濒危用，分割的参数序列
+   console.log(...[1,2,3])//1 2 3==>[1,2,3].split(',')
+
+    let map=new Map([[1,'one',2,'two',3,'three']]);
+    let arry= [...map.keys()]
+    var f1=function(){};
+    f1.name//es5返回"",es6返回f1
+   //尾调用优化，函数的最后一步是retuen 一个函数调用；即只保留内层函数的调用帧
+    function f(){
+        return g();
+    }
+    function g(){
+        console.log(1)
+    }
+   //es6允许直接写入变量和函数作为对象的属性和方法
+    var foo='bar';
+    var baz={foo};//等价于baz={foo:foo}表示es6允许在对象之中只写属性名，不写属性值，此时属性值等于属性名所代表的变量
+    //方法简写
+    var o={
+        method(){
+       return 'hello'
+      }
+    }
+   //浏览器还不支持
+/*let z1={za:1,zb:2};
+    let n= {...z1}
+    console.log(n)*/
+    var obj={p:1};
+    Object.getOwnPropertyDescriptor(obj,'p');//{value: 1, writable: true, enumerable: true, configurable: true}
+   //js getter,setter
+   function Field(val){
+       this.value = val;
+   }
+   Field.prototype = {
+       get value(){
+           return this._value;
+
+       },
+       set value(val){
+           this._value = val;
+       }
+   };
+   var a=new Field(123)
+   a.value
+    //symbol;在对象内部定义symbol类型的属性必须放在[]中，否则会被认为字符串类型
+    var sy1=Symbol('sy1');
+    var sy1=Symbol('sy2');
+    var obj1={
+            [sy1]:'hello'
+    }
+    //proxy
+    var obj=new Proxy({},{
+        get:function(target,key,receiver){
+            console.log(arguments);
+            console.log(`getting ${key}`);
+            return Reflect.get(target,key,receiver);
+        },
+        set:function(target,key,value,receiver){
+            console.log(`setting ${key}`);
+            return Reflect.set(target,key,value,receiver);
+        }
+    });
+    obj.count=1;
+    ++obj.count;
+    var p=new Proxy({},{});
+   Object.getPrototypeOf(p);
+    //ArrayBuffer代表二进制数据的一段内存，不能直接读写，只能通过视图读写
+    var buf=new ArrayBuffer(32);
+    var dv=new DataView(buf);
+    dv.getUint8(0);
+    //TypeArray可以接受数组做参数，直接分配内存生成底层的ArrayBuffer实例，并完成对这段内存的赋值
+    var ta=new Uint8Array([6,1,2]);
+    ta[0]
+    //字节序：数值在内存中的表示方式
+   var bf=new ArrayBuffer(16);
+   var int32=new Int32Array(bf);
+    for(var i=0;i<int32.length;i++){
+        int32[i]=i*2;
+    }
+var int16=new Int16Array(bf);
+   for(var i=0;i<int16.length;i++){
+      console.log('entry '+i+" "+int16[i]);
+   }
+    //forEach无法跳出循环
+    [1,2,3].forEach(function(v){
+       if(v<2){
+           console.log(v)
+       }else{
+           console.log('jump',v);
+           return;
+       }
+   });
+    //generate函数
+    function* test(){
+     yield 'hello';
+     yield  'world';
+       yield* test1();
+     return 'ending';
+   }
+    //gererate嵌套
+   function* test1(){
+       yield 'china';
+       yield  'england';
+       return 'usa';
+   }
+   var y=test();
+   y.next()//hello;
+   y.next()//world
+   y.next()//china
+   y.next()// england
+   y.next()//ending
+    var p=new Promise(function(resolve,reject){
+     //  console.log(resolve,":",reject);
+        resolve('a');
+   });
+   var p1=new Promise(function(resolve,reject){
+       //  console.log(resolve,":",reject);
+       resolve(p);
+   });
+   p1.then(function(){
+       console.log(arguments);
+   })
+   p.then(function(){
+      console.log(arguments);
+       resolve('1')//[a]
+   }).then(function(){
+       console.log('2',arguments)//[2,1]
+   })
+const  preloadimg=function(path){
+    return new Promise(function(resolve,reject){
+        var img=new Image();
+        img.onload=resolve;
+        img.onerror=reject;
+        img.src=path;
+    })
+}
+   var p= preloadimg('./canvas/test.jpg');
+   p.then(function(){
+       console.log('load')
+   });
+    class Animal{
+        constructor(name){
+            this.name=name;
+        }
+    }
+    class Cat extends Animal{
+        constructor(name,type){
+            super(name);
+            this.type=type;
+        }
+    }
+    var cat=new Cat('cat');
+    cat.name
+</script>
+</body>
+</html>
