@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>模拟抽奖</title>
+    <style>
+        div{
+            margin:10px auto;
+            text-align:center ;
+        }
+        #reward{
+            color: red;
+            font-size: 20px;
+            padding: 20px;
+        }
+        #play{
+            background: #00aa00;
+            padding:10px;
+            border-radius:10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+  <div id="reward">点击开始</div>
+  <div>
+      <span id="play">开始</span>
+  </div>
+<script>
+    window.onload=function(){
+        var play=document.getElementById('play');
+        var reward=document.getElementById('reward');
+        var timer=null;
+        var flag=true;
+        play.onclick=function(){
+           if(flag){
+               timer=setInterval(function(){
+                   raffle(reward);
+               },100);
+               play.textContent="停止";
+               flag=false;
+           }else{
+               flag=true;
+               play.textContent="开始";
+               clearInterval(timer);
+           }
+        }
+    }
+    function raffle(reward){
+        var data=['iphone6','ipad','笔记本','小米手机','购物券','面包1袋','火腿肠1箱','电视机','电冰箱','微波炉','大米','食用油','调味品'];
+        var num=Math.floor(Math.random()*data.length);
+        reward.innerHTML=data[num];
+    }
+</script>
+</body>
+</html>

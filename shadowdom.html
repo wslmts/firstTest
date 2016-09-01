@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+  <div id="shadow"></div>
+<script>
+    window.onload=function(){
+        var adiv=document.getElementById('shadow');
+        var root=adiv.webkitCreateShadowRoot();
+        var sImg=document.createElement('img');
+        sImg.src="reactjs.jpg";
+        root.appendChild(sImg);
+        var shDiv=document.createElement('div');
+        shDiv.innerHTML='this is a div from shadow dom';
+        root.appendChild(shDiv);
+    }
+</script>
+</body>
+</html>

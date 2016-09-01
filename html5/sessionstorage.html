@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="inf"></div>
+   <script>
+       sessionStorage.setItem('name','html5');
+       console.log('refresh',sessionStorage.getItem('name'));
+
+       var inf=document.getElementById('inf');
+       window.addEventListener('storage',function(e){
+           //此事件只有在父子窗口才响应，新开一个tab不会响应此事件
+         inf.innerHTML= e.newValue;
+       },false);
+      /* window.onstorage=function(e){
+           inf.innerHTML= e.newValue;
+       }*/
+   </script>
+<iframe src="session_open.html"></iframe>
+<!--<a href="session_open.html" target="_blank">open from link</a>-->
+
+</body>
+</html>
