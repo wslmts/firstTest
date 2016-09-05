@@ -1,0 +1,15 @@
+.content{
+    width:760px;
+    height:300px;
+    overflow: hidden;
+    margin:0 auto;
+}
+.ctrl{
+    width:760px;
+    height:100px;
+    margin:0 auto;
+}
+.ctrl a{
+   margin-right: 20px;
+   margin-top: 20px;
+}
