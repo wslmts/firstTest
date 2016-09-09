@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery.js"></script>
+    <script>
+      function a(){
+          alert(1);
+      }
+      function b(){
+          alert(2)
+      }
+        var cb= $.Callbacks('unique');
+        cb.add(a,b,a);
+      //  cb.add(b);
+        cb.fire();
+    </script>
+</head>
+<body>
+</body>
+</html>

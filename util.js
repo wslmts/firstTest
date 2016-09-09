@@ -24,6 +24,15 @@ var util={
             return ary.splice(0,num)
         }
     },
+    getRandom_new:function(array,num){
+        var myarray=[];
+        for(var i=0;i<num;i++){
+            var idx=parseInt(Math.random()*array.length)
+            myarray.push(array[idx])
+            array.splice(idx,1)
+        };
+        return myarray;
+    },
     //给定字符串，重复n次
     repeat:function(target,n){
        // return new Array(n+1).join(target);
