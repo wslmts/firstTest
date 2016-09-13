@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="txt"></div>
+<script>
+    window.onload=function(){
+        var txt=document.getElementById('txt');
+        var str="这是一段文本，实现打字机效果，0.5秒出来1个文字";
+        var i=1;
+        var timer=setInterval(function(){
+         txt.innerHTML=str.substr(0,i++);
+            console.log(i);
+            if(i>str.length){
+                clearInterval(timer);
+            }
+        },500);
+
+    }
+</script>
+</body>
+</html>
