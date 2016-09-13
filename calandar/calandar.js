@@ -32,13 +32,13 @@ function drawCalandar(syear,smonth){
     }
     var month_alldays=dayNum_in_month[datemonth-1];
     var line_top,line_bot;
-    //当前日期上面的行数
+    //当前日期上面的行数，包括当前行
     if((datetoday-dateday+1)%7!=0){
         line_top=Math.floor((datetoday-dateday+1)/7)+1;
     }else{
         line_top=Math.floor((datetoday-dateday+1)/7);
     }
-    //当前日期下面的行数
+    //当前日期下面的行数，不包括当前行
     if((30-datetoday+dateday+1)%7!=0){
         line_bot=Math.floor((30-datetoday+dateday+1)%7)+1;
     }else{
@@ -52,6 +52,7 @@ function drawCalandar(syear,smonth){
         tablebody.push('<tr>');
         for(var j=0;j<7;j++){
             list[i][j]=datetoday-7*(line_top-i+1)+j-dateday;
+            //日期值<=0或者大于当月总天使，为空
             if((datetoday-7*(line_top-i+1)+j-dateday)<=0||(datetoday-7*(line_top-i+1)+j-dateday)>month_alldays){
                 list[i][j]="&nbsp;"
             }
