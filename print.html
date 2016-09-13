@@ -6,6 +6,7 @@
 </head>
 <body>
 <div id="txt"></div>
+<button id="open">open</button>
 <script>
     window.onload=function(){
         var txt=document.getElementById('txt');
@@ -13,12 +14,15 @@
         var i=1;
         var timer=setInterval(function(){
          txt.innerHTML=str.substr(0,i++);
-            console.log(i);
+         //   console.log(i);
             if(i>str.length){
                 clearInterval(timer);
             }
         },500);
-
+        var open=document.getElementById('open');
+        open.onclick=function(){
+            window.open("cb.html",'newwin')
+        }
     }
 </script>
 </body>
