@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function clone(old){
+            //获取原型，根据原型建一新对象
+            var pr=Object.getPrototypeOf(old);
+            var newobj=Object.create(pr);
+            //将原对象复制到新对象
+            var names=Object.getOwnPropertyNames(old);
+            names.forEach(function(prop){
+                var esc=Object.getOwnPropertyDescriptor(old,prop);
+                console.log(typeof old[prop])
+                Object.defineProperty(newobj,prop,esc);
+
+            });
+            //如果原对象是密封的，新的也是
+            if(!Object.isExtensible(old)){
+                Object.preventExtensions(newobj);
+            }
+            return newobj;
+        }
+        var user={
+            name:"zfei",
+            age:30,
+            inf:{
+                tel:123456,
+                phone:13011999321
+            }
+        }
+        var cp=clone(user);
+        console.log(cp.name);
+        cp.name="zyun";
+        console.log(cp);
+        cp.inf.tel=8978789;
+        console.log(user.inf.tel);
+        var a=['a1','a2','hey','master'];
+        a.every(function(value,index,array){
+           if(value.length>5){return false}
+           else{console.log(value);return true}
+        });
+        var n=[1,2,3,4,5];
+       var m= n.reduce(function(previous,current,index,array){
+            return current-previous
+        })
+        console.log(m);
+        var m1= n.reduceRight(function(previous,current,index,array){
+            console.log(index);
+            return current-previous
+        });
+        console.log(m1);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

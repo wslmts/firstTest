@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="a.js" async></script>
+    <script src="b.js" defer async></script>
+    <title></title>
+</head>
+<body onpageshow="alert('show')" onpagehide="alert('hide')" onload="alert('load')">
+  <a href="flex.html">goto </a>
+<input type="button" id="hide" value="hide body">
+<script>
+    window.onload=function(){
+        alert("window")
+    }
+function AB(){}
+    var ab=new AB();
+    console.log(ab.__proto__==AB.prototype)
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function AB(){  }
+        var a=new AB();
+        Object.defineProperty(a,'name',{
+            writable:false,
+            configurable:false,
+            value:"es5",
+            enumerable:true,
+        });
+        var b=new AB();
+        Object.defineProperty(b,'name',{
+           get:function(){
+               return 'this is const'
+           },
+            set:function(){
+                console.log('you cannot change')
+            }
+        });
+        Object.defineProperties(b,{
+            'path':{
+                writable:false,
+                configurable:false,
+                value:"/es5",
+                enumerable:true,
+            },
+
+            'file':{
+                get:function(){
+                    return 'this is file'
+                },
+                set:function(){
+                    console.log('you cannot change')
+                }
+            }
+        });
+        console.log(b.name,b.file);
+        console.log(Object.getOwnPropertyDescriptor(b,'name'));
+        console.log(Object.keys(b));
+        console.log(Object.getOwnPropertyNames(b));
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #container{
+            border:1px solid #a5acb2;
+            width: 100px;
+            height:19px;
+            text-align: right;
+            float:left;
+        }
+        #container input{
+            border: 0 none transparent;
+            width: 68px;
+            height:14px;
+            text-align: left;
+            font-size: 12px;
+        }
+        #container button{
+            width: 22px;
+            height:19px;
+            text-align: center;
+            margin:0;
+            padding: 0;
+        }
+        #calandarContainer{
+            width: 150px;
+           /* height:100px;*/
+            z-index:10000;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+  <div id="container">
+      <input id="datetxt" name="datetxt" type="text">
+      <button type="button" onclick="showCalandar()"></button>
+  </div>
+<div id="calandarContainer"></div>
+<script src="calandar.js"></script>
+</body>
+</html>
