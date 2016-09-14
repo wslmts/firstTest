@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+ <script>
+     /*
+      var source;
+      function init(){
+         var url="server.php";
+         try{
+             source=new EventSource(url);
+             source.onopen=function(e){
+                 console.log("已建立连接 "+this.readyState);
+             }
+             source.onmessage=function(e){
+                 console.log("收到数据 "+ e.data);
+                 document.getElementById("result").innerHTML+=e.data + "<br />";
+             }
+             source.onerror=function(e){
+                 console.log("出错了 "+ this.readyState);
+             }
+         }catch(e){
+             console.log("连接失败 "+ e.message);
+         }
+     }*/
+     function init(){
+        var worker=new Worker('worker.js');
+        worker.onmessage=function(e){
+            document.getElementById("result").innerHTML+=e.data + "<br />";
+        }
+         worker.postMessage(true);
+     }
+     window.onload=function(){
+         init();
+     }
+ </script>
+<div id="result"></div>
+</body>
+</html>

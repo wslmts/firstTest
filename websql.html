@@ -10,19 +10,25 @@
  </head>
  <body>
  <script type="text/javascript">
-        var db = openDatabase('testDB', '1.0', 'Test DB', 2 * 1024 * 1024);
+        var db = openDatabase('testDB', '1.0', 'Test DB', 1 * 1024 * 1024,function(){
+            console.log("open success")
+        });
         var msg;
         db.transaction(function (context) {
            context.executeSql('CREATE TABLE IF NOT EXISTS testTable (id unique, name)');
-           context.executeSql('INSERT INTO testTable (id, name) VALUES (0, "Byron")');
+           context.executeSql('INSERT INTO testTable (id, name) VALUES (0, "Byron1")');
            context.executeSql('INSERT INTO testTable (id, name) VALUES (1, "Casper")');
-           context.executeSql('INSERT INTO testTable (id, name) VALUES (2, "Frank")');
+           context.executeSql('INSERT INTO testTable (id, name) VALUES (?,?)',[2, "Frank"],function(){
+                console.log("success")
+            },function(){
+               console.log("fail")
+           });
          });
 
         db.transaction(function (context) {
            context.executeSql('SELECT * FROM testTable', [], function (context, results) {
             var len = results.rows.length, i;
-            console.log('Got '+len+' rows.');
+              console.log('Got '+len+' rows.');
                for (i = 0; i < len; i++){
               console.log('id: '+results.rows.item(i).id);
               console.log('name: '+results.rows.item(i).name);

@@ -44,8 +44,29 @@
         console.log(Object.getOwnPropertyNames(b));
 
     </script>
+    <script>
+        window.onload=function(){
+            window.onhashchange=function(e){
+                console.log(e)
+            }
+            window.online=function(){
+                console.log('window attr online')
+            }
+            document.online=function(){
+                console.log('document attr online')
+            }
+            window.addEventListener('online',function(){
+                console.log('window event online')
+            },false)
+            /*document.body.online=function(){
+             console.log('body attr online')
+             }*/
+        }
+
+    </script>
 </head>
 <body>
-
+<a href="#hash">showhashchange</a>
+<a name="hash">hashchange</a>
 </body>
 </html>

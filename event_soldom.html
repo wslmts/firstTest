@@ -7,11 +7,17 @@
     <title></title>
 </head>
 <body onpageshow="alert('show')" onpagehide="alert('hide')" onload="alert('load')">
-  <a href="flex.html">goto </a>
+  <a href="#hash">goto </a>
 <input type="button" id="hide" value="hide body">
 <script>
     window.onload=function(){
         alert("window")
+    }
+    window.onpagehide=function(){
+        alert('hide window')
+    }
+    window.onpageshow=function(){
+        alert('onpageshow window')
     }
 function AB(){}
     var ab=new AB();

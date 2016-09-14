@@ -13,5 +13,30 @@
       document will generate a range of pop-ups and dialogs asking
       whether you wish it to proceed.
       <!-- saved from url=()about:internet -->放到页面html外面可以阻止黄条显示；
+      <div id="source" onbeforecut="beforecut()" oncut="cut()"  >被剪切的文本</div>
+      <div id="target" onbeforepaste="beforepaste()" onpaste="paste()">粘贴区域</div>
+      <script>
+          var source=document.getElementById('source');
+          var target=document.getElementById('target');
+          function beforecut(e){
+              event.returnValue=false;
+          }
+          function cut(e){
+              event.returnValue=false;
+              window.clipboardData.setData('Text',source.innerText+"event");
+              source.innerText="";
+          }
+          function beforepaste(e){
+              event.returnValue=false;
+          }
+          function paste(e){
+              event.returnValue=false;
+              target.innerText=window.clipboardData.getData('Text');
+          }
+          source.onclick=function(){
+              window.clipboardData.setData('Text',source.innerText+"event");
+              target.innerText=window.clipboardData.getData('Text');
+          }
+      </script>
    </body>
 </html>
