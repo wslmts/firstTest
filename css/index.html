@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        @import "1.css";
+    </style>
+</head>
+<body>
+<div>this is a demo that import css</div>
+<script>
+    console.dir(document.styleSheets[0]);
+    console.dir(document.styleSheets[0].rules[0].styleSheet);
+    console.log(document.styleSheets[0].rules[0].styleSheet.ownerRule.styleSheet===document.styleSheets[0].rules[0].styleSheet);
+   /* document.styleSheets[0].addRule('div','font-weight:bold');
+    document.styleSheets[0].disabled=true;*/
+    document.styleSheets[0].insertRule('@import "2.css"',0)
+</script>
+</body>
+</html>
