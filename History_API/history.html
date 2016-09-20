@@ -12,10 +12,10 @@
     var ritem=document.getElementById("result-item");
     citem.onclick=function(){
         ritem.innerHTML="clicked";
-        history.pushState({note:"set result"},'msg','result.html');
+        history.pushState({note:"set result"},'msg','result1.html');
     }
     window.onpopstate=function(e){
-        console.log(e)
+        console.log(e.state)
     }
 </script>
 </body>

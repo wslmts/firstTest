@@ -2,49 +2,45 @@
 <html>
 <head> 
 <script language=JavaScript>
-if (!window.webkitNotifications) {
-	alert('对不起，你的浏览器不支持Notification，请使用Chrome浏览器');
-}
-//专门用于向用户核实是否授权桌面提醒的函数
-function RequestPermission(callback){
-	window.webkitNotifications.requestPermission(callback);
-}
-//使用默认的方法进行提示
-function notification (){
-	if (window.webkitNotifications.checkPermission() > 0) {//如果是允许状态则不向用户发送提醒。
-		RequestPermission(notification);//
-	}
-//定义三个参数
-	var icon  = 'http://www.xiuyetang.com/xiuye.ico';// 要显示的站内ICON图标
-    var title = 'HTML5研究小组的桌面提醒';//标题
-    var body   = '测试Notification成功！';//提示消息内容
-	var popup = window.webkitNotifications.createNotification(icon, title, body);
-        popup.show();//在桌面上显示提醒
-        setTimeout(
-			function(){
-				popup.cancel();
-			}
-			, '15000'//15秒后自动关闭这个提醒
-		);
-}
-//使用HTML代码直接提示
-function HTMLnotification (){
-	if (window.webkitNotifications.checkPermission() > 0) {
-		RequestPermission(HTMLnotification);
-	}
-	var popup = window.webkitNotifications.createHTMLNotification('http://www.xiuyetang.com');
-        popup.show();//在桌面上显示提醒
-        setTimeout(
-			function(){
-				popup.cancel();
-			}
-			, '15000'//15秒后自动关闭这个提醒
-		);
-    } 
+    function notifyMe() {
+        // Let's check if the browser supports notifications
+        if (!("Notification" in window)) {
+            alert("This browser does not support desktop notification");
+        }
+
+        // Let's check whether notification permissions have already been granted
+        else if (Notification.permission === "granted") {
+            // If it's okay let's create a notification
+            var options = {
+                body: "this is content The URL of the image used to represent the notification when there is not enough space to display thenotification itself.",
+                icon: 'icon.gif',
+                badge:"icon.gif"//chrome53以后支持
+            }
+            var notification = new Notification("title!",options);
+            notification.onclick=function(){
+                alert("hi")
+            }
+            setTimeout(function(){
+                notification.close();
+            },10000)
+        }
+
+        // Otherwise, we need to ask the user for permission
+        else if (Notification.permission !== 'denied') {
+            Notification.requestPermission(function (permission) {
+                // If the user accepts, let's create a notification
+                if (permission === "granted") {
+                    var notification = new Notification("Hi there!");
+                }
+            });
+        }
+
+        // At last, if the user has denied notifications, and you
+        // want to be respectful there is no need to bother them any more.
+    }
 </script>
 </head>
 <body>
-<button onclick="notification()">提示我（默认方法）</button>
-<button onclick="HTMLnotification()">提示我（用HTML）</button>
+<button onclick="notifyMe()">Notify me!</button>
 </body>
 </html>

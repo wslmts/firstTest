@@ -1,0 +1,80 @@
+.wrap{
+    width: 200px;
+    height: 200px;
+    background: yellow;
+    border: 1px solid #ccc;
+}
+.wrap .center{
+    background: green;
+    width: 100px;
+    height:100px;
+}
+/*方法1--position+margin*/
+.wrap1{
+  position: relative;
+}
+.wrap1 div{
+    margin: auto;
+    position: absolute;
+    left:0;
+    top:0;
+    right: 0;
+    bottom: 0;
+    *bottom:33%;
+    *top:26%;
+    *right:33%;
+    *left:26%;
+}
+/*方法2--dislpay:cell*/
+.wrap2{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.wrap2 div{
+   display: inline-block;
+   vertical-align: middle;
+}
+/*方法3--position+transform*/
+.wrap3{
+    position: relative;
+}
+.wrap3 div{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+/*方法4--flex*/
+.wrap4{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*方法5--flex*/
+.wrap5{
+    display: flex;
+}
+.wrap5 div{
+    margin: auto;
+}
+/*方法6--position*/
+.wrap6{
+    position: relative;
+}
+.wrap6 div{
+   position: absolute;
+   left:50%;
+   top: 50%;
+   margin-left:-50px;
+   margin-top: -50px;
+}
+/*方法7--position*/
+.wrap7{
+    position: relative;
+}
+.wrap7 div{
+    position: absolute;
+    left:50px;
+    top: 50px;
+}

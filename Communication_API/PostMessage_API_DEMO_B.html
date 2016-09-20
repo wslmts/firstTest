@@ -12,11 +12,9 @@
 			//判断是否来自指定的域名，通过switch函数，可以对不同的网站作出不同的反馈。
 			switch (e.origin){
                 case "http://localhost:63342":
-				case "http://127.0.0.1" :
-					alert(e.data);
 					document.getElementById('recive_display').innerHTML="来自：127.0.0.1的信息："+e.data;
 					//向源端回传
-					window.top.postMessage("因为你是本机程序试验的，所以我向你回馈这个信息", "http://localhost:63342/firstTest/Communication_API/PostMessage_API_DEMO_A.html");
+                    e.source.postMessage("因为你是本机程序试验的，所以我向你回馈这个信息", e.origin);
 					break;
 				case "http://www.mhtml5.com" :
 					document.getElementById('recive_display').innerHTML="来自：127.0.0.1的信息："+e.data;

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        a{
+            color: #666;
+            text-decoration: none;
+            display: block;
+            line-height: 1.5em;;
+        }
+        a:hover{
+            color: #c00;
+        }
+        #root{
+            width:255px;
+            height:134px;
+            text-align: left;
+            margin: 0 auto;
+        }
+        #header{
+            width:243px;
+            height:16px;
+            text-align: left;
+            font-size: 14px;
+            padding: 6px;
+        vertical-align: top;
+        }
+        #container{
+            width:245px;
+            text-align: left;
+            margin: 2px 5px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+  <div id="root">
+       <div id="header">招聘网站</div>
+      <div id="container">
+          <div id="content">
+              <a href="#">大街网</a>
+              <a href="#">智联招聘</a>
+              <a href="#">前程无忧</a>
+              <a href="#">拉勾网</a>
+              <a href="#">100offer</a>
+              <a href="#">boss直聘</a>
+          </div>
+      </div>
+  </div>
+<script>
+    var stopscroll=false;
+    var scrollConheight=95;
+    var scrollConwidth=230;
+    var speed=25;
+    var container=document.getElementById('container');
+    var content=document.getElementById('content');
+
+    do{
+        container.appendChild(content.cloneNode(true));
+    }while(container.offsetHeight<scrollConheight);
+
+    container.style.width=scrollConwidth+"px";
+    container.style.height=scrollConheight+"px";
+    container.noWrap=true;
+
+    container.onmouseover=function(){
+        stopscroll=true;
+    }
+    container.onmouseout=function(){
+        stopscroll=false;
+    }
+    function init(){
+        container.scrollTop=0;
+        setInterval(scrollup,speed);
+    };
+    init();
+    var currtop=0;
+    function scrollup(){
+       if(stopscroll) return;
+       currtop=container.scrollTop;
+        container.scrollTop+=1;
+        if(currtop==container.scrollTop){
+            container.scrollTop=0;
+            container.scrollTop+=1;
+        }
+    }
+</script>
+</body>
+</html>
