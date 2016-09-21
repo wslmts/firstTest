@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas{
+            border: 1px solid #000;
+        }
+       /* #mark{
+            position: relative;
+            top:-130px;
+        }*/
+    </style>
+</head>
+<body>
+<canvas id="cvs" width="1024" height="768"></canvas>
+<canvas id="mark" width="100" height="60"></canvas>
+<script>
+    var cvs=document.getElementById('cvs');
+    var ctx=cvs.getContext('2d');
+    var mark=document.getElementById('mark');
+    var markctx=mark.getContext('2d');
+    var img=new Image();
+    img.src='Hydrangeas.jpg';
+    img.onload=function(){
+        ctx.drawImage(img,0,0);
+        markctx.fillStyle='rgba(255,0,255,1)';
+        markctx.textAlign='left';
+        markctx.textBaseline="top";
+        markctx.font="60px simsun";
+        markctx.fillText('zcc',0,0);
+        ctx.drawImage(mark,0,0);
+    }
+
+</script>
+</body>
+</html>

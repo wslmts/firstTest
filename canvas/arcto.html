@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 Canvas arcTo()绘制弧线入门示例</title>
+</head>
+<body>
+
+<!-- 添加canvas标签，并加上红色边框以便于在页面上查看 -->
+<canvas id="myCanvas" width="400px" height="300px" style="border: 1px solid red;">
+    您的浏览器不支持canvas标签。
+</canvas>
+
+<script type="text/javascript">
+    //获取Canvas对象(画布)
+    var canvas = document.getElementById("myCanvas");
+    //简单地检测当前浏览器是否支持Canvas对象，以免在一些不支持html5的浏览器中提示语法错误
+    if(canvas.getContext){
+        //获取对应的CanvasRenderingContext2D对象(画笔)
+        var ctx = canvas.getContext("2d");
+
+        //指定绘制路径的起始点
+        ctx.moveTo(50,50);
+        //绘制一条到坐标(150,50)的水平直线
+        ctx.lineTo(150, 50);
+
+        //坐标点(150,50)就是绘制弧线时的当前端点
+
+        //端点1
+        var p1 = {
+            x : 200,
+            y : 50
+        };
+        //端点2
+        var p2 = {
+            x : 200,
+            y : 100
+        };
+        //绘制与当前端点、端点1、端点2三个点所形成的夹角的两边相切并且半径为50px的圆的一段弧线
+        ctx.arcTo(p1.x, p1.y, p2.x, p2.y, 50);
+
+        //设置线条颜色为蓝色
+        ctx.strokeStyle = "blue";
+        //按照上述绘制路径绘制弧线
+        ctx.stroke();
+    }
+</script>
+</body>
+</html>

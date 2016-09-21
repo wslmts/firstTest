@@ -1,0 +1,60 @@
+<canvas id=mycanvas width=500 height=500 style="border:1px #000 solid;"></canvas>
+<script>
+var mycanvas = document.getElementById("mycanvas");
+var ctx = mycanvas.getContext('2d');
+
+ctx.beginPath();
+ctx.moveTo(50,0);
+ctx.lineTo(50,500);
+ctx.moveTo(0,150);
+ctx.lineTo(500,150);
+ctx.strokeStyle='#00f';
+ctx.fillText('(50,150)',50,150)
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(150,0);
+ctx.lineTo(150,500);
+ctx.moveTo(0,50);
+ctx.lineTo(500,50);
+ctx.strokeStyle='#0ff';
+ctx.fillText('(150,50)',150,50)
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(250,0);
+ctx.lineTo(250,500);
+ctx.moveTo(0,150);
+ctx.lineTo(500,150);
+ctx.strokeStyle='#f0f';
+ctx.fillText('(250,150)',250,150)
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(350,0);
+ctx.lineTo(350,500);
+ctx.moveTo(0,50);
+ctx.lineTo(500,50);
+ctx.strokeStyle='#f00';
+ctx.fillText('(350,50)',350,50)
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(50,150);
+ctx.lineTo(150,50);
+ctx.lineTo(250,150);
+ctx.lineTo(350,50);
+ctx.strokeStyle = "#aa0";
+ctx.stroke();
+
+ctx.beginPath();
+ctx.lineWidth=2;
+ctx.strokeStyle = "#F00"; 
+ctx.moveTo(50,150);
+ctx.bezierCurveTo(150,50,250,150,350,50);
+ctx.stroke();
+
+
+
+
+</script>

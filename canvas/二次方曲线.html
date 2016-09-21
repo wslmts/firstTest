@@ -1,0 +1,53 @@
+<canvas id=mycanvas width=500 height=500 style="border:1px #000 solid;"></canvas>
+<script>
+var mycanvas = document.getElementById("mycanvas");
+var ctx = mycanvas.getContext('2d');
+//ctx.save();
+ctx.lineWidth=0.5;
+ctx.beginPath();
+ctx.moveTo(100,0);
+ctx.lineTo(100,500);
+ctx.moveTo(0,100);
+ctx.lineTo(500,100);
+ctx.strokeStyle='#f00';
+ctx.fillText('(100,100)',100,100)
+ctx.stroke();
+//ctx.restore();
+
+//ctx.save();
+ctx.beginPath();
+ctx.moveTo(125,0);
+ctx.lineTo(125,500);
+ctx.moveTo(0,225);
+ctx.lineTo(500,225);
+ctx.strokeStyle='#0f0';
+ctx.fillText('(125,225)',125,225)
+ctx.stroke();
+//ctx.restore();
+
+//ctx.save();
+ctx.beginPath();
+ctx.moveTo(225,0);
+ctx.lineTo(225,500);
+ctx.moveTo(0,166);
+ctx.lineTo(500,166);
+ctx.strokeStyle='#00f';
+ctx.fillText('(225,166)',225,166)
+ctx.stroke();
+//ctx.restore();
+
+ctx.beginPath();
+ctx.moveTo(100,100);
+ctx.lineTo(125,225);
+ctx.lineTo(225,166);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.lineWidth=2;
+ctx.strokeStyle = "#F00";
+ctx.moveTo(100,100);
+ctx.quadraticCurveTo(125,225,225,166);
+ctx.stroke();
+//quardraticCurveTo()原理类似arcTo(),主要是当前点和控制点，终点的切线绘制相切弧线
+
+</script>
