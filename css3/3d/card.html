@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #wrap{
+            -webkit-perspective:800;
+            -webkit-perspective-origin:50% 50%;
+              overflow: hidden;
+        }
+        #pages{
+            width: 400px;
+            height: 400px;
+            margin:0 auto;
+            -webkit-transform-style: -webkit-preserve-3d;
+           position: relative;
+        }
+        .page{
+            width: 360px;
+            height:360px;
+            padding: 20px;
+            text-align: center;
+            line-height: 360px;
+            font-size: 360px;
+            background: #000;
+            color: #fff;
+            position: absolute;
+            transition: transform 1s linear;
+            transform-origin: bottom;
+        }
+        #page2,#page3,#page4,#page5,#page6{
+           transform: rotateX(-90deg);
+        }
+        div a{
+            margin-right:100px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="pages">
+        <div id="page1" class="page">1</div>
+        <div id="page2" class="page">2</div>
+        <div id="page3" class="page">3</div>
+        <div id="page4" class="page">4</div>
+        <div id="page5" class="page">5</div>
+        <div id="page6" class="page">6</div>
+    </div>
+</div>
+<div>
+    <a href="javascript:next()">next</a><a href="javascript:prev()">prev</a>
+</div>
+<script>
+    var index=1;
+    function next(){
+        if(index===6) return;
+        var curpage=document.getElementById('page'+index);
+        curpage.style.webkitTransform='rotateX(-90deg)';
+        index++;
+        var nextpage=document.getElementById('page'+index);
+        nextpage.style.webkitTransform='rotateX(0deg)';
+    }
+    function prev(){
+        if(index===1) return;
+        var curpage=document.getElementById('page'+index);
+        curpage.style.webkitTransform='rotateX(-90deg)';
+        index--;
+        var prevpage=document.getElementById('page'+index);
+        prevpage.style.webkitTransform='rotateX(0deg)';
+    }
+</script>
+</body>
+</html>

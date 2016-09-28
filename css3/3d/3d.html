@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #wrap{
+            -webkit-perspective:800;
+            -webkit-perspective-origin:50% 50%;
+        }
+        #inner{
+            width: 500px;
+            height: 500px;
+            background: #69c;
+            margin: 100px auto;
+            -webkit-transform-style: -webkit-preserve-3d;
+            transform: rotateY(45deg);
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="inner">perspective and perspective-origin设置3d视角</div>
+</div>
+</body>
+</html>
