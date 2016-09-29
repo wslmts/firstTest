@@ -6,36 +6,48 @@
 </head>
 <body>
 <canvas id="cvs" width="500" height="500" style="border: 1px solid #000"></canvas>
+
 <script>
-    //从(20,20)坐标开始，到(400, 300)坐标截止，自动缩放适应大小
-    //ctx.drawImage(img, 20, 20, 400, 300);
-
-    //参数说明：drawImage(image,sx,sy,sw,sh,dx,dy,dw,dh)。
-    //通过参数sx,sy,sw,sh指定图片裁剪的范围，缩放到dw,dh的大小，最后把它画到canvas上的(dx,dy)位置
-  //  ctx.drawImage(img, 0,0, 1000, 500, 20, 100, 400, 300);
-
     var cvs=document.getElementById("cvs");
     var ctx=cvs.getContext("2d");
-    ctx.strokeStyle="f00";
-    ctx.lineWidth=2;
+
     ctx.beginPath();
-    ctx.moveTo(10,10);
-    ctx.lineTo(400,400);
-    //ctx.moveTo(300,300);
-    ctx.lineTo(300,300);
-    ctx.lineTo(200,300);
+    ctx.strokeStyle="#f00";
+    ctx.lineWidth=1;
+    ctx.moveTo(50,10);
+    ctx.lineTo(50,500);
+    ctx.moveTo(400,10);
+    ctx.lineTo(400,500);
     ctx.stroke();
+    ctx.beginPath();
+    ctx.strokeStyle="#0f0";
+    ctx.lineWidth=30;
+    ctx.lineCap='butt';//default
+    ctx.lineTo(50,30);
+    ctx.lineTo(400,30);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.lineCap='round';
+    ctx.lineTo(50,130);
+    ctx.lineTo(400,130);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.lineCap='square';
+    ctx.lineTo(50,230);
+    ctx.lineTo(400,230);
+    ctx.stroke();
+    ctx.beginPath();
+   // ctx.lineJoin="round";
+    //ctx.lineJoin="miter";//默认
+    ctx.lineJoin="bevel";
+   // ctx.miterLimit=10;
+    ctx.moveTo(330,330);
+    ctx.lineTo(330,430);
+    ctx.lineTo(430,330);
     ctx.closePath();
-    var a=2;
-    function outer(){
-        var a=1;
-        inner(a)
-    }
-    function inner(b){
-        alert(b)
-    }
-    outer();
-    inner(a)
+    ctx.stroke();
 </script>
+
 </body>
 </html>

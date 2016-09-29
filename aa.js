@@ -23,11 +23,41 @@
  return p.test(pin)
  }
  validatePIN("12345")*/
-function findOutlier(integers){
-    var odd=[],even=[];
-    for(var i=0;i<integers.length;i++){
-        integers[i]%2===0?even.push(integers[i]):odd.push(integers[i]);
+/*function XO(str) {
+    str=str.toLowerCase();
+    var p=/(x|o)/g;
+    var x=[],o=[];
+    var r=null;
+    while((r=p.exec(str))!=null){
+        console.log(r)
+       if(r[1]=="x"){
+           x.push(r[1])
+       }else if(r[1]=="o"){
+            o.push(r[1])
+        }
     }
-    if(even.length===1) return Number(even.toString());
-    if(odd.length===1) return Number(odd.toString());
+    console.log(x,o)
+    return x.length=== o.length;
 }
+XO("ooxXm")*/
+/*
+function findShort(s){
+    var list= s.split(/\s+/);
+    if(list.length>1){
+        list.sort(function(a,b){
+          if(a.length> b.length) return 1;
+          if(a.length<= b.length) return -1;
+        });
+
+    }
+    return list[0].length;
+}
+findShort("bitcoin take over the world maybe who knows perhaps")*/
+function findNextSquare(sq) {
+    var n=Math.sqrt(Number(sq));
+    if(Number.isInteger(n)){
+        return Math.pow(n+1,2);
+    }
+    return -1;
+}
+findNextSquare(121)

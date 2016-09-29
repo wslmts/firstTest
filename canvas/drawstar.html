@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<canvas id="cvs" width="1200" height="800" style="border: 1px solid #000;padding:1px"></canvas>
+<script>
+    //原理参考同名图片drawstar.png
+    var cvs=document.getElementById("cvs");
+    var ctx=cvs.getContext("2d");
+    ctx.lineWidth=10;
+    var grd= ctx.createLinearGradient(0,0,0,cvs.height);
+    grd.addColorStop(0,'#000')
+    grd.addColorStop(1,'#035');
+    ctx.lineWidth=10;
+    ctx.fillStyle=grd;
+    ctx.fillRect(0,0,cvs.width,cvs.height)
+    for(var i=0;i<200;i++){
+        var r=Math.random()*10+10;
+        var x=Math.random()*cvs.width;
+        var y=Math.random()*cvs.height;
+        var deg=Math.random()*360;
+        drawstar(ctx,x,y,r,r/2,deg);
+    }
+
+    function drawstar(ctx,x,y,R,r,rot){
+        ctx.beginPath();
+        for(var i=0;i<5;i++){
+            ctx.lineTo(Math.cos((18+i*72-rot)/180*Math.PI)*R+x,-Math.sin((18+i*72-rot)/180*Math.PI)*R+y);
+            ctx.lineTo(Math.cos((54+i*72-rot)/180*Math.PI)*r+x,-Math.sin((54+i*72-rot)/180*Math.PI)*r+y);
+        }
+        ctx.closePath();
+        ctx.fillStyle="#fb3";
+        ctx.strokeStyle="#fd5";
+        ctx.lineWidth=3;
+        ctx.lineJoin="round";
+        ctx.fill();
+        ctx.stroke();
+    }
+</script>
+</body>
+</html>
