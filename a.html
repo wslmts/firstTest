@@ -19,10 +19,24 @@
     </script>-->
 </head>
 <body>
-<form  action="http://www.dajie.com" method="post"><!--target="t"-->
+<!--<form  action="http://www.dajie.com" method="post">&lt;!&ndash;target="t"&ndash;&gt;
     <input name="abc" value="1">
     <input type="submit" value="submit">
 </form>
-<iframe name="t"></iframe>
+<iframe name="t"></iframe>-->
+<script>
+    function isIsogram(str){
+        if(str=="") return true;
+        var s= str.toLowerCase().split('').sort();
+        var obj={};
+        for(var i=s.length-1;i-1>0 ;i--){
+            if(s[i]===s[i-1]){
+                return false
+            }
+        }
+        return true;
+    }
+    isIsogram("Dermatoglyphics")
+</script>
 </body>
 </html>

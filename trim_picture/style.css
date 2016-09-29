@@ -1,0 +1,50 @@
+body{
+    background: #333;
+}
+#box{
+    position: absolute;
+    top:100px;left:200px;
+    width:450px;
+    height:300px;
+}
+#img1{
+    opacity: 0.3;
+    position: absolute;
+    top:0px;left:0px;
+}
+#img2{
+    position: absolute;
+    top:0px;left:0px;
+    clip:rect(0,200px,200px,0)
+}
+#main{
+    position: absolute;
+    border: 1px solid #fff;
+    width:200px;
+    height: 200px;
+}
+.minDiv{
+    position: absolute;
+    width:8px;
+    height:8px;
+    background: #fff;
+}
+.minDiv.lt{left:0;top:-4px;margin-left:-4px;cursor: nw-resize}
+.minDiv.tc{left:50%;top:-4px;margin-left:-4px;cursor: n-resize}
+.minDiv.tr{right:-4px;top:-4px;margin-left:-4px;cursor: ne-resize}
+.minDiv.lc{top:50%;left:-4px;cursor: w-resize}
+.minDiv.rc{right:-4px;top:50%;cursor: e-resize}
+.minDiv.lb{left:-4px;bottom:-4px;cursor: sw-resize}
+.minDiv.cb{left:50%;bottom:-4px; margin-left:-4px;cursor: s-resize}
+.minDiv.rb{right:-4px;bottom:-4px;cursor: se-resize}
+
+#preview{
+    position: absolute;
+    top:100px;right:200px;
+    width:450px;
+    height:300px;
+}
+#preview img{
+    position: absolute;
+    clip:rect(0,200px,200px,0)
+}
