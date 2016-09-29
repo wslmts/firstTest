@@ -24,6 +24,39 @@
     rd.addColorStop(1,'#0f0');
     ctx.fillStyle=rd;
     ctx.fillRect(200,200,100,100);
+    var img=new Image();
+    img.src='test.jpg';
+    img.onload=function(e){
+        var pt=ctx.createPattern(img,'no-repeat');
+        ctx.fillStyle=pt;
+        ctx.fillRect(0,100,100,100);
+    }
+
+</script>
+<canvas id="canvas1" style="border:1px solid black;" width="300" height="300"></canvas>
+<script>
+    var canvas1 = document.getElementById('canvas1');
+    var ctx1 = canvas1.getContext('2d');
+    drawRoundRect(ctx1,10,10,100,100,10)
+    function drawRoundRect(ctx,x,y,w,h,r){
+       ctx.save();
+       ctx.translate(x,y);
+       pathRound(ctx,w,h,r);
+        ctx.strokeStyle="#000";
+        ctx.stroke();
+        ctx.restore();
+    }
+    function pathRound(ctx,w,h,r){
+      ctx.beginPath();
+      ctx.arc(w-r,h-r,r,0,Math.PI/2);
+        ctx.lineTo(r,h);
+        ctx.arc(r,h-r,r,Math.PI/2,Math.PI)
+        ctx.lineTo(0,r);
+        ctx.arc(r,r,r,Math.PI,Math.PI*1.5);
+        ctx.lineTo(w-r,0);
+        ctx.arc(w-r,r,r,Math.PI*1.5,Math.PI*2)
+      ctx.closePath();
+    }
 </script>
 </body>
 </html>
