@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<canvas id="cvs" width="800" height="500" style="border: 1px solid #000"></canvas>
+<script>
+    var cvs=document.getElementById("cvs");
+    var ctx=cvs.getContext("2d");
+
+    ctx.fillStyle="#058";
+    ctx.font="bold 40px sans-serif";
+    ctx.textAlign='left';
+    ctx.fillText("textAlign=left",400,100);
+    ctx.textAlign='center';
+    ctx.fillText("textAlign=center",400,200);
+    ctx.textAlign='right';
+    ctx.fillText("textAlign=right",400,300);
+    ctx.strokeStyle="#888";
+    ctx.moveTo(400,0);
+    ctx.lineTo(400,500);
+    ctx.stroke();
+</script>
+<canvas id="cvs1" width="900" height="800" style="border: 1px solid #000"></canvas>
+<script>
+    var cvs1=document.getElementById("cvs1");
+    var ctx1=cvs1.getContext("2d");
+
+    ctx1.fillStyle="#058";
+    ctx1.font="bold 40px sans-serif";
+    ctx1.textBaseline='top';
+    ctx1.fillText("textBaseline=top文本垂直对齐",10,100);
+    line(ctx1,100)
+    ctx1.textBaseline='middle';
+    ctx1.fillText("textBaseline=middle文本垂直对齐",10,200);
+    line(ctx1,200)
+    ctx1.textBaseline='bottom';
+    ctx1.fillText("textBaseline=bottom文本垂直对齐",10,300);
+    line(ctx1,300);
+    ctx1.textBaseline='ideographic';
+    ctx1.fillText("textBaseline=ideographic文本针对汉字等方块字设计",10,400);
+    line(ctx1,400);
+    ctx1.textBaseline='alphabetic';
+    ctx1.fillText("textBaseline=alphabetic针对拉丁字母设置基准线",10,500);
+    line(ctx1,500);
+    ctx1.textBaseline='hanging';
+    ctx1.fillText("textBaseline=hanging针对印度文设计",10,600);
+    line(ctx1,600);
+
+    function line(ctx,h){
+        console.log(ctx)
+        var w=ctx.canvas.width;
+        ctx.save();
+        ctx.strokeStyle="#888";
+        ctx.moveTo(0,h);
+        ctx.lineTo(w,h);
+        ctx.stroke();
+        ctx.restore();
+    }
+</script>
+</body>
+</html>
