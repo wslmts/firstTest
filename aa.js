@@ -53,6 +53,7 @@ function findShort(s){
     return list[0].length;
 }
 findShort("bitcoin take over the world maybe who knows perhaps")*/
+/*
 function findNextSquare(sq) {
     var n=Math.sqrt(Number(sq));
     if(Number.isInteger(n)){
@@ -60,4 +61,14 @@ function findNextSquare(sq) {
     }
     return -1;
 }
-findNextSquare(121)
+findNextSquare(121)*/
+function array_diff(a, b) {
+    var c=[];
+    a.forEach(function(v){
+        if(!b.includes(v)){
+            c.push(v)
+        }
+    });
+    return c;
+}
+array_diff([1,2],[1]) == [2]
