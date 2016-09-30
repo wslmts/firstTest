@@ -62,6 +62,7 @@ function findNextSquare(sq) {
     return -1;
 }
 findNextSquare(121)*/
+/*
 function array_diff(a, b) {
     var c=[];
     a.forEach(function(v){
@@ -71,4 +72,20 @@ function array_diff(a, b) {
     });
     return c;
 }
-array_diff([1,2],[1]) == [2]
+array_diff([1,2],[1]) == [2]*/
+function add(fn){
+    var _this = this,
+        _args = arguments
+    return function() {
+        if (!arguments.length) {
+            var sum = 0;
+            for (var i = 0,
+                     c; c = _args[i++];) sum += c
+            return sum
+        } else {
+            Array.prototype.push.apply(_args, arguments)
+            return arguments.callee
+        }
+    }
+}
+add(1)(2)(3)
