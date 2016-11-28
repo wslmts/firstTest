@@ -3,6 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <script src="jquery.js"></script>
    <!-- <script>
         var head = document.head;
         var s = document.createElement( "script" );
@@ -17,6 +18,14 @@
     <script>
       alert(1)
     </script>-->
+    <style>
+        #a1{
+            border: 1px #f00 solid;
+        }
+        #a2{
+            border: 1px #0f0 solid;
+        }
+    </style>
 </head>
 <body>
 <!--<form  action="http://www.dajie.com" method="post">&lt;!&ndash;target="t"&ndash;&gt;
@@ -24,8 +33,25 @@
     <input type="submit" value="submit">
 </form>
 <iframe name="t"></iframe>-->
+<div id="a1"><p>aaa<span>bbb</span></p></div>
+<div id="a2"></div>
+<button type="button" id="bt">copy</button>
+<button type="button" id="bt1">cut</button>
 <script>
-    function isIsogram(str){
+    var bt=document.getElementById('bt');
+    var bt1=document.getElementById('bt1');
+    var a1=document.getElementById('a1');
+    var a2=document.getElementById('a2');
+    bt.onclick=function(){
+      //  $("#a2").append( $("#a1").children().clone())
+        a2.appendChild(a1.firstChild)
+    }
+    bt1.onclick=function(){
+    //    $("#a2").append( $("#a1").children())
+    }
+</script>
+<script>
+   /* function isIsogram(str){
         if(str=="") return true;
         var s= str.toLowerCase().split('').sort();
         var obj={};
@@ -36,7 +62,7 @@
         }
         return true;
     }
-    isIsogram("Dermatoglyphics")
+    isIsogram("Dermatoglyphics")*/
 </script>
 </body>
 </html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+  <script>
+    function Base(){
+        this.m=function(){
+            return 'base';
+        };
+        this.a=this.m();
+        this.b=this.m;
+        this.c=function(){
+            return this.m();
+        }
+    }
+      function F(){
+          this.m=function(){
+              return 'F';
+          };
+      }
+    F.prototype=new Base();
+      var f=new F();
+      console.log(f.a);//base
+    console.log(f.b())//base
+    console.log(f.c())//F
+    function A(x){
+        this.x=x;
+        this.say=function(){
+            console.log( this.x);
+        };
+    }
+    function B(x,y){
+        this.m=A;
+        this.m(x);//主要是this的指向问题
+        delete this.m;
+        this.y=y
+        this.call=function(){
+            console.log( this.y);
+        };
+    }
+      var a=new A(1);
+      var b=new B(2,3);
+    a.say();
+    b.say();
+    b.call();
+  </script>
+<div>111</div>
+<script>
+   //  var div=document.getElementsByTagName('div');HTMLCollection
+    var div=document.querySelectorAll('div');//NodeList
+    for(var i=0;i<div.length;i++){
+        if(div.length==10) break;
+        document.body.appendChild(document.createElement('div'))
+    }
+
+</script>
+  <script>
+      window.onbeforeunload=function(){
+          alert(1)
+          return 'bye'
+      }
+      window.onunload=function(){
+          alert(2)
+          return 'really bye'
+      }
+  </script>
+<a href="es5.html">goto es5html</a>
+</body>
+</html>

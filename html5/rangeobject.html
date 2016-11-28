@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>this is a range demo</div>
+<script>
+    var tagString = "<div>I am a div node</div>";
+    var range = document.createRange();
+    // make the parent of the first div in the document becomes the context node
+    range.selectNode(document.getElementsByTagName("div").item(0));
+    var documentFragment = range.createContextualFragment(tagString);
+    document.body.appendChild(documentFragment);
+</script>
+</body>
+</html>

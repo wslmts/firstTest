@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+/*     document.write('object between js and dom');
+        function f(ele){
+            this.eleref=ele;
+            ele.prop=this;
+        }
+        function leak(){
+            for(var i=0;i<1000;i++){
+                new f(document.getElementById('a1'))
+            }
+
+        }
+        window.onload=function(){
+            var obj=document.getElementById('a1');
+            obj.onclick=function(){
+                alert('leak');
+            }
+            obj.str=new Array(1000).join(new Array(2000).join("==="))
+        }*/
+var x={
+    length:0,
+    add:function(num){
+       Array.prototype.push.call(this,num)
+    },
+    addArray:function(ary){
+        Array.prototype.push.apply(this,ary)
+    }
+}
+        x.add(1);x.add(2);x.add(3);
+x.addArray([4,5,6])
+        console.log(x)
+    </script>
+</head>
+<body>
+<!--<div id="a1">qqqq</div>-->
+</body>
+</html>

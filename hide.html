@@ -43,6 +43,68 @@
     $($('#apply')[0].contentWindow.document).find('.item').click(function(){
      alert("click on parent")
     });
+    console.time('str');
+    var str='1234567890',arr=[];
+    for(var i=0;i<str.length;i++){
+        arr.push(str.charAt(i))
+    }
+    console.timeEnd('str')
+    console.time('obj');
+    var str1=new String('1234567890'),arr1=[];
+    for(var i=0;i<str1.length;i++){
+        arr1.push(str1.charAt(i))
+    }
+    console.timeEnd('obj');
+    function isPrime(n){if(n==0||n==1){
+        return false;
+    }
+     var bound=Math.floor(Math.sqrt(n));
+        for(var i=2;i<=bound;i++){
+            if(n%i==0){return false}
+        }
+        return true;
+    }
+    MAX=100;
+    console.time('normal');
+    (function normal(){
+        var count=0;
+        for(var i=2;i<=MAX;i++){
+            if(isPrime(i)){
+                count++;
+            }
+        }
+        console.log('finish,total '+count)
+    })();
+    console.timeEnd('normal');
+    console.time('timeout');
+    (function timeout(){
+        var count=0;
+        var jobs=10,numperjob=Math.ceil(MAX/jobs);
+        function counts(start,end){
+            for(var i=start;i<=end;i++){
+                if(isPrime(i)){
+                    count++;
+                }
+            }
+        }
+        var start, end,timer,finished=0;
+        function manage(){
+            if(finished==jobs){
+                window.clearTimeout(timer);
+            }else{
+                start=finished*numperjob+1;
+                end=Math.min((finished+1)*numperjob,MAX);
+                timer=window.setTimeout(function(){
+                    counts(start,end);
+                    finished++;
+                    manage();
+                },100)
+            }
+        }
+        manage();
+        console.log('finish,total '+count)
+    })();
+    console.timeEnd('timeout');
 </script>
 </body>
 </html>

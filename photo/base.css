@@ -1,0 +1,30 @@
+.bigwrap{
+    width:620px;
+    height:450px;
+}
+.smallwrap{
+
+ }
+#list{
+    list-style: none;
+    width:600px;
+    height:60px;
+    overflow: hidden;
+    display: inline-block;
+}
+#list li{
+    margin-right:10px;
+    display: inline-block;
+}
+.turnicon{
+    height: 40px;
+    width:20px;
+    display: inline-block;
+    cursor:pointer;
+}
+#prve{
+    background: url(img/icon_prve.jpg);
+}
+#next{
+    background: url(img/icon_next.jpg);
+}

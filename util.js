@@ -52,5 +52,10 @@ var util={
         var d1=n%7;
         var date=(today+d1)%7===0?7:(today+d1)%7;
         return date;
+    },
+    isPalindrome:function(text){//字符串是不是回文
+      if(text.length<=1) return true;
+        if(text.charAt(0)!=text.charAt(text.length-1)) return false;
+        return this.isPalindrome(text.substr(1,text.length-2))
     }
 }

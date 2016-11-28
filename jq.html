@@ -260,5 +260,19 @@ var body=document.body;
   console.log('obj json ',JSON.stringify(obj,null,4));*/
 //$("#bb").hasClass("cb")
   </script>
+ <style>
+     #wh{
+         width:100px;
+         padding: 10px;
+         margin: 5px;
+     }
+ </style>
+ <div id="wh">123</div>
+ <script>
+     console.log($("#wh").width())
+     console.log($("#wh").outerWidth('350px'))
+     console.log($("#wh").width())
+     console.log($("#wh").outerWidth()-$("#wh").width())
+ </script>
  </body>
 </html>

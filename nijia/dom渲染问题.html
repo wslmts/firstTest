@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../scripts/jquery.js"></script>
+</head>
+<body>
+    <p>DOM的修改不会立马导致渲染，而是会内部触发一个事件（可能叫paint），这个事件的处理程序会被插入到Javascript的调度队列中等待调度执行。</p>
+    <div id="Test1" style="height: 100px; margin: 5px; background-color: yellow;"></div>
+</body>
+</html>
+<script type="text/javascript">
+
+    function sleep(millisecond) {
+        var start = new Date().getTime();
+
+        do {
+            var end = new Date().getTime();
+        } while (end - start <= millisecond);
+    }
+
+    setTimeout(function () {
+        console.log('start...');
+
+        $("#Test1").css({
+            backgroundColor: 'red'
+        });
+
+        sleep(3000);
+
+        console.log('...end');
+    }, 2000);
+
+</script>

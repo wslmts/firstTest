@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0
+        }
+        div{
+            width:100px;
+            heigth:100px;
+           padding:10px;
+           margin:10px;
+             border:1px #ff0 solid;
+           /* border-top-width: 1px;
+            border-bottom-width: 2px ;
+            border-left-width: 3px ;
+            border-right-width: 4px ;
+*/
+overflow: auto;
+        }
+    </style>
+</head>
+<body><!--  style="width:120px;height:120px"-->
+   <div id="v1">The scrollHeightThe The scrollHeightThe The scrollHeightThe The scrollHeightThe The scrollHeightThe The scrollHeightThe </div>
+   <script>
+       var v1=document.getElementById('v1');
+       document.writeln(" clientWidth:",v1.clientWidth,'  clientHeight:',v1.clientHeight);
+       document.writeln('clientLeft:',v1.clientLeft," clientTop:",v1.clientTop);
+
+       document.writeln('<br/>');
+       document.writeln('scrollWidth:',v1.scrollWidth," scrollHeight:",v1.scrollHeight);
+       document.writeln('<br/>');
+       document.writeln('offsetWidth:',v1.offsetWidth," offsetHeight:",v1.offsetHeight);
+      // document.writeln('clientH:',document.body.clientHeight," clientW:",document.body.clientWidth);
+       var p=document.createElement("p");
+       var div=document.createElement("div");
+       div.innerHTML="123"
+     div.style.overflowY="scroll";
+       p.appendChild(div)
+
+   //   document.body.appendChild(p)
+    //   div.style.width='1px'
+       console.log(div.clientWidth)
+       console.log(div.offsetWidth)
+       console.log(div.innerHTML)
+   </script>
+</body>
+</html>

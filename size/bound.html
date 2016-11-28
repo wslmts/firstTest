@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+
+    </style>
+</head>
+<body>
+<div style="width:100px;">
+    DOMRectThe returned value is a DOMRect object which is the union of the rectangles returned by getClientRects() for the element, i.e., the CSS border-boxes associated with the element.
+
+    The returned value is a DOMRect object, which contains read-only left, top, right, bottom, x, y, width, height properties describing the border-box in pixels. Properties other than width and height are relative to the top-left of the viewport.
+
+    Empty border-boxes are completely ignored. If all the element's border-boxes are empty, then a rectangle is returned with a width and height of zero and where the top and left are the top-left of the border-box for the first CSS box (in content order) for the element.
+
+    The amount of scrolling that has been done of the viewport area (or any other scrollable element) is taken into account when computing the bounding rectangle. This means that the rectangle's boundary edges (top, left, bottom, and right) change their values every time the scrolling position changes (because their values are relative to the viewport and not absolute). If you need the bounding rectangle relative to the top-left corner of the document, just add the current scrolling position to the top and left properties (these can be obtained using window.scrollX and window.scrollY) to get a bounding rectangle which is independent from the current scrolling position.
+
+    Scripts requiring high cross-browser compatibility can use window.pageXOffset and window.pageYOffset instead of window.scrollX and window.scrollY. Scripts without access to these properties can use code like this:
+    <div id="bd" style="width: 100px;height:100px;border:1px solid green"></div>
+</div>
+<div id="bd1" style="width: 100px;height:100px;border:1px solid green;"></div>
+<script>
+    var div=document.getElementById('bd');
+    console.log(div.getBoundingClientRect());
+    var div1=document.getElementById('bd1');
+    console.log(div1.getBoundingClientRect());
+</script>
+</body>
+</html>
