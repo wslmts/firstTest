@@ -1,0 +1,104 @@
+#txt{
+    color: #00aa00;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-image: -webkit-gradient(linear,left,top,left,bottom,from(green), to(#c1fd00));
+    font-size: 50px;
+}
+#jiqimao1{
+    margin:10px auto
+}
+.doraemon .head{
+    width: 320px;
+    height: 300px;
+    background-color: #07bbee;
+    border-radius: 300px;
+    background:-webkit-radial-gradient(right top,#fff 10%,#07bbee 20%,#10a6ce 75%,#000);
+    background:-moz-radial-gradient(right top,#fff 10%,#07bbee 20%,#10a6ce 75%,#000);
+    background:-ms-radial-gradient(right top,#fff 10%,#07bbee 20%,#10a6ce 75%,#000);
+    position:relative;
+}
+.doraemon .head .face{
+    position: relative;
+}
+.doraemon .head .face .white{
+    width:265px;
+    height:195px;
+    position: absolute;
+    top:70px;
+    left:30px;
+    border: 2px solid #000;
+    background-color: #fff;
+    border-radius: 150px 150px;
+    /*此放射渐变也是使脸的左下角暗一些，看上去更真实*/
+    background: -webkit-radial-gradient(right top,#fff 75%,#eee 80%,#999 90%,#444);
+    background: -moz-radial-gradient(right top,#fff 75%,#eee 80%,#999 90%,#444);
+    background: -ms-radial-gradient(right top,#fff 75%,#eee 80%,#999 90%,#444);
+}
+.doraemon .head .eyes .eye{
+    width: 72px;
+    height: 82px;
+    position: absolute;
+    border: 2px solid #000;
+    z-index:3;
+    border-radius: 35px 35px;
+    top:30px;
+    background-color: #fff;
+}
+.doraemon .head .eyes .eye.left{
+    left:90px;
+}
+.doraemon .head .eyes .eye.right{
+    right:80px;
+}
+.doraemon .head .eyes .eye .black{
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    z-index:5;
+    border-radius: 14px;
+    background-color: #000;
+    top:30px;
+}
+.doraemon .head .eyes .eye .black.bleft{
+    left:50px;
+}
+.doraemon .head .eyes .eye .black.bright{
+    right:50px;
+}
+.doraemon .head .face .nose{
+    width: 30px;
+    height: 30px;
+    border: 2px solid #000;
+    border-radius: 30px;
+    background:#C93300;
+    position: absolute;
+    top:102px;
+    left:148px;
+}
+.doraemon .face .nose .light {
+    width: 10px;
+    height:10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px #fff;
+    position: absolute;
+    right:10px;
+    z-index:5;
+    top:-3px;
+}
+.doraemon .face .nose_line{
+    width:3px;
+    height:70px;
+    background:#000;
+    position: absolute;
+    top:136px;
+    left:164px;
+}
+.doraemon .face .mouth{
+    width:220px;
+    position: absolute;
+    top:196px;
+    left:60px;
+    border-bottom: 2px solid #333;
+    border-radius: 120px;
+}

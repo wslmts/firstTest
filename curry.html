@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function add(p1,p2,p3){
+       this.s=p1+p2+p3;
+    }
+    var obj1=add.bind(null,'a');
+    var obj2=new obj1('b');
+    console.log(obj2.s);
+</script>
+</body>
+</html>

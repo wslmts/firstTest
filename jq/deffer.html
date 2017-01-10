@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery15.js"></script>
+</head>
+<body>
+  <script>
+      var d1 = $.Deferred();
+      var d2 = $.Deferred();
+      $.when( d1 ).then(function ( v2 ) {
+          console.log( v2 ); // "Fish"
+          d1.reject('aaa')
+      });
+
+      $.when( d1 ).then(function ( v1) {
+          console.log( v1 ); // "Fish"
+         // d2.resolve( "Pizza" );
+      });
+
+      d1.resolve( "Fish" );
+   //   d2.resolve( "Pizza" );
+  </script>
+</body>
+</html>

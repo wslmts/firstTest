@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var w= 1,z=2;
+    function f(x=w+1,y=x+1,z=w+1){
+        console.log(x,y,z)
+    }
+    f();
+    var obj={
+        x:1,y:2,z:3
+    };
+    var {x=4,y=5,z=6,w=7}=obj;
+    console.log(x,y,z,w);
+    var x=200,y=300,z=100;
+    var o1={
+        x:{y:42},
+        z:{y:z}
+    };
+    ({y:x={y:y}}=o1);
+    ({z:y={y:z}}=o1);
+    ({x:z={y:x}}=o1);
+    console.log(x.y, y.y, z.y)
+</script>
+</body>
+</html>

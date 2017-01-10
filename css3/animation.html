@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            margin-top:100px;
+            border:1px solid;
+            transform: translateY(0);
+        }
+        .box.on{
+            animation: move 1s;
+            animation-fill-mode: backwards;
+        }
+
+        @keyframes move{
+            from{transform: translateY(-50px)}
+            to  {transform: translateY( 50px)}
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="div">aaaaa</div>
+<script>
+    var div=document.getElementById('div');
+    setTimeout(function(){
+       div.classList.add('on');
+    },1000)
+</script>
+</body>
+</html>

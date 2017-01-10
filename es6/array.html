@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+  <script>
+      var a=[1,2,3,4,5,6];
+      var b1=a.forEach(function(v,i,ar){
+           return v=v+1
+      });
+      console.log(b1);
+      var b2=a.map(function(v,i,ar){
+          return v=v+1
+      });
+      console.log(b2);
+      var b3=a.every(function(v,i,ar){
+          console.log(v)
+          return v<3;
+      })
+      console.log(b3);
+      a.some(function(v,i,ar){
+          console.log(v)
+          return v>3;
+      })
+      console.log(a);
+      var c1=new Array(3);
+      var c2=[undefined,undefined,undefined]
+      var c3=[];
+      c3.length=3;
+      console.log(c1); console.log(c2); console.log(c3);
+      var c4=[];
+      c4.push(1,2,3,4,5);
+      console.log(c4)
+      function unique(a){
+          var b=[];var obj={};
+          for(var i=0;i< a.length;i++){
+              if(!obj[a[i]]){
+                  obj[a[i]]=1;
+                  b.push(a[i])
+              }
+          }
+          return b;
+      }
+      unique([1,2,3,3,2,1,5,6,4,5,6])
+  </script>
+</body>
+</html>

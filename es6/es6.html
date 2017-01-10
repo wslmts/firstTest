@@ -11,6 +11,10 @@
     {
         let a=1;
        console.log(a);
+        let obj={name:'zsf',age:'120'};
+        let x,y;
+        ({name:x,age:y}=obj);
+
    }
 </script>
 <script>
@@ -244,7 +248,41 @@ const  preloadimg=function(path){
         }
     }
     var cat=new Cat('cat');
-    cat.name
+    cat.name;
+    function f({name='mzd',age='110'}={}){
+        console.log(name,age);
+    }
+    f({name:'dxp',age:'79'});
+    let A='NaN';
+    let B=NaN;
+    let C=123;
+    let D="hello";
+    let E='123';
+    console.log(isNaN(A));
+    console.log(isNaN(B))
+    console.log(isNaN(C))
+    console.log(isNaN(D));
+    console.log(isNaN(E));
+    console.log('============')
+    console.log(Number.isNaN(A));
+    console.log(Number.isNaN(B))
+    console.log(Number.isNaN(C))
+    console.log(Number.isNaN(D));
+    console.log(Number.isNaN(E));
+
+    console.log(isFinite(1));
+    console.log(isFinite('1'))
+    console.log(isFinite(NaN));
+    console.log(isFinite(null));
+    console.log(isFinite([]))
+    console.log(isFinite({}));
+    console.log('============')
+    console.log(Number.isFinite(1));
+    console.log(Number.isFinite('1'))
+    console.log(Number.isFinite(NaN));
+    console.log(Number.isFinite(null));
+    console.log(Number.isFinite([]))
+    console.log(Number.isFinite({}))
 </script>
 </body>
 </html>

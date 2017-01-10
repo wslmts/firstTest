@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        body{
+            height:100px;
+        }
+        #l1{
+            background: #ff0;
+            border: 20px solid green;
+            /*background: url("../img/border.png") no-repeat;*/
+            box-sizing: border-box;
+            width:5em;
+            padding:10% 5%;
+         }
+        span{
+            background: #0f0;
+            padding:50%;
+        }
+        #l2{
+            height:100px;
+            width:200px;
+        }
+        #line{
+            width: 150px;
+            height:30px;
+            padding:15px 0;
+            background-color: orange;
+            background-clip: content-box;
+            margin-top:30px;
+            border-top:solid 30px orange;
+            border-bottom:solid 30px orange;
+        }
+        #circle{
+            width: 150px;
+            height:150px;
+            padding:10px;
+            border-radius: 50%;
+            background-color: orange;
+            border:solid 10px orange;
+            background-clip: content-box;
+            margin-top:30px;
+        }
+        #line1{
+            border-top:double #0a0 20px;
+            border-bottom: solid #0a0 10px;
+            width:150px;
+            height:10px;
+        }
+    </style>
+</head>
+<body>
+   <div id="l1">padding</div>
+   <div id="l2"><span>内联元素padding</span></div>
+<div id="line"></div>
+   <div id="line1"></div>
+   <div id="circle"></div>
+</body>
+</html>

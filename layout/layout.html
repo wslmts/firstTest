@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        #l1{
+          background: #ff0;
+        }
+        #l2{
+            background: #0ff;
+            height:120px;
+            margin:10%;/*margin使用百分比时使用父元素的宽度计算值的，定位元素的margin使用百分比时使用的是定位父元素的宽度*/
+          /*  position: relative;*/
+           /* width:500px;*/
+        }
+        #l3{
+            background: #0f0;
+            height:20px;
+            margin-right: -100px;
+            width:500px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+   <div style="width: 100%">
+       <div style="float: left;width:200px">left</div>
+       <div style="float: right;width:200px">right</div>
+       <div id="center" style=" background: #ff0; margin:0 200px;">center
+           <!--  <embed src="char_encoding.pdf" style="width: 100%"></embed>-->
+       </div>
+   </div>
+<div id="l1"><div id="l2">
+    <div id="l3">aa</div>
+</div></div>
+</body>
+</html>

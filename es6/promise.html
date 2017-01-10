@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+ <script>
+     var p=new Promise(function(resolve,reject){
+         resolve(123)
+     });
+     p.then(function(p){console.log(p)});
+     var p1=Promise.resolve('abc');
+     p1.then(function(p){
+         console.log(p)
+     });
+     var rp=Promise.resolve(1);
+     p.then(function(msg){
+         console.log(msg.toLowerCase());
+     },function(err){
+         console.log(err);
+     }).then(function(msg){
+         console.log(msg.toLowerCase());
+     },function(err){
+         console.log('other',err);
+     });
+     p.then(function(msg){
+         console.log(msg.toLowerCase());
+     },function(err){
+         console.log(err);
+     }).catch(function(err){
+         console.log('catch',err);
+     });
+     var a1=new Promise(function(resolve,reject){
+         resolve("resolve")
+     });
+     var a2=new Promise(function(resolve,reject){
+         reject("reject")
+        // resolve("resolve1")
+     });
+     Promise.all([a1,a2]).then(function(msg){
+         console.log('resolve ',msg)
+     },function(msg){
+         console.log('reject ',msg)
+     });
+
+ </script>
+</body>
+</html>

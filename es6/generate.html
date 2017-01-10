@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var x=1;
+        function *foo(){
+            x++;
+            console.log(x);
+            yield ;
+            console.log(x)
+        }
+        function bar(){
+            x++;
+        }
+        var it=foo();
+        it.next();
+        bar();
+        it.next().value;
+        console.log('---------------------');
+        function *f(x){
+            var y=x*(yield 'hello');
+            return y;
+        }
+        var it=f(6)
+        var res=it.next(1)
+        console.log(res.value);
+        res=it.next(2);
+        console.log(res.value);
+        console.log('---------------------');
+        function *f1(x){
+            var x=yield 2;
+            z++;
+            var y=yield  (x*z);
+            console.log(x,y,z);
+        }
+        var z=1;
+        var it1=f1();
+        var it2=f1();
+        var v1=it1.next().value;
+        var v2=it2.next().value;
+        v1=it1.next(v2*10).value;
+        v2=it2.next(v1*5).value;
+        it1.next(v2/2);
+        it2.next(v1/4)
+    </script>
+</head>
+<body>
+
+</body>
+</html>

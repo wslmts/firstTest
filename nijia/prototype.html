@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function Person(){}
+    Person.prototype.name="user";
+    var p1=new Person();
+    var p3=new Person();
+    console.log('p1 cbefore',p1.name);
+    console.log('p1 cbefore',p1.constructor.prototype);
+    Person.prototype={
+        name:"obj",
+        age:100
+    }
+
+    console.log('p1 cafter ',p1.name,"--",p1.age);
+    console.log('p1 cafter',p1.constructor.prototype);
+    var p2=new Person();
+    console.log('p2 ',p2.name,"--",p2.age);
+    console.log('p1 p2 ',p1.__proto__===p2.__proto__);
+</script>
+</body>
+</html>
