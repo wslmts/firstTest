@@ -16,7 +16,6 @@ View.prototype={
            s.push('<li data-index='+i+'>'+ v.name+' <input type="button" class="delete" value="delete"/></li>')
         });
         this.root.innerHTML= s.join("");
-        this.removebtn=this.root.querySelectorAll('.delete');
     },
     addItem:function(name){
         this.elements.push(new Model(name));
@@ -38,12 +37,12 @@ Controller.prototype={
         self.view.addbtn.onclick=function(){
             self.view.addItem(document.getElementById('txt').value)
         }
-        self.view.removebtn.forEach(function(v){
-            v.onclick=function(e){
+        self.view.root.onclick=function(e){
+            if(e.target.nodeName.toLowerCase()=='input'){
                 if(e.target.classList.contains('delete')){
                     self.view.removeItem(e.target.parentNode.dataset.index);
                 }
             }
-        })
+        }
     }
 }
