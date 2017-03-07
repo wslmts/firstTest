@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+     <script src="todo.js"></script>
+  <title>Document</title>
+ </head>
+ <body>
+ <ul id="list"></ul>
+ <input type="text" id="txt">
+ <input id="add" type="button" value="add">
+<script>
+    var view=new View(document.getElementById('list'));
+    var c=new Controller(view);
+    c.event();
+</script>
+
+ </body>
+</html>

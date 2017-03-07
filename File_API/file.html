@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+Now we’ll create a new  link , set a few attributes, and append it somewhere in the
+document:
+ <script>
+     var stylesblob = new Blob(['body{color:red;}'], {type:'text/css'});
+     var link = document.createElement('link');
+     link.rel = 'stylesheet';
+     link.href = window.URL.createObjectURL(stylesblob);
+     document.body.appendChild(link);
+
+     var txt = new Blob(['alert(1)'], {type:'text/javascript'});
+     var s = document.createElement('script');
+     s.src = window.URL.createObjectURL(txt);
+     document.body.appendChild(s);
+
+    /* var txt1 = new Blob(['http://www.baidu.com'], {type:'text/html'});
+     var a = document.createElement('a');
+     a.textContent='goto baidu.com';
+     a.href=  window.URL.createObjectURL(txt1);
+     document.body.appendChild(a);*/
+ </script>
+
+</body>
+</html>

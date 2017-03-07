@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+     <script src="../../jquery.js"></script>
+     <script src="todo.js"></script>
+  <title>Document</title>
+ </head>
+ <body>
+  <ul id="list" size="10" style="width: 10rem"></ul><br/>
+<button id="plusBtn">  +  </button>
+<button id="minusBtn">  -  </button>
+<script>
+$(function () {
+    var model = new Mode(['PHP', 'JavaScript']),
+      view = new View(model, {
+        'list' : $('#list'), 
+        'addButton' : $('#plusBtn'), 
+        'delButton' : $('#minusBtn')
+       }),
+       controller = new Controller(model, view);        
+        view.show();
+});
+</script>
+
+ </body>
+</html>

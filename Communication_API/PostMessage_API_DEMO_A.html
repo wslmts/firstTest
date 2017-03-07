@@ -1,43 +1,44 @@
 <!doctype html>
 <html>
 <head>
-    <title>·¢ËÍ³ö±íÇóµÄÍøÕ¾Ò³Ãæ</title>
-	<script type="text/javascript">
-		window.onload = function() {
+    <title>å‘é€å‡ºè¡¨æ±‚çš„ç½‘ç«™é¡µé¢</title>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+        window.onload = function() {
             var msg=document.getElementById("msg");
-			document.getElementById("postBtn").onclick = function() {
-				var target = document.getElementById("tatget_frame").contentWindow;
-				if (window.postMessage) {
-					  target.postMessage("ÄãºÃ£¬ÎÒÊÇPostMessage_API_DEMO_A.html·¢³öÀ´µÄĞÅÏ¢", "http://127.0.0.1:63342/");
-				}
-			}
-			if (window.attachEvent) {
-				window.attachEvent("onmessage", Get_Msg);
-			}
-			else {
-				window.addEventListener("message", Get_Msg, true);
-			}
-		};
-		var Get_Msg = function(e) {
-			console.log(e);
-			console.log(e.origin);//»ñÈ¡¿çÓò´«µÄÔ´µØÖ·
-			console.log(e.data);  //»ñÈ¡´«µİ¹ıÀ´µÄÊı¾İ
-            msg.innerHTML+='À´×Ô'+ e.origin+"ÏûÏ¢£º "+ e.data;
-		}
-	</script>
+            document.getElementById("postBtn").onclick = function() {
+                var target = document.getElementById("tatget_frame").contentWindow;
+                if (window.postMessage) {
+                    target.postMessage("ä½ å¥½ï¼Œæˆ‘æ˜¯PostMessage_API_DEMO_A.htmlå‘å‡ºæ¥çš„ä¿¡æ¯", "http://127.0.0.1:63342/");
+                }
+            }
+            if (window.attachEvent) {
+                window.attachEvent("onmessage", Get_Msg);
+            }
+            else {
+                window.addEventListener("message", Get_Msg, true);
+            }
+        };
+        var Get_Msg = function(e) {
+            console.log(e);
+            console.log(e.origin);//è·å–è·¨åŸŸä¼ çš„æºåœ°å€
+            console.log(e.data);  //è·å–ä¼ é€’è¿‡æ¥çš„æ•°æ®
+            msg.innerHTML+='æ¥è‡ª'+ e.origin+"æ¶ˆæ¯ï¼š "+ e.data;
+        }
+    </script>
 </head>
 <body>
 <fieldset>
-	<legend>ËµÃ÷<legend>
-	<li>ÀûÓÃwindow.postMessage()¿çÓò´«µİÏûÏ¢
-	<li>±¾ÓòÊÇhttp://127.0.0.1Ïò http://127.0.0.1/ ´«µİÊı¾İ
-	<li>ÎªÈ·±£¶ÁÕßÒ»¶¨¿ÉÒÔ³É¹¦£¬±¾ÀıÓÃµÄÊÇ±¾»úÄ£ÄâµÄ»·¾³¡£
-	<li>ÔÚµ÷ÊÔ±¾ÀıÊ±£¬ÇëÔÚ±¾»ú¼ÜÉèweb·şÎñÆ÷»·¾³¡£ÀıÈç£ºIIS6£¬IIS7£¬APACHE£¬NginxµÈ
+    <legend>è¯´æ˜<legend>
+        <li>åˆ©ç”¨window.postMessage()è·¨åŸŸä¼ é€’æ¶ˆæ¯
+        <li>æœ¬åŸŸæ˜¯http://127.0.0.1å‘ http://127.0.0.1/ ä¼ é€’æ•°æ®
+        <li>ä¸ºç¡®ä¿è¯»è€…ä¸€å®šå¯ä»¥æˆåŠŸï¼Œæœ¬ä¾‹ç”¨çš„æ˜¯æœ¬æœºæ¨¡æ‹Ÿçš„ç¯å¢ƒã€‚
+        <li>åœ¨è°ƒè¯•æœ¬ä¾‹æ—¶ï¼Œè¯·åœ¨æœ¬æœºæ¶è®¾webæœåŠ¡å™¨ç¯å¢ƒã€‚ä¾‹å¦‚ï¼šIIS6ï¼ŒIIS7ï¼ŒAPACHEï¼ŒNginxç­‰
 </fieldset>
 <div id="msg"></div>
-<button id="postBtn">·¢ËÍ¿çÓò´«µİÏûÏ¢</button>
+<button id="postBtn">å‘é€è·¨åŸŸä¼ é€’æ¶ˆæ¯</button>
 <br>
-´Ë´¦ÊÇÀûÓÃIframe¼ÓÔØÁíÒ»¸öÓòhttp://127.0.0.1/ÏÂµÄ/Communication_API/PostMessage_API_DEMO_B.htmlÎÄ¼ş
- <iframe src="http://127.0.0.1:63342/firstTest/Communication_API/PostMessage_API_DEMO_B.html" id="tatget_frame" width="800" height="200"></iframe>
+æ­¤å¤„æ˜¯åˆ©ç”¨IframeåŠ è½½å¦ä¸€ä¸ªåŸŸhttp://127.0.0.1/ä¸‹çš„/Communication_API/PostMessage_API_DEMO_B.htmlæ–‡ä»¶
+<iframe src="http://127.0.0.1:63342/firstTest/Communication_API/PostMessage_API_DEMO_B.html" id="tatget_frame" width="800" height="200"></iframe>
 </body>
 </html>

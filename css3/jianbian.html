@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            height:200px;
+            width:300px;
+            margin:20px;
+            display:inline-block;
+        }
+        .v1{
+            background: white;
+            background-image: linear-gradient(90deg,
+            rgba(200,0,0,.5) 50%, transparent 0),
+            linear-gradient(
+                    rgba(200,0,0,.5) 50%, transparent 0);
+            background-size: 30px 30px;
+        }
+        .v2{
+            background: #58a;
+            background-image:
+            linear-gradient(white 1px, transparent 0),
+            linear-gradient(90deg, white 1px, transparent 0);
+            background-size: 30px 30px;
+
+        }
+        .v3{
+            background: #655;
+            background-image: radial-gradient(tan 30%, transparent 0);
+            background-size: 30px 30px;
+        }
+        .v4{
+            background: #655;
+            background-image: radial-gradient(tan 30%, transparent 0),
+            radial-gradient(green 30%, transparent 0);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+           /* background-repeat: repeat no-repeat;*/
+        }
+        .v5{
+            background: #eee url('data:image/svg+xml,\
+<svg xmlns="http://www.w3.org/2000/svg" \
+width="100" height="100" \
+fill-opacity=".25">\
+<rect x="50" width="50" height="50" /> \
+<rect y="50" width="50" height="50" /> \
+</svg>');
+            background-size: 30px 30px;
+        }
+        .v6{
+            padding: 1em;
+            border: 1px solid transparent;
+            background:
+            linear-gradient(white, white) padding-box,
+            repeating-linear-gradient(-45deg,
+            black 0, black 25%, white 0, white 50%
+            ) 0 / .6em .6em;
+            animation: ants 12s linear infinite;
+        }
+        @keyframes ants { to { background-position: 100% } }
+    </style>
+</head>
+<body>
+  <div class="v1"></div>
+  <div class="v2"></div>
+  <div class="v3"></div>
+  <div class="v4"></div>
+  <div class="v5"></div>
+  <div class="v6"></div>
+  <svg xmlns="http://www.w3.org/2000/svg"
+       width="100" height="100" fill-opacity=".25" >
+      <rect x="50" width="50" height="50" />
+      <rect y="50" width="50" height="50" />
+  </svg>
+</body>
+</html>

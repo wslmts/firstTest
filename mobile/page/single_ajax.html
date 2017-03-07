@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>单页面实现通过异步加载多个页面</title>
+    <style>
+        #page1{
+            background: red;
+        }
+        #page2{
+            background: green;
+        }
+        #page3{
+            background: yellow;
+        }
+       body,html,#wrap{
+           margin:0;
+           padding:0;
+           height: 100%;
+           font-size: 20px;
+           position: relative;
+        }
+        .page{
+            height: 100%;
+            position: absolute;
+            left:-100%;
+            width: 100%;
+        }
+        .page.active{
+           left:0
+        }
+        footer{
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        footer li{
+            float: left;
+            width:30%;
+        }
+    </style>
+</head>
+<body>
+  <div id="wrap">
+      <div id="page1" class="page">
+          page1
+      </div>
+      <div id="page2" class="page active">
+          page2
+      </div>
+      <div id="page3" class="page">
+          page3
+      </div>
+  </div>
+<footer>
+    <nav>
+        <ul>
+            <li data-page="1">1</li>
+            <li data-page="2">2</li>
+            <li data-page="3">3</li>
+        </ul>
+    </nav>
+</footer>
+<script>
+    var list=document.querySelectorAll('li');
+    list.forEach(function(li){
+        li.addEventListener('click',function(e){
+            document.querySelector('.active').classList.remove('active');
+            var target=document.getElementById('page'+this.dataset.page);
+            target.classList.add('active');
+            var xhr=new XMLHttpRequest();
+            xhr.onreadystatechange=function(){
+                console.log(xhr.readyState);
+                if(xhr.readyState===4&&xhr.status==200){
+                   console.log(typeof xhr.response);
+                    target.innerHTML=xhr.response;
+                }
+            }
+            xhr.open('get','page1.html',true);
+            xhr.send(null);
+        },false);
+    })
+</script>
+</body>
+</html>

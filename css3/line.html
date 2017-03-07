@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /**
+ * Inserting line breaks
+ */
+
+        dt, dd {
+            display: inline;
+            margin: 0;
+        }
+
+        dd {
+            font-weight: 600;
+        }
+
+        dd + dt::before {
+            content: "\A";
+            white-space: pre;
+        }
+
+        dd + dd::before {
+            content: ', ';
+            font-weight: normal;
+            margin-left: -.25em;
+        }
+
+        body {
+            font: 150%/1.6 Baskerville, Palatino, serif;
+        }
+        pre {
+            padding: .5em;
+            line-height: 1.5;
+            background: hsl(20, 50%, 95%);
+            background-image: linear-gradient(
+                    rgba(120,0,0,.1) 50%, transparent 0);
+            background-size: auto 3em;
+            background-origin: content-box;
+            font-family: Consolas, Monaco, monospace;
+        }
+
+        code { font: inherit }
+    </style>
+</head>
+<body>
+<dl>
+    <dt>Name:</dt>
+    <dd>Lea Verou</dd>
+
+    <dt>Email:</dt>
+    <dd>lea@verou.me</dd>
+    <dd>leaverou@mit.edu</dd>
+
+    <dt>Location:</dt>
+    <dd>Earth</dd>
+</dl>
+<pre><code>while (true) {
+    var d = new Date();
+    if (d.getDate()==1 &amp;&amp;
+    d.getMonth()==3) {
+    alert("TROLOLOL");
+    }
+    }</code></pre>
+</body>
+</html>

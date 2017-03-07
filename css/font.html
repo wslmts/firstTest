@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            color: green;
+        }
+        button{
+            padding: .3em .8em;
+            border: 1px solid #446d88;
+            background: #58a linear-gradient(#77a0bb, #58a);
+            border-radius: .2em;
+            box-shadow: 0 .05em .25em gray;
+            color: white;
+            text-shadow: 0 -.05em .05em #335166;
+            font-size: 125%;
+            line-height: 1.5;
+
+        }
+        hr{
+            color: currentColor;
+        }
+        h2{
+            font-size: 1vmin;
+        }
+        #wrap{
+            border:1px solid;
+        }
+        .ct{
+            width:100px;
+            height: 100px;
+            border:1px solid green;
+        /*    box-shadow: 20px 30px 30px inset;*/
+            background: #ff9900;
+            outline: dotted red 34px;
+            padding:40px;
+            outline-offset: 10px;;
+        }
+        .something-meaningful {
+            background: #655;
+            padding: .8em;
+        }
+        .something-meaningful > div {
+            background: tan;
+            border-radius: .8em;
+            padding: 1em;
+        }
+        #q1{
+            background: tan;
+            border-radius: .8em;
+            padding: 1em;
+            box-shadow: 0 0 0 .6em #655;
+            outline: .6em solid #655;
+        }
+    </style>
+</head>
+<body>
+   <button>yes</button>
+   <h2>hello</h2>
+<hr/>
+<!--<div id="wrap">
+   <div class="ct">1</div>
+    <div class="ct">2</div>
+</div>-->
+   <div class="something-meaningful"><div>
+       I have a nice subtle inner rounding,
+       don't I look pretty?
+   </div></div>
+   <div id="q1"></div>
+<script>
+  var wrap=document.getElementById('wrap');
+    wrap.onmouseover=function(e){
+        console.log(e.target.innerHTML)
+    }
+</script>
+</body>
+</html>

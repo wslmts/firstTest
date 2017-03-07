@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+  <ul id="list"></ul>
+  <form>
+      <label>name:<input type="text" name="name" id="name"></label>
+      <label>price:<input type="text" name="price" id="price"></label>
+      <input id="save" type="button" value="提交">
+  </form>
+  <input id="delete" type="button" value="delete">
+<script>
+
+    var db=openDatabase('testdb','1.0','test','65536',function(e){
+        console.log('create db ok ',e);
+    });
+   /* db.transaction(function(transaction){
+        transaction.executeSql('drop table books');
+    });*/
+   db.transaction(function(transaction){
+         transaction.executeSql('create table books (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,name TEXT not null,price INTEGER not null)');
+   });
+   document.getElementById('save').onclick=function(){
+       var name=document.getElementById('name').value,
+               price=document.getElementById('price').value;
+      db.transaction(function(transaction){
+          transaction.executeSql('insert into books (name,price) values (?,?)',[name,Number(price)]);
+      },function(){
+          alert('fail')
+      },function(e){ show();})
+   }
+    document.getElementById('delete').onclick=function(){
+        var name=document.getElementById('name').value;
+        db.transaction(function(transaction){
+            transaction.executeSql('delete from books where name=?',[name]);
+        },function(){
+            alert('fail')
+        },function(e){ show();})
+    }
+    show();
+    function show(){
+        var list=document.getElementById('list');
+        var s=[];
+        var str;
+        db.transaction(function(transaction){
+            transaction.executeSql('select name,price from books',null,function(transaction,result){
+              if(result.rows.length>0){
+                  for(var i=0;i<result.rows.length;i++){
+                      var row=result.rows[i];
+                      s.push('<li>'+row.name+'---'+row.price+"</li>");
+                  }
+                  list.innerHTML= s.join("");
+              }
+            });
+        });
+    }
+</script>
+</body>
+</html>

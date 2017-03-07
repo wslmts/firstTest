@@ -1,33 +1,34 @@
 <!doctype html>
 <html>
 <head>
-    <title>½ÓÊÕµ½ÏûÏ¢²¢×÷³ö·´À¡µÄÍøÕ¾</title>
-	<script type="text/javascript">
-		window.onload = function(){
-			//°ó¶¨±¾»úµÄÏûÏ¢¼àÌıÊÂ¼ş
-			window.addEventListener("message", GetMsg, true);
-		}
-		//¶¨ÒåÒ»¸öÔÚmessageÊÂ¼ş´¥·¢Ê±µÄ´¦Àí³ÌĞò
-		var GetMsg = function(e) {
-			//ÅĞ¶ÏÊÇ·ñÀ´×ÔÖ¸¶¨µÄÓòÃû£¬Í¨¹ıswitchº¯Êı£¬¿ÉÒÔ¶Ô²»Í¬µÄÍøÕ¾×÷³ö²»Í¬µÄ·´À¡¡£
-			switch (e.origin){
+    <title>æ¥æ”¶åˆ°æ¶ˆæ¯å¹¶ä½œå‡ºåé¦ˆçš„ç½‘ç«™</title>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+        window.onload = function(){
+            //ç»‘å®šæœ¬æœºçš„æ¶ˆæ¯ç›‘å¬äº‹ä»¶
+            window.addEventListener("message", GetMsg, true);
+        }
+        //å®šä¹‰ä¸€ä¸ªåœ¨messageäº‹ä»¶è§¦å‘æ—¶çš„å¤„ç†ç¨‹åº
+        var GetMsg = function(e) {
+            //åˆ¤æ–­æ˜¯å¦æ¥è‡ªæŒ‡å®šçš„åŸŸåï¼Œé€šè¿‡switchå‡½æ•°ï¼Œå¯ä»¥å¯¹ä¸åŒçš„ç½‘ç«™ä½œå‡ºä¸åŒçš„åé¦ˆã€‚
+            switch (e.origin){
                 case "http://localhost:63342":
-					document.getElementById('recive_display').innerHTML="À´×Ô£º127.0.0.1µÄĞÅÏ¢£º"+e.data;
-					//ÏòÔ´¶Ë»Ø´«
-                    e.source.postMessage("ÒòÎªÄãÊÇ±¾»ú³ÌĞòÊÔÑéµÄ£¬ËùÒÔÎÒÏòÄã»ØÀ¡Õâ¸öĞÅÏ¢", e.origin);
-					break;
-				case "http://www.mhtml5.com" :
-					document.getElementById('recive_display').innerHTML="À´×Ô£º127.0.0.1µÄĞÅÏ¢£º"+e.data;
-					window.top.postMessage("ÄãÊÇ¡¾HTML5ÑĞ¾¿Ğ¡×é¡¿£¬ËùÒÔÎÒÏòÄã»ØÀ¡¡¾HTML5ÑĞ¾¿Ğ¡×éÄãºÃ£¡¡¿", "http://127.0.0.1:63342/firstTest/Communication_API/PostMessage_API_DEMO_A.html");
-					break;
-				default:
-					break;
-			
-			}
-		};
-	</script>
+                    document.getElementById('recive_display').innerHTML="æ¥è‡ªï¼š127.0.0.1çš„ä¿¡æ¯ï¼š"+e.data;
+                    //å‘æºç«¯å›ä¼ 
+                    e.source.postMessage("å› ä¸ºä½ æ˜¯æœ¬æœºç¨‹åºè¯•éªŒçš„ï¼Œæ‰€ä»¥æˆ‘å‘ä½ å›é¦ˆè¿™ä¸ªä¿¡æ¯", e.origin);
+                    break;
+                case "http://www.mhtml5.com" :
+                    document.getElementById('recive_display').innerHTML="æ¥è‡ªï¼š127.0.0.1çš„ä¿¡æ¯ï¼š"+e.data;
+                    window.top.postMessage("ä½ æ˜¯ã€HTML5ç ”ç©¶å°ç»„ã€‘ï¼Œæ‰€ä»¥æˆ‘å‘ä½ å›é¦ˆã€HTML5ç ”ç©¶å°ç»„ä½ å¥½ï¼ã€‘", "http://127.0.0.1:63342/firstTest/Communication_API/PostMessage_API_DEMO_A.html");
+                    break;
+                default:
+                    break;
+
+            }
+        };
+    </script>
 </head>
 <body>
-	<div id="recive_display" style="width:500px;height:100px;border:1px #ff0000 solid;"></div>
+<div id="recive_display" style="width:500px;height:100px;border:1px #ff0000 solid;"></div>
 </body>
 </html>

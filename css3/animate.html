@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        @keyframes panoramic {
+            to { background-position: 100% 0; }
+        }
+
+        .panoramic {
+            width: 150px; height: 150px;
+            background: url('bg.jpg');
+            background-size: auto 100%;
+            animation: panoramic 10s linear infinite alternate;
+            animation-play-state: paused;
+        }
+
+        .panoramic:hover, .panoramic:focus {
+            animation-play-state: running;
+        }
+    </style>
+    <style>
+        /**
+ * Animation along a circular path - Solution 1
+ */
+
+        @keyframes spin {
+            to { transform: rotate(1turn); }
+        }
+
+        .avatar {
+            animation: spin 3s infinite linear;
+            transform-origin: 50% 150px;
+        }
+
+        .avatar > img {
+            animation: inherit;
+            animation-direction: reverse;
+        }
+
+        /* Anything below this is just styling */
+
+        .avatar {
+            width: 50px;
+            margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .avatar > img {
+            display: block;
+            width: inherit;
+        }
+
+        .path {
+            width: 300px; height: 300px;
+            padding: 20px;
+            border-radius: 50%;
+            background: #fb3;
+        }
+        .avatar:hover{
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body>
+<div class="panoramic"></div>
+<div class="path">
+    <div class="avatar">
+        <img src="http://lea.verou.me/book/adamcatlace.jpg" />
+    </div>
+</div>
+</body>
+</html>

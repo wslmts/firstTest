@@ -1,0 +1,6 @@
+div{
+    border: 1px solid green;
+    background-color: rgba(255,0,0,0.5);
+    border-top-left-radius: 10px 30px ;
+    border-top-right-radius: 10px 30px ;
+}

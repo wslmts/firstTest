@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<canvas id="mySmile2" height="300" width="300"></canvas>
+<script>
+    var drawStack = function(){
+        switch(window.history.state)
+        {
+            case 'leftEye':
+                makeLeftEye();
+                break;
+            case 'rightEye':
+                makeRightEye();
+                break;
+            case 'mouth':
+            makeMouth();
+            break;
+            case 'face':
+                makeFace();
+                break;
+            default: break
+        }
+    };
+    var mySmile = document.getElementById('mySmile2')
+    var smileCtx = mySmile.getContext('2d');
+    var makeFace = function(){
+        smileCtx.beginPath();
+        smileCtx.fillStyle = '#F1F42E';
+        smileCtx.arc(100,100,99,0,Math.PI*2); // head
+        smileCtx.stroke();
+        smileCtx.fill();
+    };
+    var makeMouth = function(){
+        smileCtx.beginPath();
+        smileCtx.moveTo(170,100);
+        smileCtx.arc(100,100,70,0,Math.PI); // Mouth
+        smileCtx.stroke();
+    };
+    var makeLeftEye = function(){
+        smileCtx.beginPath();
+        smileCtx.fillStyle = 'black';
+        smileCtx.moveTo(60, 65);
+        smileCtx.arc(60,65,12,0,Math.PI*2); // Left eye
+        smileCtx.fill();
+    };
+    var makeRightEye = function (){
+        smileCtx.beginPath();
+        smileCtx.fillStyle = 'black';
+        smileCtx.moveTo(140,65);
+        smileCtx.arc(140,65,12,0,Math.PI*2); // Right eye
+        smileCtx.fill();
+    };
+    window.history.pushState('leftEye', 'makeLeftEye');
+    window.history.pushState('rightEye', 'makeRightEye');
+    window.history.pushState('mouth', 'makeMouth');
+    window.history.pushState('face', 'makeface');
+    window.history.pushState('ready', 'letsgo');
+    window.addEventListener("popstate", drawStack, false);
+</script>
+</body>
+</html>

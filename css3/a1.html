@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=7">
+    <title></title>
+    <style>
+        #c1{
+            background-color: #f00;
+        }
+        #c2{
+            background-color: #0f0;
+            font-size: 20px;
+        }
+       /* .abc~li{
+            color:#f00;
+        }*/
+       /* li:nth-child(1){
+            color:#0f0;
+        }*/
+      /* li:first-child{
+            color:#0f0;
+        }*/
+        .abc{
+            color: #f00;
+        }
+
+        [class~='abc']{
+            color: #0f0;
+        }
+        body{
+            counter-reset: c1;
+        }
+        ul li:before{
+            content:counter(c1,lower-alpha) " hi ";
+            counter-increment: c1 2;
+        }
+        :first-child{
+            background: #ff0;
+        }
+        p{
+            border: 1px solid #f00;
+            border-top-left-radius: 30px 10px;
+        }
+    </style>
+</head>
+<body>
+<table border=" 1px solid ">
+    <colgroup id="c1" span="3"></colgroup>
+    <colgroup id="c2" span="3"></colgroup>
+  <tr>
+      <td>111</td><td>222</td><td>333</td><td>444</td><td>555</td>
+  </tr>
+    <tr>
+        <td colspan="4">111</td><td>222</td>
+    </tr>
+    <tr>
+        <td>111</td><td>222</td><td>333</td><td>444</td><td>555</td>
+    </tr>
+</table>
+<bdo dir="rtl">this is bdo 中国</bdo>
+<p dir="rtl">this is p 中国</p>
+<span dir="rtl">this is span 中国</span>
+<ul dir="rtl">
+    <li >this is liaa</li>
+    <li dir="rtl">this is li</li>
+</ul>
+<bdi>2 this is bdi 2 中国</bdi>
+<ins>insert</ins>
+<del>delete</del>
+<time datetime="2015-10-10">2015-10-10</time>
+<ol class="ol" start="2" type="i" reversed >
+    <li class="abc">111</li>
+    <li>222</li>
+    <li>333</li>
+    <li>444</li>
+    <li>555</li>
+</ol>
+<dl>
+    <dt>title</dt>
+    <dd>this is content</dd>
+</dl>
+<address>aaa</address>
+<nav>
+   <ol>
+       <li>111</li>
+       <li>222</li>
+   </ol>
+</nav>
+</body>
+</html>
