@@ -11,12 +11,22 @@
  </head>
  <body>
  <ul id="list"></ul>
- <input type="text" id="txt">
  <input id="add" type="button" value="add">
+ <ul id="list1"></ul>
+ <input type="text" id="txt" value="111">
+ <input id="add1" type="button" value="add1">
 <script>
-    var view=new View(document.getElementById('list'));
+    var view=new View(document.getElementById('list'),{
+        addbtn:document.getElementById('add')
+    });
     var c=new Controller(view);
     c.event();
+
+    var v=new View(document.getElementById('list1'),{
+        addbtn:document.getElementById('add1')
+    });
+    var c1=new Controller(v);
+    c1.event();
 </script>
 
  </body>
