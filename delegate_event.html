@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+  <!--  <script src="jquery.js"></script>-->
+</head>
+<input type="button" value="add" id="add">
+<ul>
+
+</ul>
+<script>
+/*    $(function(){
+       /!* $('li').on('click',function(e){
+            console.log(e)
+        })*!/
+      /!*  $('ul').on('click','li',function(e){
+            console.log(e)
+        })*!/
+
+    })*/
+//console.profile("Processing")
+document.getElementById('add').onclick=function clickenthod(){
+    var str='';
+    for(var i=0;i<100000;i++){
+        str+='<li><a>校招项目</a><i>&gt;</i></li>'
+    }
+    document.querySelector('ul').innerHTML=str;
+    document.querySelectorAll('li').forEach(function eachmethod(li){
+        li.addEventListener('click',function lievent(e){
+            console.log(e)
+        });
+    })
+};
+
+//console.profileEnd();
+</script>
+</body>
+</html>

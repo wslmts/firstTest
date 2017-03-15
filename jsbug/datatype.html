@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+  <script>
+      document.writeln('typeof document.createElement("object") -- ',typeof document.createElement('object'));
+      document.write('<br/>');
+      document.writeln('typeof document.childNodes -- ',typeof document.childNodes);
+      document.write('<br/>');
+      document.writeln('typeof window -- ',typeof window);
+      document.write('<br/>');
+      document.writeln('typeof window.alert -- ',typeof window.alert);
+      var iframe=document.createElement("iframe");
+      document.body.appendChild(iframe);
+     /* var xrarray=window.frames[0].Array;
+      var ay=new xrarray(1,2,3);
+      document.writeln('typeof array in iframe -- ',ay instanceof xrarray);*/
+    //  var ay=new window.frames[0].Array(1,2,3);
+      document.write('<br/>');
+      var ay=new iframe.contentWindow.Array(1,2,3);
+      document.writeln('typeof array in iframe -- ',ay instanceof iframe.contentWindow.Array);
+      document.write('<br/>');
+      document.writeln('window==document -- ',window==document);
+      document.write('<br/>');
+      document.writeln('document==window -- ',document==window);
+  </script>
+</body>
+</html>

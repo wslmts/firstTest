@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+ <script>
+     function repeat(target,n){
+         return (new Array(n+1)).join(target)
+     }
+     function repeat1(target,n){
+         return Array.prototype.join.call({length:n+1},target);
+     }
+     var repeat2=(function(){
+         var join=Array.prototype.join,obj={};
+         return function(target,n){
+             obj.length=n+1;
+             return join.call(obj,target);
+         }
+     })();
+     function repeat3(target,n){
+         //二分法
+        var s=target,total=[];
+        while(n>0){
+            if(n==1) break;
+            if(n%2==1){
+                total[total.length]=s;
+            }
+            s+=s;
+            n=n>>1;//相当于将n除以2取其上，或说开2二次方
+        }
+         return total.join("");
+     }
+     console.time('m')
+     repeat('js',10000000);
+     console.timeEnd('m');
+     //m1 faster than m2
+     console.time('m1')
+     repeat1('js',10000000);
+     console.timeEnd('m1');
+     console.time('m2')
+     repeat2('js',10000000);
+     console.timeEnd('m2')
+     console.time('m3')
+     repeat3('js',10000000);
+     console.timeEnd('m3')
+ </script>
+</body>
+</html>

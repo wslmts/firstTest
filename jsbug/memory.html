@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="refA">
+    <ul>
+        <li><a></a></li>
+        <li><a></a></li>
+        <li><a id="#refB"></a></li>
+    </ul>
+</div>
+<div></div>
+<div></div>
+</body>
+</html>
+
+<script>
+    var refA = document.getElementById('refA');
+    var refB = document.getElementById('refB');//refB引用了refA。它们之间是dom树父节点和子节点的关系。
+    //如果我现在在dom中移除div#refA会怎么样呢？答案是dom内存依然存在，因为它被js引用。
+    document.body.removeChild(refA);
+    //那么我把refA变量置为null呢？答案是内存依然存在了。因为refB对refA存在引用，所以除非在把refB释放，否则dom节点内存会一直存在浏览器中无法被回收掉
+   // refA=null;
+   // refB=null;
+</script>

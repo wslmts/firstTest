@@ -1,0 +1,13 @@
+*{
+    margin:0;
+    padding:0;
+}
+ul{
+    list-style: none;
+    position: absolute;
+    height:100%;
+}
+ul li{
+    display: inline-block;
+    height:100%;
+}

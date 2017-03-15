@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+ <script>
+     function A(){}
+     A.prototype={
+         aa:1
+     };
+     var a=new A();
+     console.log('before ', a.aa);
+     A.prototype={
+         aa:'change'
+     };
+     console.log('after ', a.aa);
+
+ </script>
+</body>
+</html>

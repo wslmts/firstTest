@@ -69,3 +69,18 @@ var util={
         return b;
     }
 }
+function curry(fn){
+    function inner(length,args){
+        if(length===0){
+            return fn.apply(null,args);
+        }
+        return function(x){
+            return inner(length-1,args.concat(x));
+        }
+    }
+    return inner(fn.length,[]);
+}
+function sum(x,y,z,w){
+    return x+y+z+w;
+}
+curry(sum)(1)(2)(3)(4)

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<canvas id="cvs"></canvas>
+<script>
+    var cvs=document.getElementById('cvs');
+    cvs.width=window.innerWidth;
+    cvs.height=window.innerHeight;
+    var ctx=cvs.getContext('2d');
+    document.addEventListener('touchstart',function(e){
+        e.preventDefault();
+       ctx.moveTo(e.touches[0].pageX,e.touches[0].pageY);
+    }, false);
+    document.addEventListener('touchmove',function(e){
+        e.preventDefault();
+        ctx.lineTo(e.touches[0].pageX,e.touches[0].pageY);
+        ctx.stroke();
+    }, false);
+    document.addEventListener('touchend',function(e){
+        e.preventDefault();
+    }, false);
+</script>
+</body>
+</html>
