@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="inner">Hello</div>
+    <div class="inner">Goodbye</div>
+</div>
+<p>
+<div class="inner">outside</div>
+</p>
+<script>
+  //  $('.inner').wrapAll('<div class="new" />');
+  //$('.inner').wrapInner('<div class="new" />');
+  $('.inner').unwrap();
+</script>
+</body>
+</html>

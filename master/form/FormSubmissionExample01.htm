@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Submission Example</title>
+    <script type="text/javascript" src="../EventUtil.js"></script>
+</head>
+<body>
+    <form method="post" action="javascript:url()" id="myForm">
+        <p>直接调用form.submit()方法不会触发submit事件，但是直接调用form.reset()方法却会触发reset事件；reset是恢复原来加载时候的值，而非简单的清空；
+            调用form.submit()会触发加在action上的脚本（如果是脚本而非url的话），
+            form的action必须是字符串才能跳转，即使是js返回url也不对提交到正确的url;</p>
+        <input type="submit" value="Submit Form">    
+    </form>
+    <p>This button determines if the form can be submitted.</p>
+    <input type="button" value="Block submission" id="myBtn">
+    <p>This button always submits the form.</p>
+    <input type="button" value="Force Submit Form" id="myForceBtn">
+    <input type="button" value="Reset Form via JavaScript" id="myForceBtn1">
+    <script type="text/javascript">
+        function url(){return 'http://www.dajie.com'}
+        (function(){
+            function handleSubmitEvent(event){
+                event = EventUtil.getEvent(event);
+                EventUtil.preventDefault(event);                
+            }
+            
+            var btn = document.getElementById("myBtn");
+            EventUtil.addHandler(btn, "click", function(event){
+                event = EventUtil.getEvent(event);
+                var target = EventUtil.getTarget(event);
+                
+                var form = document.getElementById("myForm");
+                if (target.value == "Block submission"){
+                    EventUtil.addHandler(form, "submit", handleSubmitEvent);
+                    target.value = "Allow submission";
+                } else {
+                    EventUtil.removeHandler(form, "submit", handleSubmitEvent);
+                    target.value = "Block submission";
+                }
+            });
+            
+            var forceBtn = document.getElementById("myForceBtn");
+            EventUtil.addHandler(forceBtn, "click", function(event){
+                var form = document.getElementById("myForm");
+                form.submit();
+            });
+            var form1 = document.getElementById("myForm");
+            EventUtil.addHandler(form1, "submit", function(event){
+                alert('submit')
+            });
+
+            var forceBtn1 = document.getElementById("myForceBtn1");
+            EventUtil.addHandler(forceBtn1, "click", function(event){
+                var form = document.getElementById("myForm");
+                form.reset();
+            });
+            var form2 = document.getElementById("myForm");
+            EventUtil.addHandler(form2, "reset", function(event){
+                alert('reset')
+            });
+        })();
+
+    </script>
+</body>
+</html>

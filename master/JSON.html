@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+ <script>
+     var friend={
+         firstName: 'Good',
+         'lastName': 'Man',
+         'address': undefined,
+         'phone': ["1234567",undefined],
+         'fullName': function(){
+             return this.firstName + ' ' + this.lastName;
+         }
+     };
+     JSON.stringify(friend);//"{"firstName":"Good","lastName":"Man","phone":["1234567",null]}"
+
+     var friend={
+         "firstName": "Good",
+         "lastName": "Man",
+         "phone":"1234567",
+         "age":18
+     };
+
+     var friendAfter=JSON.stringify(friend,function(key,value){
+         if(key==="phone")
+             return "(000)"+value;
+         else if(typeof value === "number")
+             return value + 10;
+         else
+             return value; //如果你把这个else分句删除，那么结果会是undefined
+     });
+
+     console.log(friendAfter);
+   //  {"firstName":"Good","lastName":"Man","phone":"(000)1234567","age":28}
+     var friend={
+         "firstName": "Good",
+         "lastName": "Man",
+         "phone":"1234567",
+         "age":18
+     };
+     //注意下面的数组有一个值并不是上面对象的任何一个属性名
+     var friendAfter=JSON.stringify(friend,["firstName","address","phone"]);
+     console.log(friendAfter);//{"firstName":"Good","phone":"1234567"}
+ </script>
+</body>
+</html>

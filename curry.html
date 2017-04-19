@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
+<head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Title</title>
+    <style>
+        div{width:50px; height:50px; background:yellow;}
+        .act{width:100px;transition:width 0.5s;}
+    </style>
 </head>
 <body>
+<div class="act"></div>
+<button>click me</button>
 <script>
-    function add(p1,p2,p3){
-       this.s=p1+p2+p3;
+    var btn = document.querySelector('button');
+    var div = document.querySelector('div');
+
+    btn.onclick = function(){
+        div.className = '';
+        setTimeout(function(){
+            div.className = 'act';
+        }, 0)
     }
-    var obj1=add.bind(null,'a');
-    var obj2=new obj1('b');
-    console.log(obj2.s);
 </script>
 </body>
 </html>

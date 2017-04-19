@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title></title>
+    <style>
+        header, footer, main {
+            display: block;
+        }
+
+        header {
+            position: fixed;
+            height: 50px;
+            left: 0;
+            right: 0;
+            top: 0;
+        }
+
+        footer {
+            position: fixed;
+            height: 34px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:green;
+        }
+
+        main {
+            /* main绝对定位，进行内部滚动 */
+            position: absolute;
+            top: 50px;
+            bottom: 34px;
+            /* 使之可以滚动 */
+            overflow-y: scroll;
+            /* 增加该属性，可以增加弹性 */
+            -webkit-overflow-scrolling: touch;
+        }
+
+        main .content {
+            height: 2000px;
+        }
+    </style>
+</head>
+<body class="layout-scroll-fixed">
+<!-- fixed定位的头部 -->
+<header>
+
+</header>
+
+<!-- 可以滚动的区域 -->
+<main>
+    <div class="content">
+        <p>111</p><p>111</p><p>111</p><p>111</p>
+        <p>111</p><p>111</p><p>111</p><p>111</p><p>111</p>
+        <p>111</p><p>111</p><p>111</p><p>111</p><p>111</p><p>111</p>
+        <p>111</p><p>111</p><p>111</p><p>111</p><p>111</p>
+        <p>111</p><p>111</p><p>111</p><p>111</p><p>111</p><p>111</p>
+        <p>111</p><p>111</p><p>111</p><p>111</p><p>111</p><p>111</p><p>111</p><p>111</p>
+    </div>
+</main>
+
+<!-- fixed定位的底部 -->
+<footer>
+    <input type="text" placeholder="Footer..."/>
+    <button class="submit">提交</button>
+</footer>
+</body>
+
+</html>

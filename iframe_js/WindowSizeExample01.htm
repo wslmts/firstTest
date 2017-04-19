@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Window Size Example</title>
+	<style>
+       html,body{
+	     width:1900px;
+		 height:1000px;
+	   }
+	</style>
+</head>
+<body>
+    <pre> body{
+	     width:1900px;
+		 height:1000px;
+	   }
+    对于设置了高度的body元素，document.body.clientWidth是实际的页面大小；document.documentElement.clientWidth;是浏览器窗口大小，与window.innerWidth的差别是减去了滚动条的宽度；
+        window.innerWidth=document.documentElement.clientWidth+滚动条宽度；
+    </pre>
+    <script type="text/javascript">
+
+        var pageWidth = window.innerWidth,
+            pageHeight = window.innerHeight;
+            
+        if (typeof pageWidth != "number"){
+            if (document.compatMode == "CSS1Compat"){alert('bz')
+                pageWidth = document.documentElement.clientWidth;
+                pageHeight = document.documentElement.clientHeight;
+            } else {alert('gy')
+                pageWidth = document.body.clientWidth;
+                pageHeight = document.body.clientHeight;
+            }
+        }
+
+        document.write("window Width: " + pageWidth); document.write("<br/>");
+        document.write("window Height: " + pageHeight);
+        document.write("<br/>");
+        document.write("document.documentElement.clientWidth: " + document.documentElement.clientWidth); document.write("<br/>");
+        document.write("document.documentElement.clientHeight: " + document.documentElement.clientHeight);
+        document.write("<br/>");
+        document.write("document.body.clientWidth: " + document.body.clientWidth); document.write("<br/>");
+        document.write("document.body.clientHeight: " + document.body.clientHeight);
+    </script>
+</body>
+</html>

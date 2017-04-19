@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+  <input id="bt" type="button" value="click" autofocus>
+  <a id="link" href="http://www.dajie.com" target="_blank">js trigger</a>
+<script>
+    var bt=document.getElementById('bt');
+    bt.focus();
+    var a=document.getElementById('link');
+    bt.onclick=function(e){
+        console.log(e.detail)
+        a.click();
+    }
+    a.onmousedown=function(e){
+        e.preventDefault();
+        console.dir(e)
+        console.log('down')
+    }
+    a.onmouseup=function(e){
+        console.dir(e)
+        console.log('up')
+    }
+    document.addEventListener('mousewheel',function(e){
+        console.dir(e);console.log(e)
+    },false);
+</script>
+  <form method="post">
+      <input type="text" name="username" value="enter username">
+      <input type="button" value="Echo Username" onclick="alert(username.value)">
+  </form>
+  这个动态创建的函数能自动扩展作用域，在这个函数内部可以向访问局部变量一样访问document和form及元素本身成员，这个函数使用with向下面这样扩展作用域；
+function(){with(document){with(this.form){with(this){  }}}}
+</body>
+</html>

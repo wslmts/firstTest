@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contains Example 2</title>
+    <meta charset="utf-8"/>
+
+</head>
+<body>
+<input type="button" value="Does html contain body?" onclick="getContains()">
+<div id="ddd">
+<div id="aaa">
+    <p id="bbb">
+        <input type="button" value="Does html contain body?" onclick="getContains1(this)">
+    </p>
+</div>
+    <p id="eee">
+        <input type="button" value="Does html contain body?" onclick="getContains1(this)">
+    </p>
+</div>
+<div id="ccc">
+    a.compareDocumentPosition(b): 可以用&16做掩码,判断是否包含
+</div>
+<input type="button" value="compareDocumentPosition--h5?" onclick="getContains2()">
+
+<script type="text/javascript">
+    function getContains(){
+        alert(document.documentElement.contains(document.body)); //true
+
+    }
+    function getContains1(e){
+        var a=document.getElementById('aaa')
+        alert(a.contains(e)); //true
+
+    }
+    function getContains2(e){
+        var a=document.getElementById('aaa');
+        var b=document.getElementById('bbb');
+        var c=document.getElementById('ccc');
+        var d=document.getElementById('ddd');
+        var e=document.getElementById('eee');
+        console.log('包含',a.compareDocumentPosition(b)&16);
+        console.log('无关',a.compareDocumentPosition(c)&16);
+        console.log('被包含',a.compareDocumentPosition(d));
+        console.log('a在b前',a.compareDocumentPosition(e));
+        console.log('a在b后',e.compareDocumentPosition(a));
+    }
+</script>
+
+</body>
+</html>

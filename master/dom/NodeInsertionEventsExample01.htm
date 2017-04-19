@@ -1,0 +1,71 @@
+<!doctype html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Node Insertion Events Example</title>
+    <script type="text/javascript" src="EventUtil.js"></script>
+</head>
+<body>
+    <ul id="myList">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <p>This example shows the use of mutation events. Not all browsers support this. Safari 3 is known to support mutation events.</p>
+    <script type="text/javascript">
+        EventUtil.addHandler(window, "load", function(event){
+            var list = document.getElementById("myList");
+            var item = document.createElement("li");
+            item.appendChild(document.createTextNode("Item 4"));
+            
+            EventUtil.addHandler(document, "DOMSubtreeModified", function(event){
+                console.log( "DOMSubtreeModified",event)
+               /* alert(event.type);
+                alert(event.target);*/
+            });
+            EventUtil.addHandler(document, "DOMNodeInserted", function(event){
+                console.log( "DOMNodeInserted",event)
+                /*alert(event.type);
+                alert(event.target);
+                alert(event.relatedNode);*/
+            });
+            EventUtil.addHandler(item, "DOMNodeInsertedIntoDocument", function(event){
+                console.log( "DOMNodeInsertedIntoDocument",event)
+               /* alert(event.type);
+                alert(event.target);*/
+            });            
+            
+            EventUtil.addHandler(item.firstChild, "DOMNodeInsertedIntoDocument", function(event){
+                console.log( "DOMNodeInsertedIntoDocument",event)
+                /*alert(event.type);
+                alert(event.target);*/
+            });            
+            
+            list.appendChild(item);
+        });
+
+    </script>
+    <div id="myDiv">Hello world!</div>
+    <a href="PageShowEventExample01.htm">aaaa</a>
+    <p>This example shows the use of mutation events. Not all browsers support this. Safari 3 is known to support mutation events.</p>
+    <script type="text/javascript">
+        EventUtil.addHandler(window, "load", function(event){
+            var div = document.getElementById("myDiv");
+
+            EventUtil.addHandler(document, "DOMSubtreeModified", function(event){
+                alert(event.type);
+                alert(event.target);
+            });
+            EventUtil.addHandler(document, "DOMCharacterDataModified", function(event){
+                alert(event.type);
+                alert(event.target);
+                alert(event.prevValue);
+                alert(event.newValue);
+            });
+
+            div.firstChild.nodeValue = "Some new text";
+        });
+
+    </script>
+</body>
+</html>

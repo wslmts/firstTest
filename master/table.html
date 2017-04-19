@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+     <style>
+         table{
+             border-collapse: collapse;
+         }
+     </style>
+  <title>Document</title>
+ </head>
+ <body>
+ <h1>table</h1>
+   <script>
+       var table=document.createElement('table');
+       table.border="1px";
+      // console.time('a')
+       for(var i=0;i<5;i++){
+           table.insertRow(i);
+           for(var j=0;j<10;j++){
+               table.rows[i].insertCell(j);
+               table.rows[i].cells[j].appendChild(document.createTextNode('<span>'+i+'--'+j+'</span>'));
+           }
+       }
+   //    console.timeEnd('a');
+       document.body.appendChild(table);
+   </script>
+ </body>
+</html>

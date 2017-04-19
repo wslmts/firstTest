@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+ <script>
+     var v1=document.createElement('div');
+     v1.setAttribute('class','red');
+     var v2=document.createElement('div');
+     v2.setAttribute('class','red');
+
+     console.log('equal ',v1.isEqualNode(v2))
+     console.log('same ',v1.isSameNode(v2))
+     v1.setAttribute('class','green');
+     console.log('equal ',v1.isEqualNode(v2))
+
+ </script>
+</body>
+</html>

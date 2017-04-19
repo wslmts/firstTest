@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            border: 1px solid;
+        }
+        #l1{
+            width:300px;
+            height:300px;
+            color:red;
+        }
+        #l2{
+            width:200px;
+            height:200px;
+            color:green;
+        }
+        #l3{
+            width:100px;
+            height:100px;
+            color:blue;
+        }
+    </style>
+    <script src="../../jquery.js"></script>
+</head>
+<body>
+  <input id="bt" type="button" value="click">
+
+  <a id="link" href="http://www.dajie.com" target="_blank">js trigger</a>
+<script>
+    var bt=document.getElementById('bt');
+    var a=document.getElementById('link');
+    var b,c;
+    bt.onclick=function(e){
+        b=e;
+        a.click();
+    }
+    $("#bt").click(function(e){
+        c=e;
+      $("#link").trigger('hh')
+    });
+    console.log(b===c);
+    $("#link").on('hh',function(){
+        alert(3)
+    })
+    a.addEventListener('hh',function(){
+       alert(2)
+    },false);
+    function show(e){
+        console.log(e)
+    }
+</script>
+
+<div id="l1" onclick="show(this.id)">
+    <div id="l2" onclick="show(this.id)">
+        <div id="l3" onclick="show(this.id)">
+
+        </div>
+    </div>
+</div>
+<script>
+    var l1=document.getElementById('l1');
+    var l2=document.getElementById('l2');
+    var l3=document.getElementById('l3');
+
+    l1.onclick=function(){
+        console.log('l1-script')
+    }
+    l2.onclick=function(){
+        console.log('l2-script')
+    }
+    l3.onclick=function(){
+        console.log('l3-script')
+    }
+    l1.addEventListener('click',function(e){
+       console.log('l1-bubble'+ e.eventPhase)
+    },false);
+    l1.addEventListener('click',function(e){
+        console.log('l1-capture'+ e.eventPhase)
+    },true);
+    l2.addEventListener('click',function(){
+        console.log('l2-bubble')
+    },false);
+    l2.addEventListener('click',function(){
+        console.log('l2-capture')
+    },true)
+    l3.addEventListener('click',function(e){
+       // e.stopPropagation();
+        console.log('l3-bubble-'+ e.eventPhase)
+    },false);
+    l3.addEventListener('click',function(e){
+        //e.stopPropagation();
+        console.log('l3-capture-'+ e.eventPhase)
+    },true);
+    document.addEventListener('click',function(){
+        console.log('document-bubble')
+    },false);
+    document.addEventListener('click',function(){
+        console.log('document-capture')
+    },true);
+    document.defaultView.addEventListener('click',function(){
+        console.log('window-bubble')
+    },false);
+    document.defaultView.addEventListener('click',function(){
+        console.log('window-capture')
+    },true);
+    document.documentElement.addEventListener('click',function(){
+        console.log('html-bubble')
+    },false);
+    document.documentElement.addEventListener('click',function(){
+        console.log('html-capture')
+    },true);
+</script>
+</body>
+</html>

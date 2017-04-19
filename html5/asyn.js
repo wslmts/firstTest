@@ -1,4 +1,5 @@
-alert('defer outer file');
+alert('async outerfile')
+
 /*!
  * jQuery JavaScript Library v1.7.1
  * http://jquery.com/

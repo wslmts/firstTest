@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+  <script>
+   /* var a=  [2,3,6].forEach(function(v,i,a){
+          console.log(v,'-',i,'-',a);
+          return v%2===0;
+      });
+      console.log(a);*/
+   /*var a=  [2,3,6].filter(function(v,i,a){
+        return v>2;
+   });
+   console.log(a);*/
+   var a=  [2,3,6].reduce(function(pre,cur,cindex,a){
+       console.log(pre,'-',cur,'-',cindex,'-',a);
+       return pre+cur;
+   });
+   console.log(a);
+      var s='_x_x';
+      var p=/x/;
+
+  </script>
+</body>
+</html>

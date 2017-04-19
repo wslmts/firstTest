@@ -39,7 +39,9 @@
             }
         });
         console.log(b.name,b.file);
+        console.log(Object.getOwnPropertyDescriptor(a,'name'));
         console.log(Object.getOwnPropertyDescriptor(b,'name'));
+        console.log(Object.getOwnPropertyDescriptor(b,'path'));
         console.log(Object.keys(b));
         console.log(Object.getOwnPropertyNames(b));
 

@@ -6,10 +6,10 @@
 </head>
 <body>
 <h1>111</h1>
-<script type="text/javascript" defer src="a.js"></script>
-<script src="error.js" defer></script>
+<script type="text/javascript" async src="asyn.js"></script>
+<script src="error.js" async></script>
  <script type="text/javascript" defer>
-     alert('defer in script tag')
+     alert('async in script tag')
  </script>
  <script  type="text/javascript">
    throw  new Error('wrong');
@@ -21,6 +21,16 @@
     window.onload=function(){
         alert('onload')
     }
+
+     function setname(obj){
+         obj.name='aaa';
+         obj={};
+         obj.name='bbb';
+     }
+     var p={};
+     setname(p);
+     console.log(p.name);
+     console.log(obj)
  </script>
 <h2>222</h2>
 </body>
