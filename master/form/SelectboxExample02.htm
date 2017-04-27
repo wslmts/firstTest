@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Selectbox Example</title>
+    <script type="text/javascript" src="../EventUtil.js"></script>
+</head>
+<body>
+    
+    <form method="post" action="javascript:alert('Form submitted!')" id="myForm">            
+        <div>
+            <label for="selLocation">Where do you want to live?</label>
+            <select name="location" id="selLocation">
+                <option value="Sunnyvale, CA">Sunnyvale</option>
+                <option value="Los Angeles, CA">Los Angeles</option>
+                <option value="Mountain View, CA">Mountain View</option>
+                <option value="">China</option>
+                <option>Australia</option>
+            </select>
+        </div>
+        <div>
+            <input type="button" value="Select first option" id="btnFirst">
+            <input type="button" value="Select second option" id="btnSecond">
+            <input type="button" value="Get selected option" id="btnSelected">
+            <input type="button" value="Add using DOM" id="btnAdd1">
+            <input type="button" value="Add using Option" id="btnAdd2">
+        </div>
+    </form>     
+    <script type="text/javascript">
+        (function(){
+
+            var btn1 = document.getElementById("btnFirst");
+            var btn2 = document.getElementById("btnSecond");
+            var btn3 = document.getElementById("btnSelected");
+            var selectbox = document.getElementById("selLocation");
+
+            EventUtil.addHandler(btn1, "click", function(event){
+                selectbox.selectedIndex = 0;
+            });
+            EventUtil.addHandler(btn2, "click", function(event){
+                selectbox.options[1].selected = true;
+            });
+            EventUtil.addHandler(btn3, "click", function(event){
+                var selIndex = selectbox.selectedIndex;
+                var selOption = selectbox.options[selIndex];
+                alert("Selected index: " + selectbox.selectedIndex + "\nSelected text: " + selOption.text + "\nSelected value: " + selOption.value);
+            });
+            var btn11 = document.getElementById("btnFirst");
+            var btn12 = document.getElementById("btnSecond");
+            EventUtil.addHandler(btn11, "click", function(event){
+                var selectbox = document.getElementById("selLocation");
+                var textTextbox = document.getElementById("txtText");
+                var valueTextbox = document.getElementById("txtValue");
+                console.time('dom')
+                for(var i=0;i<100;i++){
+                    var newOption = document.createElement("option");
+                    newOption.appendChild(document.createTextNode(textTextbox.value));
+                    newOption.setAttribute("value", valueTextbox.value);
+                    selectbox.appendChild(newOption);
+                }
+                console.timeEnd('dom')
+            });
+
+            EventUtil.addHandler(btn12, "click", function(event){
+                var selectbox = document.getElementById("selLocation");
+                var textTextbox = document.getElementById("txtText");
+                var valueTextbox = document.getElementById("txtValue");
+                console.time('option')
+                for(var i=0;i<100;i++){
+                    var newOption = new Option(textTextbox.value, valueTextbox.value);
+
+                    selectbox.appendChild(newOption);
+                }
+
+                console.timeEnd('option')
+                console.time('option1')
+                for(var i=0;i<100;i++){
+                    var newOption = new Option(textTextbox.value, valueTextbox.value);
+                    selectbox.add(newOption, undefined);//arg[1]是位于新选项后的选项ie 要是加在最后，arg[1]可以不写，但是标准浏览器要设为null;兼容
+                }
+
+                console.timeEnd('option1')
+            });
+        })();
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cross-Browser CORS Request Example</title>
+</head>
+<body>
+    <p>This example must be run on a server to work properly and will only work in browsers supporting CORS.</p>
+    <script>
+    
+        function createCORSRequest(method, url){
+            var xhr = new XMLHttpRequest();
+            if ("withCredentials" in xhr){
+                xhr.open(method, url, true);
+            } else if (typeof XDomainRequest != "undefined"){
+                xhr = new XDomainRequest();
+                xhr.open(method, url);
+            } else {
+                xhr = null;
+            }
+            return xhr;
+        }
+        document.cookie='name=ws;expires='+new Date('2017-04-28').toGMTString();
+        var request = createCORSRequest("get", "http://local.com.ui/Ch21/xdr.php");
+        if (request){
+            request.onload = function(r){
+               console.log(r)
+            };
+            request.send();
+
+        }
+ 
+
+    </script>
+</body>
+</html>
