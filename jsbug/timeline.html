@@ -40,6 +40,12 @@
     }
     document.getElementById('btn').addEventListener('click', x);
 
+    function a(a,b){
+        console.log(arguments.length);
+        arguments[2]='c';
+        console.log(arguments.length,'---',arguments);
+    }
+    a(1,2)
 </script>
 </body>
 </html>

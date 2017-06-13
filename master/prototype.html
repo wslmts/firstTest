@@ -17,6 +17,39 @@
      };
      console.log('after ', a.aa);
 
+     var Animal={
+         food:'meat',
+         eat:function(){
+             console.log('eat '+this.food)
+         }
+     };
+     function Cat(food){
+         this.food=food;
+         /*this.eat=function(){
+             console.log('cat eat '+this.food)
+         };*/
+     }
+     /* Cat.prototype.eat=function(){
+         console.log('cat eat '+this.food)
+      };*/
+     Cat.prototype=Animal;
+     /* Cat.prototype.eat=function(){
+      console.log('cat eat '+this.food)
+      };*/
+     var cat=new Cat('fish');
+     cat.eat();
+     Animal.eat();
+
+     function CloneObj(Animal,food){
+        function Obj(){
+            this.food=food;
+        };
+         Obj.prototype=Animal;
+         return new Obj();
+     }
+     var Horse=CloneObj(Animal,'grass');
+     Horse.eat();
+
  </script>
 </body>
 </html>

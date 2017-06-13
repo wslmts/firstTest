@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="/lib/jquery/jquery.js"></script>
+    <script>
+        var css=[
+            "/css/framework/reset.css",
+            "/css/framework/base.css"
+        ];
+        var js=[
+            "/js/jquery.interactive.js",
+            "/js/startup.js"
+        ];
+        var img=[
+            "/up/loginNew/i/tbg.png",
+            "/up/loginNew/i/icon.png"
+        ];
+        function loadcss(cssarray){
+          if(cssarray.length>0){
+              cssarray.forEach(function(v){
+               var link=document.createElement('link');
+                  link.rel='stylesheet';
+                  link.href=v;
+                  document.getElementsByTagName('head')[0].appendChild(link);
+              });
+          }
+        }
+        function loadJs(jsarray){
+            if(jsarray.length>0){
+                jsarray.forEach(function(v){
+                    var script=document.createElement('script');
+                    script.src=v;
+                    document.getElementsByTagName('head')[0].appendChild(script);
+                });
+            }
+        }
+        function loadImg(imgs){
+            if(imgs.length>0){
+                imgs.forEach(function(v){
+                   // var img=document.createElement('img');
+                    var img=new Image();
+                    img.src=v;
+                    document.body.appendChild(img);
+                });
+            }
+        }
+        loadcss(css);
+        loadJs(js);
+
+    </script>
+</head>
+<body>
+
+<script>
+    loadImg(img);
+</script>
+</body>
+</html>

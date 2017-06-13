@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="outer.js"></script>
+</head>
+<body>
+
+<script>
+
+    throw new Error("SHOW ME");
+   // 页面中可能有好几个 script 标签，但是 window.onerror 这个错误监听一定要放到最前头！
+</script>
+<script src="test.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        @font-face {
+            font-family: st;
+            src: local(SimSun);
+        }
+        @font-face {
+            font-family: weight;
+            src: local(SimSun);
+            font-weight: 900;
+        }
+        .local{
+            font-family: st;
+            font-weight: 900;
+        }
+        .weight{
+            font-family: weight;
+            font-weight: 100;
+        }
+        @font-face{
+            font-family: italic;
+            src: local(SimSun);
+            font-style: italic;
+        }
+        .italic{
+            font-family: italic;
+
+        }
+    </style>
+</head>
+<body>
+<p class="local">src表示调用字体文件，可以是本地字体文件（IE9+支持），也可以是线上地址（可能有跨域限制）。
+    作用1：字体文件名简写
+    现在很多网站会使用“微软雅黑”字体，但是，“微软雅黑”的名称有点长：</p>
+<p>
+.font {
+font-family: 'Microsoft Yahei';
+}
+小手一抖，说不定就拼错了，还要加引号，还要加空格，好麻烦的勒。此时我们就可以利用@font face规则简化，这样就容易记忆了，书写更快了：
+@font-face {
+font-family: YH;
+src: local("Microsoft Yahei");
+}
+使用的时候直接：
+.font {
+font-family: YH;
+}
+</p>
+<p class="weight">
+在Chrome浏览器下，@font face规则设置font-style:italic可以让文字倾斜，但是这并不是其作用所在。
+@font face规则中的font-style和font-weight类似，都是用来设置对应字体样式或自重下该使用什么字体。</p>
+
+<p class="italic">因为有些字体可能会有专门的斜体字，注意这个斜体字，并不是让文字的形状倾斜，
+而是专门设计的倾斜的字体，很多细节会跟物理上的请求不一样。于是，我在CSS代码中使用font-style:italic的时候，
+就会调用这个对应字体</p>
+</body>
+</html>
