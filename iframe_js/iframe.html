@@ -20,7 +20,7 @@
     });
     var p=document.getElementById('p');
     var s1=document.createElement('h1');
-    s1.innerHTML='sub add';
+    s1.innerHTML='top add to iframe';
     var ifwin=document.getElementById('sb').contentWindow.document;
     s1.onclick=function(){
         alert('parent');
@@ -32,10 +32,7 @@
     p.onclick=function(){
         document.getElementById('sb').contentWindow.document.body.appendChild(s1);
     }
-    $(function(){
-
-    });
-   var obj={
+   /* var obj={
        toString:function(){
            return '123'
        },
@@ -66,7 +63,7 @@
    var a=foo();
     a.then(function(){
         alert('bar');
-    })
+    })*/
 </script>
 </body>
 </html>

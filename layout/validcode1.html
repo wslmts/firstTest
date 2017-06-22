@@ -1,0 +1,53 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #wrap{
+            position:relative;
+            width:280px;
+            height: 160px;;
+            overflow: hidden;
+            margin: auto;
+        }
+
+        #big{
+            width:100%;
+            height:100%;
+        }
+        #small{
+            position: absolute;
+            width:62px;
+            height:62px;
+            top:0;
+            left:0
+        }
+    </style>
+</head>
+<body>
+   <div id="wrap">
+       <img src="big.jpg" id="big">
+       <img src="small.png" id="small" draggable="true">
+   </div>
+   <button type="button" id="bt">validate</button>
+
+<script>
+    var i=1;
+    var small=document.querySelector('#small');
+    var big=document.querySelector('#big');
+    var wrap=document.querySelector('#wrap');
+    small.ondragstart=function(e){
+        console.log(e.offsetX,e.offsetY)
+    }
+    small.ondragend=function(e){
+        console.log(e.offsetX,e.offsetY)
+    }
+    big.ondragover=function(e){
+        e.preventDefault();
+    }
+    big.ondrop=function(e){
+        console.log(e.offsetX,e.offsetY)
+    }
+</script>
+</body>
+</html>

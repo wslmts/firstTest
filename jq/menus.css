@@ -1,0 +1,29 @@
+ul{
+    list-style: none;
+}
+.inline li{
+   display: inline-block;
+}
+.inline li.level1{
+     position:relative;
+     width:150px;
+}
+.inline li .list{
+     display: none;
+    position:absolute;
+    min-width:100px;
+    left:-40px;
+}
+.inline li .list li{
+    width:100%;
+}
+#alphabet{
+    margin-left:40px;
+}
+#alphabet a{
+    margin-right:5px;
+}
+#wrap_school li{
+    display: inline-block;
+    max-width:100px;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,minimum-scale=1.0">
+    <title></title>
+</head>
+<body>
+   <div   id="a1">chrome现在好像不支持直接ontouchXXX事件，必须通过addEventListener</div>
+   <script>
+      window.onload=function(){
+          var origin=[],current=[];
+          document.addEventListener('touchstart',function(e){
+              console.log('start ',e);
+              origin.push(e.targetTouches[0].clientX,e.targetTouches[0].clientY);
+              console.log(e.targetTouches[0]=== e.changedTouches[0])
+          }, false);
+          document.addEventListener('touchmove',function(e){
+              console.log('ontouchmove ',e)
+              current.push(e.targetTouches[0].clientX,e.targetTouches[0].clientY);
+              var newx=current[0]-origin[0];
+              var newy=current[1]-origin[1];
+              if(Math.abs(newy)>Math.abs(newx)){
+                  returnvalue=true;
+                  //y>x;系统默认行为，滚动
+              }else{
+                  returnvalue=false;
+                  console.log('do nothing');
+              }
+              return returnvalue;
+          }, false);
+          document.addEventListener('touchend',function(e){
+              console.log('ontouchend ',e)
+          }, false);
+         /* document.ontouchstart=function(e){
+              console.log('start ',e)
+          }*/
+          /*document.ontouchmove=function(e){
+              console.log('ontouchmove ',e)
+          }
+          document.ontouchend=function(e){
+              console.log('ontouchend ',e)
+          }*/
+          document.onclick=function(e){
+              console.log('onclick ',e);
+          }
+         /* var a1=document.querySelector('#a1');
+          a1.ontouchstart=function(e){
+              console.log('start ',e)
+          }*/
+      }
+   </script>
+</body>
+</html>

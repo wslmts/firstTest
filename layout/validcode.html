@@ -1,0 +1,76 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #wrap{
+            position:relative;
+            width:280px;
+            height: 160px;;
+            overflow: hidden;
+            margin: auto;
+        }
+        #wrap img{
+            width:280px;
+        }
+        .pos{
+          position: absolute;
+          background: #ff9900;
+            width:16px;
+            height:16px;
+        }
+    </style>
+</head>
+<body>
+  <div style="height:600px"></div>
+   <div id="wrap">
+       <img src="a.jpg" id="img1">
+   </div>
+   <button type="button" id="bt">validate</button>
+<script>
+    var i=1;
+    var img=document.querySelector('#img1');
+    var wrap=document.querySelector('#wrap');
+    img.onclick=function(e){
+        add(e.offsetX,e.offsetY)
+        console.log(e.offsetX,e.offsetY)
+    }
+   function add(x,y){
+       var span=document.createElement('span');
+       span.innerHTML=i++;
+       span.style.left=x-4;
+       span.style.top=y-4;
+       span.classList.add('pos');
+       span.dataset.index=span.innerHTML;
+       wrap.appendChild(span);
+   }
+    wrap.addEventListener('click',function(e){
+       if(e.target.classList.contains('pos')){
+           var index=Number(e.target.dataset.index);
+           i--;
+           if(index<i){
+             var spans=document.querySelectorAll('.pos');
+             spans.forEach(function(v){
+                 if(Number(v.dataset.index)>=i){
+                     v.parentNode.removeChild(v)
+                 }
+                 i=index;
+             })
+           }else{
+               e.target.parentNode.removeChild(e.target)
+           }
+       }
+    },false);
+    var bt=document.querySelector('#bt');
+    bt.onclick=function(){
+        var spans=document.querySelectorAll('.pos');
+        var list=[];
+        spans.forEach(function(v){
+          list.push(parseInt(v.style.left)+','+ parseInt(v.style.top))
+        });
+
+        console.log(list.join(';'))
+    }
+</script>
+</body>
+</html>

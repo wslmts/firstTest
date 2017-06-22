@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+  <div id="a1">
+    mousedown,mouseup指向同一像素才会触发click事件？
+      目前的浏览器好像没这个问题
+  </div>
+<script>
+     var a1=document.getElementById('a1');
+    a1.onmousedown=function(){
+        console.log('onmousedown')
+    }
+     a1.onmouseup=function(){
+         console.log('onmouseup')
+     }
+     a1.onmousemove=function(){
+         console.log('onmousemove')
+     }
+     a1.onclick=function(){
+         console.log('onclick')
+     }
+</script>
+</body>
+</html>
