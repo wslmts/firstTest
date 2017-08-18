@@ -3,21 +3,12 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <script src="../jquery.js"></script>
+    <script src="../../jquery.js"></script>
 </head>
 <body>
   <script>
-      $(function(){
-          $.ajax({//
-              url:'http://assets.dajieimg.com.ui/ajax/ajax.php',
-              type:'post',
-              //dataType:'json',
-              success:function(r){
-                  document.write(r)
-              }
-          })
-      });
-     /* function createCORSRequest(method, url){
+
+      function createCORSRequest(method, url){
           var xhr = new XMLHttpRequest();
           if ("withCredentials" in xhr){
               xhr.open(method, url, true);
@@ -30,14 +21,102 @@
           return xhr;
       }
 
-      var request = createCORSRequest("get", "http://assets.dajieimg.com.ui/ajax/ajax.php");
-      if (request){
+      var request = createCORSRequest("post", "http://assets.dajieimg.com.ui/ajax/ajax.php");
+      if (window.XDomainRequest){
           request.onload = function(r){
-              document.write(r)
+             alert(request.responseText)
           };
-          request.send();
+      }else{
+          request.onreadystatechange = function(){
+              if(request.readyState==4){
+                  alert(request.responseText)
+              }
 
-      }*/
+          };
+      }
+      request.send();
+  </script>
+  <h2>XDomainRequest</h2>
+  <input type="text" id="tbURL" value="http://assets.dajieimg.com.ui/ajax/ajax.php" style="width: 300px"><br>
+  <input type="text" id="tbTO" value="10000"><br>
+  <input type="button" onclick="mytest()" value="Get">&nbsp;&nbsp;&nbsp;
+  <input type="button" onclick="stopdata()" value="Stop">&nbsp;&nbsp;&nbsp;
+  <input type="button" onclick="readdata()" value="Read">
+  <br>
+  <div id="dResponse"></div>
+  <script>
+      var xdr;
+      function readdata()
+      {
+          var dRes = document.getElementById('dResponse');
+          dRes.innerText = xdr.responseText;
+          alert("Content-type: " + xdr.contentType);
+          alert("Length: " + xdr.responseText.length);
+      }
+
+      function err()
+      {
+          alert("XDR onerror");
+      }
+
+      function timeo()
+      {
+          alert("XDR ontimeout");
+      }
+
+      function loadd()
+      {
+          alert("XDR onload");
+          alert("Got: " + xdr.responseText);
+      }
+
+      function progres()
+      {
+          alert("XDR onprogress");
+          alert("Got: " + xdr.responseText);
+      }
+
+      function stopdata()
+      {
+          xdr.abort();
+      }
+
+      function mytest()
+      {
+          var url = document.getElementById('tbURL');
+          var timeout = document.getElementById('tbTO');
+          if (window.XDomainRequest)
+          {
+              xdr = new XDomainRequest();
+              if (xdr)
+              {
+                  xdr.onerror = err;
+                  xdr.ontimeout = timeo;
+                  xdr.onprogress = progres;
+                  xdr.onload = loadd;
+                  xdr.timeout = tbTO.value;
+                  xdr.open("post", tbURL.value);
+                  xdr.send();
+              }
+              else
+              {
+                  alert("Failed to create");
+              }
+          }
+          else
+          {
+              $(function(){
+                  $.ajax({//
+                      url:'http://assets.dajieimg.com.ui/ajax/ajax.php',
+                      type:'post',
+                      //dataType:'json',
+                      success:function(r){
+                          alert(r)
+                      }
+                  })
+              });
+          }
+      }
   </script>
 </body>
 </html>

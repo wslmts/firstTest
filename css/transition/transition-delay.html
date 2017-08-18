@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width:200px;
+            height:200px;
+            overflow: auto;
+            border:1px solid #0f0;
+            transform: translateX(0);
+            transition-property: transform;
+            transition-duration: 200ms;
+            transition-delay: -150ms;
+            transition-timing-function: linear;
+        }
+        div:hover {
+            transform: translateX(200px);
+        }
+    </style>
+</head>
+<body>
+ <div>
+     For example, if you have a  transition-delay of  -150ms on a  200ms
+     transition, the transition will start three-quarters of the way through the
+     transition and will last 50 milliseconds. In that scenario, with a linear timing
+     function, it will jump to being translated  150px along the x-axis immediately
+     on hover and then animate the translation from 150 pixels to 200 pixels over
+     50 milliseconds.
+
+     If the absolute value of the negative  transition-delay is greater than or equal to the  transition-duration , the change of property values is
+     immediate, as if no  transition had been applied, and no  transitionend
+     event occurs.
+
+     When transitioning back from the hovered state to the original state, by
+     default, the same value for the  transition-delay is applied. In the preceding
+     scenario, with the  transition-delay not being overridden in the hover state,
+     it will jump 75% of the way back (or 25% of the way through the original
+     transition) and then transition back to the initial state. On mouseout, it will
+     jump to being translated 50 pixels along the x-axis and then take 50
+     milliseconds to return to its initial position of being translated 0 pixels along
+     the x-axis.
+ </div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div.zhengshu {width: 500px;}
+        .zhengshu .p1 {margin-left: auto;
+            margin-right: auto;
+            width: auto;
+        }
+        .zhengshu  .p2 {margin-left: 100px;
+            margin-right: auto;
+            width: auto;
+        }
+        .zhengshu .p3 {margin-left: auto;
+            margin-right: 100px;
+            width: auto;
+        }
+        .zhengshu .p4 {margin-left: 50px;
+            margin-right: auto;
+            width: 300px;
+        }
+        .zhengshu .p5 {margin-left: auto;
+            margin-right: 50px;
+            width: 300px;
+        }
+        .zhengshu .p6 {margin-left: 100px;;
+            margin-right: 50px;
+            width: auto;
+        }
+        .zhengshu .p7 {margin-left: 100px;;
+            margin-right: 50px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="zhengshu">
+    <p class="p1">三个都是auto,则元素的宽度是父元素的宽度，margin的auto设为0；
+    </p>
+    <p class="p2">2个都是auto,则元素的宽度是父元素的宽度，margin为的auto设为0；另一个为设置的值；
+    </p>
+    <p class="p3">设置width=xxx和margin-left,margin-right是auto,则均分剩余空间
+    </p>
+    <p class="p4">设置width=xxx和margin-left=XXpx,margin-right是auto,则均分剩余空间
+    </p>
+    <p class="p5">设置width=xxx和margin-left=XXpx,margin-right是auto,则均分剩余空间
+    </p>
+    <p class="p6">设置width=auto和margin-left=XXpx,margin-right=xxpx,则均分剩余空间
+    </p>
+    <p class="p7">设置width=auto和margin-left=XXpx,margin-right=xxpx,则均分剩余空间
+    </p>
+</div>
+<style>
+    div.fushu {width: 500px; border: 3px solid black;}
+    .fushu .p1 {margin-left: 100px; width: auto; margin-right: -50px; }
+    .fushu .p2 {margin-left: -10px; width: auto; margin-right: 100px; }
+    .fushu .p3 {margin-left: 100px; width: auto; margin-right: -50px;padding:10px }
+    .fushu .p4 {margin-left: 100px; width: auto; margin-right: -50px;padding:10px;border:5px solid; }
+    .fushu .p5 {margin-left: 100px; width: 600px; margin-right:auto; }
+    .fushu .p6 {margin-left: auto; width: 600px; margin-right:100px;flaot:left }
+    .fushu .p7 {margin-left: auto; width: 600px; margin-right:auto; }
+</style>
+<div class="fushu">
+    <p class="p1">width=x;
+        margin-left+border-left+padding-left+x+padding-right+border-right+margin-right=父元素宽度；
+
+    </p>
+    <p class="p2">width=x;
+        margin-left+border-left+padding-left+x+padding-right+border-right+margin-right=父元素宽度；
+
+    </p>
+    <p class="p3">width=x;
+        margin-left+border-left+padding-left+x+padding-right+border-right+margin-right=父元素宽度；
+    </p>
+    <p class="p4">width=x;
+        margin-left+border-left+padding-left+x+padding-right+border-right+margin-right=父元素宽度；
+    </p>
+    <p class="p5">margin=x;
+        margin-left+border-left+padding-left+x+padding-right+border-right+margin-right=父元素宽度；
+    </p>
+    <p class="p6">margin=x;
+        margin-left+border-left+padding-left+x+padding-right+border-right+margin-right=父元素宽度；
+    </p>
+    <p class="p7">margin=x;
+        margin-left+border-left+padding-left+x+padding-right+border-right+margin-right=父元素宽度；
+    </p>
+</div>
+</body>
+</html>

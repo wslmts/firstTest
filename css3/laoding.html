@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        @keyframes spin {
+            to { transform: rotate(1turn); }
+        }
+        .progress{
+            position: relative;
+            display: inline-block;
+            width: 5em;
+            height: 5em;
+            margin: 0 .5em;
+            font-size: 12px;
+            text-indent: 999em;
+            overflow: hidden;
+            animation: spin 1s infinite steps(8);
+        }
+        .progress:before,
+        .progress:after,
+        .progress > div:before,
+        .progress > div:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 2.25em; /* (container width - part width)/2  */
+            width: .5em;
+            height: 1.5em;
+            border-radius: .2em;
+            background: #eee;
+            box-shadow: 0 3.5em #eee; /* container height - part height */
+            transform-origin: 50% 2.5em; /* container height / 2 */
+        }
+        .progress:before {
+            background: #555;
+        }
+
+        .progress:after {
+            transform: rotate(-45deg);
+            background: #777;
+        }
+        .progress > div:before {
+            transform: rotate(-90deg);
+            background: #999;
+        }
+
+        .progress > div:after {
+            transform: rotate(-135deg);
+            background: #bbb;
+        }
+        .progress.large{
+            font-size: 20px;
+        }
+        #triangle-up {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid red;
+        }
+        #triangle-down {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-top: 100px solid red;
+        }
+        #curvedarrow {
+            position: relative;
+            width: 0;
+            height: 0;
+            border-top: 9px solid transparent;
+            border-right: 9px solid red;
+            -webkit-transform: rotate(10deg);
+            -moz-transform: rotate(10deg);
+            -ms-transform: rotate(10deg);
+            -o-transform: rotate(10deg);
+        }
+        div{
+            margin:30px;
+        }
+        #curvedarrow:after {
+            content: "";
+            position: absolute;
+            border: 0 solid transparent;
+            border-top: 3px solid red;
+            border-radius: 20px 0 0 0;
+            top: -12px;
+            left: -9px;
+            width: 12px;
+            height: 12px;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+        }
+        #heart {
+            position: relative;
+            width: 100px;
+            height: 90px;
+        }
+        #heart:before,
+        #heart:after {
+            position: absolute;
+            content: "";
+            left: 50px;
+            top: 0;
+            width: 50px;
+            height: 80px;
+            background: red;
+            -moz-border-radius: 50px 50px 0 0;
+            border-radius: 50px 50px 0 0;
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            -webkit-transform-origin: 0 100%;
+            -moz-transform-origin: 0 100%;
+            -ms-transform-origin: 0 100%;
+            -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+        }
+        #heart:after {
+            left: 0;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            -webkit-transform-origin: 100% 100%;
+            -moz-transform-origin: 100% 100%;
+            -ms-transform-origin: 100% 100%;
+            -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+        }
+        #talkbubble {
+            width: 120px;
+            height: 80px;
+            background: red;
+            position: relative;
+            -moz-border-radius:    10px;
+            -webkit-border-radius: 10px;
+            border-radius:         10px;
+        }
+        #talkbubble:before {
+            content:"";
+            position: absolute;
+            right: 100%;
+            top: 26px;
+            width: 0;
+            height: 0;
+            border-top: 13px solid transparent;
+            border-right: 26px solid red;
+            border-bottom: 13px solid transparent;
+        }
+    </style>
+</head>
+<body>
+<div class="progress"><div>Loading…</div></div>
+<div class="progress large"><div>Loading…</div></div>
+<!--https://css-tricks.com/examples/ShapesOfCSS/-->
+<div id="triangle-up"></div>
+<div id="triangle-down"></div>
+<div id="curvedarrow"></div>
+<div id="heart"></div>
+<div id="talkbubble"></div>
+</body>
+</html>

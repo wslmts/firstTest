@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        p {font-size: 15px; line-height: 1.5;}
+        small {font-size: 66%;}
+        big {font-size: 200%;line-height: 1em;}
+       /* span{
+            font-size: 12px;
+          line-height: 36px;
+            border: 5px dashed;
+        }*/
+        p {font-size: 15px; line-height: 1em;}
+        p span {background: #FAA; padding-top: 10px; padding-bottom: 10px;}
+    </style>
+</head>
+<body>
+<p>This paragraph has a line-height of 1.5 times its font-size. In
+    any elements within it <small>such as this small element</small> also
+    line-heights 1.5 times their font-size...and that includes <big>this
+        element right here</big>. By using a scaling factor, line-heights
+    to match the font-size of any element.</p>
+<p>
+<span>
+    The border edge of inline elements is controlled by the  font-size , not the
+line-height . In other words, if a  span element has a  font-size of  12px and
+a  line-height of  36px , its content area is  12px high, and the border will
+surround that content area.
+</span></p>
+<p style="line-height: 20px;">
+    Instead, the line box is simply made tall enough to accommodate the
+    replaced element, plus any box properties. In other words, the entirety of the
+    replaced element—content, margins, borders, and padding—is used to define
+    the element’s inline box.<img src="../reactjs.jpg" style="line-height: 20px">
+    Despite all the blank space, the effective value of  line-height has not
+    changed, either for the paragraph or the image itself.  line-height simply has
+    no effect on the image’s inline box.
+</p>
+</body>
+</html>

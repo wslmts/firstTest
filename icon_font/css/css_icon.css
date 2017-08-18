@@ -2,11 +2,11 @@
     font-family: 'iconfont';
     font-weight: normal;
     font-style:normal;
-    src:url(../fonts/icomoon.eot);
-    src:url(../fonts/icomoon.eot?wwbhei) format('embedded-opentype'),
+    src:url(../fonts/icomoon.eot);/* IE9 Compatability Mode */
+    src:url(../fonts/icomoon.eot?wwbhei) format('embedded-opentype'),/* IE6-IE8 */
     url(../fonts/icomoon.svg) format('svg'),
-    url(../fonts/icomoon.ttf) format('truetype'),
-    url(../fonts/icomoon.woff) format('woff');
+    url(../fonts/icomoon.ttf) format('truetype'),/* Safari, Android, iOS */
+    url(../fonts/icomoon.woff) format('woff');/* Modern Browsers */
 }
 [class*=' icon-'],[class^='icon-']{
     font-family: 'iconfont';

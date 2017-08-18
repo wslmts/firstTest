@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+The media attribute lets you specify a media query that the user agent will evaluate to select a <source> element.
+If the media query evaluates to false, the <source> element is skipped.
+<picture>
+    <source media="(min-width: 1200px)"srcset="img/icon_nav_collect_pre@3x.png 3x">
+    <source media="(min-width: 800px)"srcset="img/icon_nav_collect_pre@2x.png 2x">
+    <source media="(min-width: 400px)"  srcset="img/icon_nav_collect_pre.png 1x">
+    <img src="img/icon_nav_collect_pre.png" srcset="icon_nav_collect_pre@3x.png" alt="Description">
+</picture>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<html>
+<head>
+    <title> animation </title>
+
+    <style>
+        body {
+            background:#000;
+            color:#fff;
+        }
+        #trigger {
+            width:100px;
+            height:100px;
+            position:absolute;
+            top:50%;margin:-50px 0 0 -50px;
+            left:50%;
+            background: black;
+            border-radius:50px;
+            /*set the animation*/
+            /*[animation name] [animation duration] [animation timing
+            function] [animation delay] [animation iterations count] [animation
+            direction]*/
+            animation: glowness 5s linear 0s 5 alternate;
+        }
+        #trigger:hover {
+            animation-play-state: paused;
+            -moz-animation-play-state: paused;
+            -webkit-animation-play-state: paused;
+            -o-animation-play-state: paused;
+            -ms-animation-play-state: paused;
+        }
+        @keyframes glowness {
+            0% {box-shadow: 0 0 80px orange;}
+            25% {box-shadow: 0 0 150px red;}
+            50% {box-shadow: 0 0 70px pink;}
+            75% {box-shadow: 0 0 50px violet;}
+            100% {box-shadow: 0 0 100px yellow;}
+        }
+        p{
+            color: #fff;
+        }
+    </style>
+    <script src="../jquery.js"></script>
+    <script>
+        // animation started (buggy on firefox)
+        $(function(){
+            $('#trigger').on('animationstart mozanimationstart webkitAnimationStart oAnimationStart msanimationstart',function() {
+                $('p').html('animation started');
+            })
+            // animation paused
+            $('#trigger').on('mouseover',function() {
+                $('p').html('animation paused');
+            })
+            // animation re-started
+            $('#trigger').on('mouseout',function() {
+                $('p').html('animation re-started');
+            })
+            // animation ended
+            $('#trigger').on('animationend mozanimationend webkitAnimationEnd oAnimationEnd msanimationend',function() {
+                $('p').html('animation ended');
+            })
+            //iteration count
+            var i = 0;
+            $('#trigger').on('animationiteration mozanimationiteration webkitAnimationIteration oAnimationIteration   msanimationiteration',function() {
+                i++;
+                $('p').html('animation iteration='+i);
+            })
+        })
+    </script>
+</head>
+<body>
+<div id = "trigger"></div>
+<p></p>
+</body>
+
+</html>

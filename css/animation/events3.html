@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8">
+<link type="text/css" href="c/style-edit.css" rel="stylesheet">
+<style type="text/css">
+    div {
+        animation-name: move;
+        animation-duration: 10s;
+        animation-delay: -4s;
+        animation-timing-function: linear;
+    }
+    @keyframes move {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(1000px);
+        }
+    }
+</style>
+ </head>
+<body>
+<div id="blue"><p>Open the console and tell me what you see.</p></div>
+
+<script>
+  var foo = document.getElementById('blue');
+  console.log('foo');
+
+  foo.addEventListener( 'animationend',
+    function( event ) {
+        console.log(event.animationName,event.elapsedTime,'animation end');
+    },
+    false );
+  foo.addEventListener( 'animationstart',
+    function( event ) {
+        console.log(event.animationName,event.elapsedTime,'animation start');
+    },
+    false );
+  foo.addEventListener( 'animationiteration',
+    function( event ) {
+        console.log(event.animationName,event.elapsedTime,'animation iteration');
+    },
+    false );
+
+</script>
+</body>
+</html>

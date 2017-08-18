@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title></title>
+    <style>
+        .lineclamp{
+            overflow : hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            font-size: 16px;;
+        }
+        div.touchcallout a{
+            -webkit-touch-callout: none; /* disables the callout */
+        }
+        .highlight a{
+          /*  -webkit-touch-callout: none;*/
+            -webkit-tap-highlight-color:red
+        }
+        .warn{
+            color: red;
+        }
+        .appearance .none{
+            -webkit-appearance: none;
+        }
+        .appearance .button{
+            -webkit-appearance: button;
+        }
+        .appearance .pushbutton{
+            -webkit-appearance: push-button;
+        }
+        .appearance .radio{
+            -webkit-appearance: radio;
+        }
+        .slider-horizontal{
+            -webkit-appearance: slider-horizontal;
+        }
+        .blur img{
+            -webkit-filter:blur(10px)
+        }
+        .brightness img{
+            -webkit-filter:brightness(30%)
+        }
+        .contrast img{
+            -webkit-filter:contrast(30%)
+        }
+        .grayscale img{
+            -webkit-filter:grayscale(30%)
+        }
+        .hue-rotate img{
+            -webkit-filter:hue-rotate(110deg)
+        }
+        .invert img{
+            -webkit-filter:invert(10%)
+        }
+        .opacity img{
+            -webkit-filter:opacity(10%)
+        }
+        .saturate img{
+            -webkit-filter:saturate(10%)
+        }
+        .sepia img{
+            -webkit-filter:sepia(10%)
+        }
+        .drop-shadow img{
+            -webkit-filter:drop-shadow(10px 10px 10px red)
+        }
+    </style>
+</head>
+<body>
+<h2>每一个div是一种样式</h2>
+<pre class="warn">
+    _：    选择IE6及以下。连接线（中划线）（-）亦可使用，为了避免与某些带中划线的属性混淆，所以使用下划线（_）更为合适。
+    *：    选择IE7及以下。诸如：（+）与（#）之类的均可使用，不过业界对（*）的认知度更高
+    \9：    选择IE6+
+    \0：    选择IE8+和Opera15以下的浏览器
+</pre>
+<div class="lineclamp">
+    限制在一个块元素显示的文本的行数。适用于：块元素
+    -webkit-line-clamp 是一个 不规范的属性（unsupported WebKit property），它没有出现在 CSS 规范草案中。
+    为了实现该效果，它需要组合其他外来的WebKit属性。常见结合属性：
+    display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。
+    -webkit-box-orient 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。
+    text-overflow，可以用来多行文本的情况下，用省略号“...”隐藏超出范围的文本 。
+</div>
+<p class="warn">
+    需要注意的是，需要将纯文本置于最上面， -webkit-line-clamp: 只作用于当前元素的直接文本节点；如果将div上移，就不会有效果；
+</p>
+<div class="highlight">
+    <a href="">当用户点击iOS的Safari浏览器中的链接或JavaScript的可点击的元素时，覆盖显示的高亮颜色。</a>
+    <p class="warn">注意，a必须有href属性才会生效；</p>
+</div>
+</p>
+<div class="touchcallout">
+    当你触摸并按住触摸目标时候，禁止或显示系统默认菜单。
+    none：
+    系统默认菜单被禁用
+    default：
+    系统默认菜单不被禁用
+    -webkit-touch-callout: default /* displays the callout */
+    -webkit-touch-callout: none /* disables the callout */
+    -webkit-touch-callout: initial
+    -webkit-touch-callout: inherit
+    -webkit-touch-callout: unset
+    <a href="">-webkit-touch-callout</a>
+    <p class="warn">注意，a必须有href属性才会生效；</p>
+</div>
+<div class="appearance">改变按钮和其他控件的外观，使其类似于原生控件。
+    <button class="none">appearance=none</button>
+    <button class="button">appearance=button</button>
+    <button class="pushbutton">appearance=push-button</button>
+    <button class="radio">appearance=radio</button>
+    <button class="slider-horizontal">appearance=slider-horizontal</button>
+    <input type="text" class="button"/>
+    <input type="radio" class="button"/>
+    <input type="checkbox" class="none"/>
+</div>
+<div class="filter">
+    CSS滤镜属性，可以在元素呈现之前，为元素的渲染提供一些效果，如模糊、颜色转移之类的。滤镜常用于调整图像、背景、边框的渲染。
+    CSS标准里包含了一些已实现预设效果的函数。你也可以将设定了滤镜效果的SVG文件，通过URL属性引用给SVG滤镜元素（ SVG filter element）.
+    -webkit-filter:none | blur(px) | brightness() | contrast() | grayscale() | hue-rotate(deg) | invert() | opacity() | saturate() | sepia() | drop-shadow( radius )| url()
+    <div class="blur">blur(<number>px)	设置对象的模糊效果。<img src="../game/gravity/help.png"></div>
+    <div class="brightness">brightness(<percentage>)	设置对象的亮度。除了百分比外，也可以用非负数表达。<img src="../game/gravity/help.png"></div>
+    <div class="contrast">contrast(<percentage>)	设置对象的对比度。除了百分比外，也可以用0-1的数字表达。<img src="../game/gravity/help.png"></div>
+    <div class="grayscale">grayscale(<percentage>)	设置对象的灰度。除了百分比外，也可以用0-1的数字表达。<img src="../game/gravity/help.png"></div>
+    <div class="hue-rotate">hue-rotate(<number>deg)	设置对象的色相旋转。用0-360数字表达。<img src="../game/gravity/help.png"></div>
+    <div class="invert">invert(<percentage>)	设置对象的反色。除了百分比外，也可以用0-1的数字表达。<img src="../game/gravity/help.png"></div>
+    <div class="opacity">opacity(<percentage>)<img src="../game/gravity/help.png"></div>
+    <div class="saturate">saturate(<percentage>)	设置对象的饱和度。除了百分比外，也可以用非负数表达。<img src="../game/gravity/help.png"></div>
+    <div class="sepia">sepia(<percentage>)	设置对象的褐色程度。除了百分比外，也可以用0-1的数字表达。<img src="../game/gravity/help.png"></div>
+    <div class="drop-shadow">drop-shadow(<length①> <length②> radius <color>)	设置对象的阴影。第一个长度是向右偏移距离，第二个长度是向下偏移距离，皆可为负值，皆为必传参数；第三个是阴影圆角，可选；第四个是阴影颜色，可选。<img src="../game/gravity/help.png"></div>
+    <div class="url">url(path.svg#a)	设置对象滤镜效果。通过SVG可实现以上所有效果。SVG可写在页面里，也可外部引用。可增加锚节点。<img src="../game/gravity/help.png"></div>
+</div>
+</body>
+</html>

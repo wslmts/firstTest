@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        h1{font:bold 20px/1.5 georgia,simsun,sans-serif;}
+        .box{display:-webkit-box;display:-moz-box;display:-ms-box;background:#000;width:240px;height:100px;margin:0;padding:10px;list-style:none;vertical-align:top;}
+        #box li:nth-child(1){-webkit-box-flex:1;-moz-box-flex:1;-ms-box-flex:1;background:#666;}
+        #box li:nth-child(2){-webkit-box-flex:1;-moz-box-flex:1;-ms-box-flex:1;background:#999;}
+        #box li:nth-child(3){-webkit-box-flex:2;-moz-box-flex:2;-ms-box-flex:2;background:#ccc;}
+    </style>
+</head>
+<body>
+<h1>box-flex示例：</h1>
+<ul id="box" class="box">
+    <li>a</li>
+    <li>b</li>
+    <li>c</li>
+</ul>
+<pre>
+    #box{display:box;width:240px;height:100px;margin:0;padding:10px;list-style:none;}
+#box li:nth-child(1){box-flex:1;}
+#box li:nth-child(2){box-flex:1;}
+#box li:nth-child(3){box-flex:2;}
+上面代码请自行加上-moz-,-webkit-之类的。box-flex生效需定义其父元素display为box或inline-box
+误区：注意box-flex只是动态分配父元素的剩余空间，而不是整个父元素的空间。如上例，父元素#box的宽度为240px，
+    如果你认为a,b,c的宽度分别为60, 60, 120那么就错了，因为box-flex只是分配父元素的剩余空间而已，
+    所以a,b,c所分到的应该是除内容外所剩余下来的宽度
+</pre>
+<style>
+    h1{font:bold 20px/1.5 georgia,simsun,sans-serif;}
+    .box1{display:-webkit-box;display:-moz-box;display:-ms-box;background:#000;width:240px;height:100px;margin:0;padding:10px;list-style:none;vertical-align:top;}
+    .box1 li:nth-child(1){-webkit-box-flex:1;-webkit-box-flex-group:1;background:#666;}
+    .box1 li:nth-child(2){-webkit-box-flex:1;-webkit-box-flex-group:2;background:#999;}
+    .box1 li:nth-child(3){-webkit-box-flex:1;-webkit-box-flex-group:1;background:#ccc;}
+</style>
+</head>
+<body>
+<h1>box-flex-group</h1>
+<ul class="box1">
+    <li>a</li>
+    <li>b</li>
+    <li>c</li>
+</ul>
+<pre>
+    设置或检索伸缩盒对象的子元素的所属组。
+动态给数值较大的组分配其内容所需的实际空间（如无内容、padding、border则不占空间），剩余空间则均分给数值最小的那个组（可能有1个或多个元素）
+对应的脚本特性为boxFlexGroup。
+</pre>
+<style>
+    h1{font:bold 20px/1.5 georgia,simsun,sans-serif;}
+    .box2{display:-webkit-box;display:-moz-box;display:-ms-box;background:#000;width:240px;height:100px;margin:0;padding:10px;list-style:none;vertical-align:top;}
+    .box2 li{padding:20px;}
+    .box2 li:nth-child(1){-webkit-box-ordinal-group:3;background:#666;}
+    .box2 li:nth-child(2){background:#999;}
+    .box2 li:nth-child(3){background:#ccc;}
+</style>
+</head>
+<body>
+<h1>box-radinal-group</h1>
+<ul  class="box2">
+    <li>a</li>
+    <li>b</li>
+    <li>c</li>
+</ul>
+</body>
+</html>

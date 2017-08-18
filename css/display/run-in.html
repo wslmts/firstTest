@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<pre>
+    if an element generates a run-in box, and a block box
+follows that box, then the run-in element will be an inline box at the
+beginning of the block box.
+
+    The important thing to remember is that  run-in will work only if the box
+after the run-in box is block-level. If it is not, then the run-in box itself will
+be made block-level.
+</pre>
+<h3 style="display:run-in; border: 1px dotted; font-size: 125%;
+font-weight: bold;">Run-in Elements</h3>
+<p style="border-top: 1px solid black; padding-top: 0.5em;">
+    Another interesting block/inline hybrid is the value <code>run-in</code>
+    introduced in CSS2, which has the ability to take block-level elements
+    them an inline part of a following element. This is useful for certain
+    effects that are quite common in print typography, where a heading
+    as part of a paragraph of text.
+</p>
+<div style="color: silver;">
+    <h3 style="display: run-in; border: 1px dotted; font-size: 125%;
+font-weight: bold;">Run-in Elements</h3>
+    <p style="border-top: 1px solid black; padding-top: 0.5em; color: black;">
+       Another interesting block/inline hybrid is the value <code>run-in</code>
+    introduced in CSS2, which has the ability to take block-level elements
+    them an inline part of a following element.
+    </p>
+</div>
+</body>
+</html>

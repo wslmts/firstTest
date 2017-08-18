@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        h1{
+            quotes:"(" ")";  /*利用元素的quotes属性指定文字符号*/
+        }
+        h1::before{
+            content:open-quote;
+        }
+        h1::after{
+            content:close-quote;
+        }
+        h2{
+            quotes:"\"" "\"";  /*添加双引号要转义*/
+        }
+        h2::before{
+            content:open-quote;
+        }
+        h2::after{
+            content:close-quote;
+        }
+        a:after{
+            content:attr(href);
+        }
+        .h1{
+            counter-increment:my;
+        }
+        .h1:before{
+            content:'第'counter(my,upper-alpha)'章';
+            color:red;
+        }
+    </style>
+</head>
+<body>
+<h1>这是h1</h1>
+<h2>这是h2</h2>
+<a href="http:///www.ido321.com">这是链接</a>
+<h1 class="h1">大标题</h1>
+<p>文字</p>
+<h1  class="h1">大标题</h1>
+<p>文字</p>
+<h1  class="h1">大标题</h1>
+<p>文字</p>
+
+
+</body>
+</html>

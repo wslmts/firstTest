@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        h1 {
+            font-family: Futura; "Arial Black", Arial, sans-serif;
+            text-align: center;
+        }
+        h1:hover {
+            transition: 2s all ;
+            transition-timing-function: steps(2, end);
+            transform: translateX(400px);
+        }
+    </style>
+</head>
+<body>
+   <h1>
+       Thank
+   </h1>
+   <pre>The step functions allow you to divide the transition over equidistant steps. The func‐
+tions define the number and direction of steps. There are two direction options:
+start and  end . With  start , the first step happens at the animation start. With  end ,
+the last step happens at the animation end. For example,  steps(5, end) would jump
+through the equidistant steps at 0%, 20%, 40%, 60%, and 80%; and  steps(5, start)
+would jump through the equidistant steps at 20%, 40%, 60%, 80%, and 100%.</pre>
+   <img src="step.png">
+<script>
+    document.querySelector('h1').addEventListener('transitionend',function(e){
+        console.log(e)
+    })
+</script>
+</body>
+</html>

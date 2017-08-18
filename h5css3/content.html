@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .user-select{
+            user-select:none
+        }
+    </style>
+</head>
+<body>
+   <div class="user-select" unselectable="on">
+       user-select：none | text | all | element设置或检索是否允许用户选中文本。
+       默认值：text
+       适用于：除替换元素外的所有元素
+       none：       文本不能被选择
+       text：       可以选择文本
+       all：       当所有内容作为一个整体时可以被选择。如果双击或者在上下文上点击子元素，那么被选择的部分将是以该子元素向上回溯的最高祖先元素。
+       element：       可以选择文本，但选择范围受元素边界的约束
+       IE6-9不支持该属性，但支持使用标签属性 onselectstart="return false;" 来达到 user-select:none 的效果；Safari和Chrome也支持该标签属性；
+       直到Opera12.5仍然不支持该属性，但和IE6-9一样，也支持使用私有的标签属性 unselectable="on" 来达到 user-select:none 的效果；unselectable 的另一个值是 off；
+       除Chrome和Safari外，在其它浏览器中，如果将文本设置为 -ms-user-select:none;，则用户将无法在该文本块中开始选择文本。不过，如果用户在页面的其他区域开始选择文本，则用户仍然可以继续选择将文本设置为 -ms-user-select:none; 的区域文本；
+       对应的脚本特性为userSelect。
+   </div>
+   <div class="content">
+       content：[ [<uri> | icon] ',' ]* [ normal | none | inhibit | <content-list> ]
+       <content-list> = [ pending(<identifier>) | <string> | contents | footnote | endnote | section-note | list-item | <counter> | <named-string> | open-quote | close-quote | no-open-quote | no-close-quote | icon | <glyph> | <uri> | <datetime> | document-url | <target> ]+
+           <counter> = counter(name) | counter(name,list-style-type) | counters(name,string) | counters(name,string,list-style-type)
+               默认值：normal
+               适用于：所有元素，::before, ::after, ::alternate, ::marker, ::line-marker, margin areas, @footnote areas
+               normal：
+               默认值。表现与none值相同
+               none：不生成任何值。
+               attr： 插入标签属性值
+               url：使用指定的绝对或相对地址插入一个外部资源（图像，声频，视频或浏览器支持的其他任何资源）
+               string：插入字符串
+               counter(name)：
+               使用已命名的计数器
+               counter(name,list-style-type)：
+               使用已命名的计数器并遵从指定的list-style-type属性
+               counters(name,string)：
+               使用所有已命名的计数器
+               counters(name,string,list-style-type)：
+               使用所有已命名的计数器并遵从指定的list-style-type属性
+               no-close-quote：
+               并不插入quotes属性的后标记。但增加其嵌套级别
+               no-open-quote：
+               并不插入quotes属性的前标记。但减少其嵌套级别
+               close-quote：
+               插入quotes属性的后标记
+               open-quote：
+               插入quotes属性的前标记
+               说明：
+               用来和:after及:before伪元素一起使用，在对象前或后显示内容。
+               对应的脚本特性为content。
+   </div>
+   <style>
+       .string p:after{margin-left:-16px;background:#fff;content:"是";color:#f00;}
+       .attr p:after{content:attr(title);}
+       .url p:before{content:url(../../skin/ico.png);}
+       .test ol{margin:16px 0;padding:0;list-style:none;}
+       .test .counter1 li{counter-increment:testname;}
+       .test .counter1 li:before{content:counter(testname);color:#f00;font-family:georgia,serif,sans-serif;}
+       .test .counter2 li{counter-increment:testname2;}
+       .test .counter2 li:before{content:counter(testname2,lower-roman);color:#f00;font-family:georgia,serif,sans-serif;}
+       .test .counter3 ol ol{margin:0 0 0 28px;}
+       .test .counter3 li{padding:2px 0;counter-increment:testname3;}
+       .test .counter3 li:before{content:counter(testname3,decimal)".";color:#f00;font-family:georgia,serif,sans-serif;}
+       .test .counter3 li li{counter-increment:testname4;}
+       .test .counter3 li li:before{content:counter(testname3,decimal)"."counter(testname4,decimal)".";}
+       .test  .counter3 li li li{counter-increment:testname5;}
+       .test  .counter3 li li li:before{content:counter(testname3,decimal)"."counter(testname4,decimal)"."counter(testname5,decimal)".";}
+   </style>
+   <ul class="test">
+       <li class="string">
+           <strong>string：</strong>
+           <p>你的浏览器是否支持content属性：否</p>
+       </li>
+       <li class="attr">
+           <strong>attr：</strong>
+           <p title="如果你看到我则说明你目前使用的浏览器支持content属性"></p>
+       </li>
+       <li class="url">
+           <strong>url()：</strong>
+           <p>如果你看到文字前面的图标则说明你目前使用的浏览器支持content属性</p>
+       </li>
+       <li class="counter1">
+           <strong>counter(name)：</strong>
+           <ol>
+               <li>列表项</li>
+               <li>列表项</li>
+               <li>列表项</li>
+           </ol>
+       </li>
+       <li class="counter2">
+           <strong>counter(name,list-style-type)：</strong>
+           <ol>
+               <li>列表项</li>
+               <li>列表项</li>
+               <li>列表项</li>
+           </ol>
+       </li>
+       <li class="counter3">
+           <strong>counter(name)拓展应用：</strong>
+           <ol>
+               <li>列表项
+                   <ol>
+                       <li>列表项
+                           <ol>
+                               <li>列表项</li>
+                               <li>列表项</li>
+                           </ol>
+                       </li>
+                       <li>列表项</li>
+                   </ol>
+               </li>
+               <li>列表项
+                   <ol>
+                       <li>列表项</li>
+                       <li>列表项</li>
+                   </ol>
+               </li>
+               <li>列表项
+                   <ol>
+                       <li>列表项</li>
+                       <li>列表项</li>
+                   </ol>
+               </li>
+           </ol>
+       </li>
+   </ul>
+   <style>
+       ul li{
+           list-style: none;
+           counter-increment: test;
+       }
+       ul li:before{
+           content: counter(test,lower-roman);
+         /*  color:#f00;*/
+       }
+   </style>
+   <ul>
+       <li>counter-increment必须定义在使用:before的元素上，否则没效果</li>
+       <li>列表项</li>
+       <li>列表项</li>
+   </ul>
+   <style>
+       q:lang(en){quotes:'[' ']' "<" ">";}
+       q:lang(zh-cmn-Hans){quotes:"«" "»" '"' '"';}
+   </style>
+   <p>
+       quotes：none | [<string> <string>]+
+       默认值：none
+       适用于：所有元素，::before, ::after, ::alternate, ::marker, ::line-marker, margin areas, @footnote areas, and @page context
+       继承性：有
+       动画性：否
+       计算值：指定值
+       取值：
+       none：content属性的open-quote和close-quote值将不会生成任何标记
+       string：定义content属性的open-quote和close-quote值的标记，2个为一组
+           说明：
+           设置或检索对象内使用的嵌套标记。
+           对应的脚本特性为quotes。
+   </p>
+   <p lang="en"><q>outer <q>inner</q> outer!</q></p>
+   <p lang="zh-cmn-Hans"><q>outer <q>inner</q> outer!</q></p>
+</body>
+</html>

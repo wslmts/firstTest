@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Figure 21</title>
+<style>
+body {margin: 50px;}
+
+	body > div {float: left; position: relative; height: 200px; width: 200px; margin: 15px; border: 1px none red;
+		background-image: 
+			url(i/frame-sq.png),
+			url(i/chrome.jpg)
+			;
+		background-size: 100% 100%, 50px 50px;
+		background-origin: padding-box;
+		background-repeat: no-repeat;
+		background-color: #EEE;}
+	div:nth-child(4n+1) {clear: left;}
+	div > div {width: 150px;
+		position: absolute; top: 100%; left: 0; width: 100%; text-align: center;
+		text-align: center; font: 13px Consolas, Andale Mono, monospace; line-height: 2;}
+
+	#ex01 {background-position: top left, right 50px bottom 50px;}
+    #ex02 {background-position: top left, right   bottom  }
+    #ex03 {background-position: top left, top 50px left 50px}
+    #ex04 {background-position: top left, left 75px top 10px}
+    #ex05 {background-position: top left, center  10px }
+</style>
+</head>
+<body>
+
+<div id="ex01"><div>right 33% bottom 30px</div></div>
+<div id="ex02"><div>right  bottom  </div></div>
+<div id="ex03"><div>right  bottom  </div></div>
+<div id="ex04"><div>right  bottom  </div></div>
+<div id="ex05"><div>right  bottom  </div></div>
+</body>
+</html>

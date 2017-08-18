@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p style="font-size: 12px; line-height: 12px;margin: 0;padding: 0">
+    This is text, <em>some of which is emphasized</em>, plus other text
+    which is <strong style="font-size: 24px;vertical-align: middle">strongly emphasized</strong>
+        and which is<br>
+    larger than the surrounding text.for each piece of text where both the  font-size and  line-height are
+    12px , the content height does not change (since the difference between  12px
+    and  12px is zero), so the inline box is 12 pixels high. For the strong text,
+</p>
+<pre>
+    Thus, for each piece of text where both the  font-size and  line-height are
+12px , the content height does not change (since the difference between  12px
+and  12px is zero), so the inline box is 12 pixels high. For the strong text,
+however, the difference between  line-height and  font-size is  -12px . This
+is divided in half to determine the half-leading ( -6px ), and the half-leading is
+added to both the top and bottom of the content height to arrive at an inline
+box. Since we’re adding a negative number in both cases, the inline box ends
+up being 12 pixels tall. The 12-pixel inline box is centered vertically within
+the 24-pixel content height of the element, so the inline box is actually
+smaller than the content area.
+    The anonymous text’s inline box determines the bottom of the line box, while the top of the
+strong element’s inline box sets the top of the line box. Because that inline
+box’s top is inside the element’s content area, the contents of the element
+spill outside the line box and actually overlap other line boxes. The result is
+that the lines of text look irregular.
+</pre>
+<p style="font-size: 12px; line-height: 12px;">
+    This is text, <em>some of which is emphasized</em>,<br>
+    plus other text that is <strong style="font-size: 24px;">strong</strong>
+        and <span style="vertical-align: top;">tall</span> and is<br>
+    larger than the surrounding text.
+</p>
+<hr>
+<p style="font-size: 12px; line-height: 12px;">
+    This is text, <em>some of which is emphasized</em>,<br>
+    plus other text that is <strong style="font-size: 24px;">strong</strong>
+        and <span style="vertical-align: top; line-height: 2px;">tall</span>
+        larger than the surrounding text.
+</p>
+<pre>Since the  line-height for the “tall” text is less than its  font-size , the inline
+box for that element is smaller than its content area. This tiny fact changes
+the placement of the text itself since the top of its inline box must be aligned
+with the top of the line box for its line</pre>
+</body>
+</html>

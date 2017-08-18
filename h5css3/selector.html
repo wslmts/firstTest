@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input::-webkit-input-placeholder {
+            color: #f00;
+        }
+        input:-ms-input-placeholder { /*// IE10+*/
+        color: #f00;
+        }
+        input:-moz-placeholder { /*// Firefox4-18*/
+        color: #f00;
+        }
+        input::-moz-placeholder { /*// Firefox19+*/
+        color: #f00;
+        }
+        ::selection{
+            background:#000;color:#f00;
+        }
+    </style>
+</head>
+<body>
+  <input type="text" placeholder="change color">
+<div class="selection">你选中这段文字后，看看它们的文本颜色和背景色，就能明白::selection的作用。需要注意的是，::selection只能定义被选择时的background-color，color及text-shadow</div>
+</body>
+</html>

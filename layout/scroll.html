@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #wrap{
+            width:300px;
+            height:60px;
+            margin:20px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        #wrap{
+            clear:both
+        }
+        #contain{
+            position: absolute;
+            left:0;
+        }
+        #wrap li{
+          float:left;
+          width:100px;
+          height:60px;
+          text-align: center;
+          list-style: none;
+        }
+    </style>
+</head>
+<body>
+<span id="left">left</span>
+   <div id="wrap">
+      <ul id="contain"></ul>
+   </div>
+<span id="right">right</span>
+<script>
+    //初始化已加载全部
+    (function(){
+        var contain=document.querySelector('#contain');
+        var list=[];
+        for(var i=1;i<=10;i++){
+            list.push('<li>'+ i.toString().repeat(3)+'</li>')
+        }
+        contain.innerHTML=list.join('');
+        var li=document.querySelector('li');
+        var lists=document.querySelectorAll('li');
+        var width=li.clientWidth*lists.length;
+        contain.style.width=width+"px";
+        var wrapwidth=300;
+        var total=Math.ceil(width/300);
+        var current=1;
+        document.querySelector('#left').onclick=function(e){
+            if(current>0) current--;
+            contain.style.left=-1*current*wrapwidth+"px";
+        }
+        document.querySelector('#right').onclick=function(e){
+            if(current<total-1) current++;
+            contain.style.left=-1*current*wrapwidth+"px";
+        }
+    })()
+</script>
+</body>
+</html>
