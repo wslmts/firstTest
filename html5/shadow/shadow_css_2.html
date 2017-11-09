@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #parent-host::shadow #child-host::shadow p {
+            color: blue;}
+
+        body /deep/ p {
+            background: yellow;
+        }
+        /* colors all <p> text within the child shadow root blue */
+        #parent-host /deep/ #child-host  p {
+                                              color: blue;
+                                          }
+        /* targets a library theme/skin */
+        body /deep/ p.skin {
+            color: blue;
+        }
+    </style>
+    <template id="child-template"><p>I am blue.</p></template>
+    <template id="parent-template">
+        <p>I am the default color.</p>
+        <div id="child-host"></div>
+    </template>
+</head>
+<body>
+<h3>The  ::shadow pseudoelement selector can be used to style nested shadow roots</h3>
+<div id="parent-host"></div>
+<script type="text/javascript">
+    var parentTemplate = document.querySelector('#parent-template');
+    var childTemplate = document.querySelector('#child-template');
+    var parentRoot = document.querySelector('#parent-host').createShadowRoot();
+    var childRoot;
+    parentRoot.appendChild(parentTemplate.content);
+    childRoot = parentRoot.querySelector('#child-host').createShadowRoot();
+    childRoot.appendChild(childTemplate.content);
+</script>
+<code>
+    The  /deep/ combinator
+    allows you cross through all shadow roots with a single selector:
+        /* colors all <p> text within all shadow roots blue */
+        body /deep/ p {
+            color: blue;
+        }
+        /* colors all <p> text within the child shadow root blue */
+        #parent-host /deep/ #child-host # p {
+                                              color: blue;
+                                          }
+        /* targets a library theme/skin */
+        body /deep/ p.skin {
+            color: blue;
+        }
+</code>
+</body>
+
+</html>

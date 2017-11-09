@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--<product-listing>
+    <product-desc name="log" img="img/log.jpg">
+        What rolls down stairs<br />
+        alone or in pairs,<br />
+        and over your neighbor's dog?<br />
+        What's great for a snack,<br />
+        And fits on your back?<br />
+        It's log, log, log<br />
+        <product-reviews>
+            <product-review>
+                <product-reviewer name="R. Crumb" img="img/rcrumb.jpg" />
+                We are living surrounded by illusion, by professionally
+                created fairy tales. We barely have contact with the real
+                world.
+            </product-review>
+        </product-reviews>
+    </product-desc>
+</product-listing>-->
+<script>
+    // register an element The second argument is an options object, which allows you to define the
+    //prototype  from  which  the  element  inherits The  default  prototype  is HTMLElement.prototype .
+    document.registerElement('product-listing');
+    // reigster an element and specify the prototype option
+   /* document.registerElement('product-listing', {
+        prototype: Object.create(HTMLElement.prototype)
+    });*/
+   /* Once a custom element has been registered, it can be referenced and utilized like a
+    native element:*/
+// create an instance of the product-listing custom element
+            var productListingEl = document.createElement('product-listing');
+    // append it to the DOM
+    document.body.appendChild(productListingEl);
+
+   /* Extending Native Elements
+    Native elements can be extended in the same fashion as custom elements:*/
+            var fancyTable = document.registerElement('fancy-table', {
+                prototype: Object.create(HTMLTableElement.prototype),
+                extends: 'table'
+            });
+    /*When a native element is extended by a custom element it is referred to as a type
+    extension custom element. The difference between extending custom elements and
+    native elements is that native elements have the added benefit of declaratively defin‐
+    ing themselves as being enhanced versions of their native counterparts. For example,
+            this HTML declaration is stating that  <table> is a type of  fancy-table :*/
+   /* <table is="fancy-table"></table>*/
+</script>
+<script>
+    //event
+    var CallbackExample = document.registerElement('callback-example');
+    CallbackExample.prototype.createdCallback = function () {
+        alert('and boom goes the dynomite');
+    }
+    CallbackExample.prototype.attachedCallback = function () {
+        alert('Put yourself in my position.');
+    }
+    var cbExampleEl = document.createElement('callback-example');
+    // attachedCallback is executed
+    document.body.appendChild(cbExampleEl);
+</script>
+</body>
+</html>

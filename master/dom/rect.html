@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h3 id="h3">getBoundingClientRect获取元素位置
+    getBoundingClientRect用于获得页面中某个元素的左，上，右和下分别相对浏览器视窗的位置。</h3>
+getClientRects获取元素占据页面的所有矩形区域
+获取元素占据页面的所有矩形区域
+ <script>
+  var h3=document.getElementById('h3');
+    var  bc=h3.getBoundingClientRect();
+var c=h3.getClientRects();
+     console.log(bc)
+  console.log('-----------')
+  console.log(c)
+ </script>
+
+<div id="test1" style="width: 100px;height: 50px;padding: 10px;line-height: 200px;overflow:scroll;border:1px solid black">内容</div>
+<script>
+    console.log(test1.getBoundingClientRect())
+</script>
+
+<div id="test" style="width: 100px;height: 50px;padding: 10px;line-height: 200px;overflow:scroll;border:1px solid black">内容</div>
+<script>
+    console.log(test.getClientRects()[0])
+</script>
+</body>
+</html>

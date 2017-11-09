@@ -3,24 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-        div{width:50px; height:50px; background:yellow;}
-        .act{width:100px;transition:width 0.5s;}
-    </style>
 </head>
 <body>
-<div class="act"></div>
-<button>click me</button>
-<script>
-    var btn = document.querySelector('button');
-    var div = document.querySelector('div');
 
-    btn.onclick = function(){
-        div.className = '';
-        setTimeout(function(){
-            div.className = 'act';
-        }, 0)
+<script>
+    function curry(fn){
+        function inner(length,args){
+            if(length===0){
+                return fn.apply(null,args);
+            }
+            return function(x){
+                return inner(length-1,args.concat(x));
+            }
+        }
+        return inner(fn.length,[]);
     }
+    function sum(x,y,z,w){
+        return x+y+z+w;
+    }
+   curry(sum)(1)(2)(3)(4);
+    var el = document.createElement('div');
+
+    el.setAttribute('onclick', 'return;');
+  //  alert(typeof el.onclick); // "function"
+
+    el.setAttribute('onclick2', 'return;');
+  //  alert(typeof el.onclick2); // "undefined"
+    document.body.appendChild(el);
+
+    var support = {};
+    var input = document.createElement( "input" ),
+            div = document.createElement( "div" ),
+            fragment = document.createDocumentFragment();
+
+    // Setup
+    div.innerHTML = "  <link/><table></table><a href='/a'>a</a><input type='checkbox'/>";
+
+    // IE strips leading whitespace when .innerHTML is used
+    support.leadingWhitespace = div.firstChild.nodeType === 3;
+    support.tbody = !div.getElementsByTagName( "tbody" ).length;
+   // alert(div.getElementsByTagName( "link" ).length);
+    div.innerHTML = "<textarea>x</textarea>";
+  // alert(div.cloneNode( true ).lastChild.defaultValue);
+
 </script>
 </body>
 </html>

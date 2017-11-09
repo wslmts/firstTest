@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <template id="meeseeks-template">
+        <p>I'm Mr. Meeseeks, look at me!</p>
+    </template>
+
+    <script type="text/javascript">
+
+        var MrMeeseeks = (function () {
+            'use strict';
+// importer/parent document; more on this later
+            var parentDocument = document;
+// import document; more on this later
+            var importDocument = parentDocument.currentScript.ownerDocument;
+            var template = importDocument.querySelector('#meeseeks-template').content;
+            function MrMeeseeks(el, options) {
+                var self = this;this.options = options;
+                this.el = el;
+// append template to parent el
+                this.el.appendChild(parentDocument.importNode(template.content, true));
+// set interval to check if task has been completed
+                this.isDoneInterval = setInterval(function () {
+                    self.isTaskComplete();
+                }, this.interval);
+            }
+            MrMeeseeks.prototype.limit = 3600000;
+            MrMeeseeks.prototype.interval = 60000;
+            MrMeeseeks.prototype.taskComplete = false;
+            MrMeeseeks.prototype.isTaskComplete = function () {
+                if (this.taskComplete) {
+                    clearInterval(this.isDoneInterval);
+                    return;
+                }
+                alert('Existence is pain to a Meeseeks Jerry...' +
+                        'and we will do anything to alleviate that pain!');
+            }
+            return MrMeeseeks;
+        })();
+        alert(window.name)
+    </script>
+</head>
+<body>
+bbb
+</body>
+</html>

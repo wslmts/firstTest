@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        strong {
+            text-align: center;
+        }
+        div {
+            display: inline-block;
+            width: 150px;
+        }
+        div p, ol, table {
+            border: 1px solid blue;
+        }
+        span, li, th, td {
+            border: 1px solid green;
+        }
+
+    </style>
+</head>
+<body>
+<h3 id="h3">对于 块级元素 来说，这两个其实没有什么区别的，关键是对于 内联元素 这两个有明显的区别。简单的说就是 内联元素 不在一行的时候每行都会产生一个矩形范围，而 getBoundingClientRect 并不会。</h3>
+
+
+<h3>A paragraph with a span inside</h3>
+<p>Both the span and the paragraph have a border set. The client rects are in red. Note that the p has only one border box, while the span has multiple border boxes.</p>
+
+<div>
+    <strong>Original</strong>
+    <p>
+        <span>Paragraph that spans multiple lines</span>
+    </p>
+</div>
+
+<div>
+    <strong>p's rect</strong>
+    <p class="withClientRectsOverlay">
+        <span>Paragraph that spans multiple lines</span>
+    </p>
+</div>
+
+<div>
+    <strong>span's rect</strong>
+    <p>
+        <span class="withClientRectsOverlay">Paragraph that spans multiple lines</span>
+    </p>
+</div>
+
+<script>
+    function addClientRectsOverlay(elt) {
+        // Absolutely position a div over each client rect so that its border width
+        // is the same as the rectangle's width.
+        // Note: the overlays will be out of place if the user resizes or zooms.
+        var rects = elt.getClientRects();
+        console.log(elt,elt.getBoundingClientRect())
+        for (var i = 0; i != rects.length; i++) {
+            var rect = rects[i];
+            var tableRectDiv = document.createElement('div');
+            tableRectDiv.style.position = 'absolute';
+            tableRectDiv.style.border = '1px solid red';
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+            tableRectDiv.style.margin = tableRectDiv.style.padding = '0';
+            tableRectDiv.style.top = (rect.top + scrollTop) + 'px';
+            tableRectDiv.style.left = (rect.left + scrollLeft) + 'px';
+            // we want rect.width to be the border width, so content width is 2px less.
+            tableRectDiv.style.width = (rect.width - 2) + 'px';
+            tableRectDiv.style.height = (rect.height - 2) + 'px';
+            document.body.appendChild(tableRectDiv);
+        }
+    }
+
+    (function() {
+        /* call function addClientRectsOverlay(elt) for all elements with assigned css class "withClientRectsOverlay"  */
+        var elt = document.getElementsByClassName('withClientRectsOverlay');
+        for (var i = 0; i < elt.length; i++) {
+            addClientRectsOverlay(elt[i]);
+        }
+    })();
+
+</script>
+</body>
+</html>

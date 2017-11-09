@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link id="meeseeks-import" rel="import" href="beimported.html">
+
+    <link id="css" type="text/css" rel="stylesheet" href="a.css">
+</head>
+<body>
+<script>
+    var importDocument = document.querySelector('#meeseeks-import').import;
+    console.log(importDocument);
+    var css = document.querySelector('#css').import;
+    console.log(css);
+    window.name='top'
+</script>
+
+</body>
+</html>

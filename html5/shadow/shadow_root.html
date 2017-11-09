@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<template id="t-1">I am t1. </template>
+<template id="t-2"><shadow></shadow>I am t2. </template>
+<template id="t-3"><shadow></shadow>I am t3. </template>
+<div id="root"></div>
+<script type="text/javascript">
+    (function () {
+        var t1 = document.querySelector('#t-1');
+        var t2 = document.querySelector('#t-2');
+        var t3 = document.querySelector('#t-3');
+        var host = document.querySelector('#root')
+        var r1 = host.createShadowRoot();
+        var r2 = host.createShadowRoot();
+        var r3 = host.createShadowRoot();
+        r1.appendChild(t1.content);
+        r2.appendChild(t2.content);
+        r3.appendChild(t3.content);
+    })();
+</script>
+<pre style="color: red">
+     a shadow host could contain multi‐
+ple shadow roots, but that<strong> only the last shadow root defined would be rendered</strong>. This
+is true in the absence of  [shadow] elements. The  [shadow]  tag provides a point for
+    projecting an older shadow root using a younger shadow root tree. If a shadow root
+    tree contains more than one   [shadow]  element, the first one is used and the rest are
+        ignored. Essentially,   [shadow]  allows you to render an older shadow root in a stack by
+            providing an insertion point for it to be projected into.
+            Projecting nodes to an insertion point does not affect the tree
+            structure. The projected nodes remain in their original locations
+            within the tree. They are simply displayed in the assigned insertion
+            point.
+
+    <p>
+        // using the previous code block as an example
+        // determine older shadow root
+        r1.olderShadowRoot === null; // true; first in the stack
+        r2.olderShadowRoot === r1; // true
+        r3.olderShadowRoot === r2; // true
+        // determine a host's shadow root
+        host.shadowRoot === r1; // false; there can only be one (LIFO)
+        host.shadowRoot === r2; // false; ditto
+        host.shadowRoot === r3; // true
+        // determine a shadow root's host
+        r1.host === host; // true
+        r2.host === host; // true
+        r3.host === host; // true
+    </p>
+</pre>
+</body>
+</html>

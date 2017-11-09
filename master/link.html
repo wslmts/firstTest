@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="a.css" title="link" type="text/css" rel="stylesheet">
+    <style>
+        :target{
+            color:red
+        }
+        p:nth-child(2){
+            color:red
+        }
+    </style>
+</head>
+<body>
+
+<a href="#" title="a" id="aa" name="bb">:link实际指代a，link,area 3种标签，目前好像只要ff符合</a>
+<area title="area" href="#">
+<script>
+    var link=document.querySelectorAll(":link");
+   // console.log(link)
+</script>
+<div>
+
+    <p>a1</p>
+    <p>a2</p>
+</div>
+<div id="inner"></div>
+<script>
+    var div=document.getElementById('inner');
+    div.innerHTML='insert into <script defer>alert(1)<\/script>'
+</script>
+</body>
+</html>

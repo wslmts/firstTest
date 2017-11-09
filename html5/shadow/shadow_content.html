@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <template>
+        <p>I am NOT projected content.</p>
+       <!-- <content></content>-->
+        <content select="h2"></content>
+    </template>
+</head>
+<body>
+<h3>
+    One way to project content from the shadow host into the shadow root is by using a
+    [content] element inside of a  [template] . Any content inside the shadow host will
+        be automatically projected into the  [content] of the  [template] used to compose
+            the shadow root:
+</h3>
+<div id="host">
+    <p>I am projected content.</p>
+    <h1>this is h1</h1>
+    <h2>this is h2</h2>
+    <h3>this is h3</h3>
+</div>
+<script type="text/javascript">
+    var template = document.querySelector('template');
+    var root = document.querySelector('#host').createShadowRoot();
+    root.appendChild(template.content);
+</script>
+The mechanism for extracting content from the
+shadow host is the  select attribute. This attribute can be added to a  [content]
+    element with a query selector value that will match an element in the shadow host.
+    The matched element’s content is then injected into the  [content] tag.
+<template id="template">
+    <div class="product">
+        <div class="column main">
+            <content select="h2"></content>
+            <content select=".description"></content>
+        </div>
+        <div class="column sidebar">
+            <content select="h3"></content>
+            <ul class="ratings">
+                <li class="1-star"></li>
+                <li class="2-star"></li>
+                <li class="3-star"></li>
+                <li class="4-star"></li>
+            </ul>
+        </div>
+    </div>
+</template>
+<!--
+Only the relevant markup is shown. All other details,
+such as template CSS and JavaScript, have been omitted,
+so that the focus is on the selector projection use case.
+-->
+<pre style="color: red">
+    You cannot traverse into a  [content] tree, because a  [content]
+    node does not have any descendant nodes. It is helpful to think of a
+    [content] node as a television that is displaying a program. The
+        television’s only role in producing the program is to display it. The
+        program itself was filmed and edited elsewhere for consumption by
+        an unlimited number of televisions.
+
+    // Element.getDistributedNodes
+var root = document.querySelector('#some-host').createShadowRoot();
+// iterate over all the content nodes in the root
+[].forEach.call(root.querySelectorAll('content'), function (contentNode) {
+// get the distributed nodes for each content node
+// and iterate over the distributed nodes
+[].forEach.call(contentNode.getDistributedNodes(),
+function (distributedNode) {
+// do something cool with the contentNode
+});
+});
+// Element.getDestinationInsertionPoints
+var hostChildNode = document.querySelector('#some-host .some-child-node');
+// get child node insertion points and iterate over them
+[].forEach.call(hostChildNode.getDestinationInsertionPoints(),
+function (contentNode) {
+// do something cool with the contentNode
+});
+</pre>
+<div id="host1" class="product">
+    <h2>ShamWow</h2>
+    <p class="description">
+        ShamWow washes, dries, and polishes any surface. It's like a towel,
+        chamois, and sponge all in one!
+    </p>
+    <h3>Ratings</h3>
+    <ul class="ratings">
+        <li>1 star</li>
+        <li>2 stars</li>
+        <li>3 stars</li>
+        <li>4 stars</li>
+    </ul>
+</div>
+<script type="text/javascript">
+    var template = document.querySelector('#template');
+    var root = document.querySelector('#host1').createShadowRoot();
+    root.appendChild(template.content);
+</script>
+</body>
+</html>

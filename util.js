@@ -67,6 +67,35 @@ var util={
          }
       }
         return b;
+    },
+    flatten:function flatten(target){
+        var result=[];
+      target.forEach(function(item){
+        if(Array.isArray(item)){
+           result=result.concat(flatten(item))
+        }else{
+            result.push(item)
+        }
+      });
+        return result;
+    },
+    DateUtil:{
+        //传入2个date类型的日期，求相隔天数
+        getDatePeriod:function(start,finish){
+           return Math.abs(start*1-finish*1)/60/60/1000/24;
+        },
+        //传入1个date类型的日期，求它所在月的第一天
+        getFirstDateInMonth:function(date){
+            return new Date(date,getFullYear(),data.getMonth(),1);
+        },
+        //传入1个date类型的日期，求它所在季度的第一天
+        getFirstDateInQuarter:function(date){
+            return new Date(date,getFullYear(),~~(data.getMonth()/3)*3,1);
+        },
+        //传入1个date类型的日期，求它所在季度的最后一天
+        getLastDateInQuarter:function(date){
+            return new Date(date,getFullYear(),~~(data.getMonth()/3)*3+3,1);
+        },
     }
 }
 function curry(fn){
@@ -83,4 +112,25 @@ function curry(fn){
 function sum(x,y,z,w){
     return x+y+z+w;
 }
-curry(sum)(1)(2)(3)(4)
+curry(sum)(1)(2)(3)(4);
+function f(y,z) { return this.x + y + z }; // Another function that adds
+var g = f.bind({x:1}, 2); // Bind this and y
+g(3);
+
+var scope = "global";
+var o={
+    f:function constructFunction() {
+        var scope = "local";
+        return new Function("return scope"); // Does not capture the local scope!
+    }
+}
+o.f()();//global
+var o1={
+    f1:function constructFunction() {
+        var scope = "local";
+        return function(){
+            return scope
+        };
+    }
+}
+o1.f1()();//local

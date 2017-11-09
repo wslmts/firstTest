@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="times">0</div>
+  <script>
+       window.onload=function(){
+           var c=document.getElementById('times');
+           var ifm=document.createElement('iframe');
+           ifm.onload=function(){
+               c.innerHTML=++c.innerHTML
+           }
+           //ifm.src='http://www.dajie.com'
+           document.body.appendChild(ifm);
+           ifm.src='http://www.dajie.com'
+       }
+  </script>
+<h3>ifm.src在加载到页面前后，webkit内核浏览器请求的次数不同,</h3>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="host"></div>
+<script>
+    var host = document.querySelector('#host');
+    var root = host.createShadowRoot();
+</script>
+<template id="atcq">
+    <p class="response"></p>
+    <script type="text/javascript">
+        (function () {
+            var p = confirm('You on point Tip?');
+            var responeEl = document.querySelector('#atcq-root')
+                    .shadowRoot
+                    .querySelector('.response');
+            if (p) {
+                responeEl.innerHTML = 'All the time Phife';
+            } else {
+                responeEl.innerHTML = 'Check the rhyme y\'all';
+            }
+        })();
+    </script>
+</template>
+<div id="atcq-root"></div>
+<script>
+    // create a shadow root
+    var root = document.querySelector('#atcq-root').createShadowRoot();
+    // get a reference to the template node
+    var template = document.querySelector('#atcq');
+    // append the cloned content to the shadow root
+    root.appendChild(template.content);
+</script>
+</body>
+</html>

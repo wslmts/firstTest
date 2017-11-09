@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function A(){}
+    A.prototype={aa:1};
+    var a=new A;
+    console.log(a.aa);
+    A.prototype={aa:2};
+    console.log(a.aa);
+    var a1=new A();
+    console.log('a1',a1.aa);
+    function B(){}
+    B.prototype={aa:1};
+    a.constructor=B;
+    console.log(a.aa);
+    var a2=new A();
+    console.log('a2',a2.aa);
+</script>
+</body>
+</html>

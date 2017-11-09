@@ -18,7 +18,15 @@
     </p>
 </div>
 <div id="ccc">
-    a.compareDocumentPosition(b): 可以用&16做掩码,判断是否包含
+    A.compareDocumentPosition(B);
+    0--元素一致；
+    1-节点在不同的文档
+    2-B在A前
+    4-A在B前
+    8-B包含A
+    16-A包含B
+    32-浏览器的私有使用
+    2个元素可能同时满足以上2种情况，比如A包含B,且A在B前，则返回20；
 </div>
 <input type="button" value="compareDocumentPosition--h5?" onclick="getContains2()">
 
@@ -38,8 +46,9 @@
         var c=document.getElementById('ccc');
         var d=document.getElementById('ddd');
         var e=document.getElementById('eee');
-        console.log('包含',a.compareDocumentPosition(b)&16);
-        console.log('无关',a.compareDocumentPosition(c)&16);
+        console.log('同一个',a.compareDocumentPosition(a));
+        console.log('包含',a.compareDocumentPosition(b));
+        console.log('无关',a.compareDocumentPosition(c));
         console.log('被包含',a.compareDocumentPosition(d));
         console.log('a在b前',a.compareDocumentPosition(e));
         console.log('a在b后',e.compareDocumentPosition(a));

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    let target = {
+        name: "target"
+    };
+    let proxy = new Proxy(target, {
+        set(trapTarget, key, value, receiver) {
+        console.dir(trapTarget);
+        console.dir(key)
+        console.dir(value)
+        console.dir(receiver)
+// 忽略已有属性，避免影响它们
+        if (!trapTarget.hasOwnProperty(key)) {
+            if (isNaN(value)) {
+                throw new TypeError("Property must be a number.");
+            }
+        }
+// 添加属性
+        return Reflect.set(trapTarget, key, value, receiver);
+    }
+    });
+    // 添加一个新属性
+    proxy.count = 1;
+    console.log(proxy.count); // 1
+    console.log(target.count);
+</script>
+</body>
+</html>
